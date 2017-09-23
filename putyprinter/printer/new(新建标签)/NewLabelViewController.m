@@ -14,9 +14,8 @@
 #import "TextAttributeTableViewController.h"
 @interface NewLabelViewController ()
 
-
-// 整个底部功能区
-@property (weak, nonatomic) IBOutlet UIView *bottomview;
+//新建标签
+@property newLabel *nLabelView;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbElementPosInfo;
 
@@ -29,7 +28,7 @@
 // 新建标签
 @property(nonatomic,strong)UIView *subView;
 // 标签
-@property(nonatomic,strong)UIView *editView;
+@property(nonatomic,strong)labelArea *editView;
 @property (weak, nonatomic) IBOutlet UIView *editViewContainer;
 
 // 插入
@@ -45,8 +44,6 @@
 @property(nonatomic,strong)UIView *propertyView;
 @property (weak, nonatomic) IBOutlet UIView *propertyViewContainer;
 
-//新建标签
-@property(nonatomic,strong)newLabel *nLabelView;
 
 @end
 
@@ -117,6 +114,7 @@
     //标签界面
     self.editView=[[labelArea alloc] initWithFrame:CGRectMake(0, 0, rect.size
                                                               .width, 240)];
+    self.editView.parent=self;
     [self.bottomFuncArea addSubview:self.editView];
     
 //    //绘图区域

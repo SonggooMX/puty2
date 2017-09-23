@@ -13,6 +13,7 @@
 #import "historyViewController.h"
 #import "connetController.h"
 #import "setViewController.h"
+#import "TagTemplateController.h"
 
 @interface HomeBottomViewController ()
 
@@ -47,8 +48,9 @@
             break;
             
         case 13:
-            _masterplateView = [[masterplateViewController alloc] init];
-            [self.navigationController pushViewController:_masterplateView animated:YES];
+            [self openCloundTempeletes];
+            //_masterplateView = [[masterplateViewController alloc] init];
+            //[self.navigationController pushViewController:_masterplateView animated:YES];
             break;
             
         case 14:
@@ -70,6 +72,13 @@
             break;
     }
     
+}
+
+//打开云端模板
+- (void) openCloundTempeletes
+{
+    TagTemplateController *vc = [TagTemplateController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 // 点击选择标签

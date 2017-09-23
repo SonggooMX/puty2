@@ -29,15 +29,15 @@
         
         
         //设置打印方向
-        [self setButtonViewStyle:self.btnPrintDirect0 :true];
-        [self setButtonViewStyle:self.btnPrintDirect90 :false];
+        [self setButtonViewStyle:self.btnPrintDirect0 :false];
+        [self setButtonViewStyle:self.btnPrintDirect90 :true];
         [self setButtonViewStyle:self.btnPrintDirect180 :false];
         [self setButtonViewStyle:self.btnprintDirect270 :false];
         
         //纸张类型
-        [self setButtonViewStyle:self.btnPageType0 :true];
+        [self setButtonViewStyle:self.btnPageType0 :false];
         [self setButtonViewStyle:self.btnPageType1 :false];
-        [self setButtonViewStyle:self.btnPageType2 :false];
+        [self setButtonViewStyle:self.btnPageType2 :true];
         [self setButtonViewStyle:self.btnPageType3 :false];
         
     }
@@ -161,7 +161,13 @@
 
 //取消
 - (IBAction)btnCancel:(id)sender {
+    if(self.fromType==0){
     [self.parent reback];
+    }
+    else if(self.fromType==1)
+    {
+        [self removeFromSuperview];
+    }
 }
 //确定
 - (IBAction)btnOK:(id)sender {

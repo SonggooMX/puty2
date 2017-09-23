@@ -102,6 +102,18 @@
     
     frame.origin.y+=directY;
     
+    //检查是否超出边界
+    frame.origin.x=frame.origin.x<=0?0:frame.origin.x;
+    frame.origin.y=frame.origin.y<=0?0:frame.origin.y;
+    if(frame.origin.x+frame.size.width>=self.parent.frame.size.width)
+    {
+        frame.origin.x=self.parent.frame.size.width-frame.size.width;
+    }
+    if(frame.origin.y+frame.size.height>=self.parent.frame.size.height)
+    {
+        frame.origin.y=self.parent.frame.size.height-frame.size.height;
+    }
+    
     self.beginpoint=currentLocation;
     
     self.frame = frame;

@@ -37,5 +37,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbHeight;
 
 
+//默认从主界面跳转到新建界面 0：主界面 1：新建界面
+@property int fromType;
+
+
 
 @end

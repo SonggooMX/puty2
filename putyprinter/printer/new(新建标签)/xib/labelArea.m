@@ -7,6 +7,8 @@
 //
 
 #import "labelArea.h"
+#import "newLabel.h"
+#import "TagTemplateController.h"
 
 @implementation labelArea
 
@@ -23,9 +25,11 @@
     switch (sender.tag) {
         case 11:
             NSLog(@"新建");
+            [self newlabel];
             break;
         case 12:
             NSLog(@"打开");
+            [self openCloundTempeletes];
             break;
         case 13:
             NSLog(@"保存");
@@ -49,6 +53,25 @@
         default:
             break;
     }
+}
+
+//打开云端模板
+- (void) openCloundTempeletes
+{
+    TagTemplateController *vc = [[TagTemplateController alloc] init];
+    [self.parent.navigationController pushViewController:vc animated:YES];
+}
+
+//创建新标签
+- (void) newlabel
+{
+    //新增界面
+    CGRect rect=[UIScreen mainScreen].bounds;
+    newLabel *nl=[[newLabel alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, 284)];
+    nl.fromType=1;//来源
+    nl.parent=self.parent;
+    [self.parent.bottomview addSubview:nl]; //添加
+
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
