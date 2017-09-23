@@ -22,5 +22,7 @@
 
 -(void) reback;
 
+- (IBAction)btnSwitchView:(id)sender;
+
 
 @end

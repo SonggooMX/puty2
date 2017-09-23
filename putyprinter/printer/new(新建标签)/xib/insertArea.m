@@ -16,7 +16,10 @@
 #import "qrView.h"
 #import "b1dView.h"
 #import "lbView.h"
+#import "rectView.h"
+#import "lineView.h"
 #import "BaseEdictFormViewController.h"
+#import "LogoManagerController.h"
 @implementation insertArea
 
 /*
@@ -60,6 +63,8 @@
     [self.parent.navigationController pushViewController:vc animated:YES];
 }
 
+
+
 //创建图片
 -(UIImage*) createZXingImage:(int)format
 {
@@ -99,20 +104,98 @@
     [self.parent.navigationController pushViewController:vc animated:YES];
 }
 
+//插入矩形 生成一个矩形图标
+- (IBAction)btnInsertRect:(id)sender {
+    rectView *v1=[[rectView alloc] init];
+    v1.rectType=1;
+    [v1 initView:CGRectMake(50, 50, 100, 100) withImage:NULL];
+    v1.parent=self.parent.drawAreaView;
+    v1.parentController=self.parent;
+    [self.parent.drawAreaView addSubview:v1];
+}
 
+//插入LOGO
+- (IBAction)btnInsertLogo:(id)sender {
+    //logo
+    LogoManagerController *vc = [LogoManagerController new];
+    [self.parent.navigationController pushViewController:vc animated:YES];
+}
+
+//插入线条
+- (IBAction)btnInsertLine:(id)sender {
+    lineView *v1=[[lineView alloc] init];
+    v1.lineType=1;
+    [v1 initView:CGRectMake(50, 50, 100, 20) withImage:NULL];
+    v1.parent=self.parent.drawAreaView;
+    v1.parentController=self.parent;
+    [self.parent.drawAreaView addSubview:v1];
+}
+
+//插入表格
+- (IBAction)btnInsertTabel:(id)sender {
+}
+
+
+//插入图片
 - (IBAction)btnInsertImage:(id)sender {
     
     //self.parent.drawAreaView.subviews.lastObject.transform=CGAffineTransformScale(self.parent.drawAreaView.subviews.lastObject.transform, 1.1, 1.1);
     //旋转
-    baseView *bv=(baseView*)self.parent.drawAreaView.subviews.lastObject;
-    [bv rotate];
+    //baseView *bv=(baseView*)self.parent.drawAreaView.subviews.lastObject;
+    //[bv rotate];
     
+    //打开图片选择界面
+    // 判断当前的sourceType是否可用
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        // 实例化UIImagePickerController控制器
+        UIImagePickerController * imagePickerVC = [[UIImagePickerController alloc] init];
+        // 设置资源来源（相册、相机、图库之一）
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        // 设置可用的媒体类型、默认只包含kUTTypeImage，如果想选择视频，请添加kUTTypeMovie
+        // 允许的视屏质量（如果质量选取的质量过高，会自动降低质量）
+        imagePickerVC.videoQuality = UIImagePickerControllerQualityTypeHigh;
+        imagePickerVC.mediaTypes = @[(NSString *)kUTTypeImage];
+        
+        // 设置代理，遵守UINavigationControllerDelegate, UIImagePickerControllerDelegate 协议
+        imagePickerVC.delegate = self;
+        // 是否允许编辑（YES：图片选择完成进入编辑模式）
+        imagePickerVC.allowsEditing = YES;
+        // model出控制器
+        [self.parent presentViewController:imagePickerVC animated:YES completion:nil];
+        
+    }
+    
+    /*
     BaseEdictFormViewController *vc = [[BaseEdictFormViewController alloc] initWithNibName:@"BaseEdictFormViewController" bundle:nil];
     vc.type = BaseEdictFormTypeImage;
     [self.parent.navigationController pushViewController:vc animated:YES];
+     */
+}
+
+// 选择图片成功调用此方法
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    // dismiss UIImagePickerController
+    [self.parent dismissViewControllerAnimated:YES completion:nil];
+    // 选择的图片信息存储于info字典中
+    NSLog(@"%@", info);
+    //创建图片元素
+    // 获取点击的图片
+    UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
+    qrView *v1=[[qrView alloc] init];
+    v1.parent=self.parent.drawAreaView;
+    v1.parentController=self.parent;
+    [v1 initView:CGRectMake(100, 100, 100, 100) withImage:img];
+    [self.parent.drawAreaView addSubview:v1];
 }
 
 
+// 取消图片选择调用此方法
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    // dismiss UIImagePickerController
+    [self.parent dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NewLabelViewController.h"
 
-@interface insertArea : UIView
+@interface insertArea : UIView<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property NewLabelViewController *parent;
 @end

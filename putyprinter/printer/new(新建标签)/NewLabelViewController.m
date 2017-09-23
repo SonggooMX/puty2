@@ -84,7 +84,6 @@
     self.nLabelView.parent=self;
     [self.bottomview addSubview:self.nLabelView]; //添加
     
-    
     //旋转界面
 //    NSArray *proView = [[NSBundle mainBundle] loadNibNamed:@"property" owner:self options:nil]; //通过这个方法,取得我们的视图
 //    self.propertyView = [proView objectAtIndex:0];

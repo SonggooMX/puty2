@@ -103,15 +103,15 @@
     frame.origin.y+=directY;
     
     //检查是否超出边界
-    frame.origin.x=frame.origin.x<=0?0:frame.origin.x;
-    frame.origin.y=frame.origin.y<=0?0:frame.origin.y;
-    if(frame.origin.x+frame.size.width>=self.parent.frame.size.width)
+    frame.origin.x=frame.origin.x<=5?5:frame.origin.x;
+    frame.origin.y=frame.origin.y<=5?5:frame.origin.y;
+    if(frame.origin.x+frame.size.width+5>=self.parent.frame.size.width)
     {
-        frame.origin.x=self.parent.frame.size.width-frame.size.width;
+        frame.origin.x=self.parent.frame.size.width-frame.size.width-5;
     }
-    if(frame.origin.y+frame.size.height>=self.parent.frame.size.height)
+    if(frame.origin.y+frame.size.height+5>=self.parent.frame.size.height)
     {
-        frame.origin.y=self.parent.frame.size.height-frame.size.height;
+        frame.origin.y=self.parent.frame.size.height-frame.size.height-5;
     }
     
     self.beginpoint=currentLocation;

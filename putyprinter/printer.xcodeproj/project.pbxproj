@@ -38,6 +38,7 @@
 		1B081BD11F75489D00308DAF /* AnimationContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B081BCA1F75489D00308DAF /* AnimationContoller.m */; };
 		1B081BD21F75489D00308DAF /* KLTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B081BCC1F75489D00308DAF /* KLTNavigationController.m */; };
 		1B081BD31F75489D00308DAF /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B081BCF1F75489D00308DAF /* NetworkManager.m */; };
+		1B5815AA1F7671B8001EE1D3 /* lineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5815A81F7671B8001EE1D3 /* lineView.m */; };
 		1B5F0BAD1F34AC440023F87A /* newLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F0BAC1F34AC440023F87A /* newLabel.m */; };
 		1B85F9CB1F2B02C800179C6D /* drawArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B85F9CA1F2B02C800179C6D /* drawArea.m */; };
 		1B85F9CE1F2B033E00179C6D /* labelArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B85F9CD1F2B033E00179C6D /* labelArea.m */; };
@@ -53,6 +54,7 @@
 		1B85FA4F1F2B049D00179C6D /* b1dView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B85FA451F2B049D00179C6D /* b1dView.m */; };
 		1B85FA951F2B1AC700179C6D /* ZXingObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B85FA941F2B1AB900179C6D /* ZXingObjC.framework */; };
 		1B85FA961F2B1ACE00179C6D /* ZXingObjC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B85FA941F2B1AB900179C6D /* ZXingObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1B9A30281F7612D70058CC39 /* rectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A30261F7612D70058CC39 /* rectView.m */; };
 		1BA1BB261F137530005BA203 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA1BB251F137530005BA203 /* main.m */; };
 		1BA1BB291F137530005BA203 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA1BB281F137530005BA203 /* AppDelegate.m */; };
 		1BA1BB2F1F137530005BA203 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BA1BB2D1F137530005BA203 /* Main.storyboard */; };
@@ -345,6 +347,8 @@
 		1B081BCC1F75489D00308DAF /* KLTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTNavigationController.m; sourceTree = "<group>"; };
 		1B081BCE1F75489D00308DAF /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		1B081BCF1F75489D00308DAF /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		1B5815A81F7671B8001EE1D3 /* lineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = lineView.m; path = element/core/lineView.m; sourceTree = "<group>"; };
+		1B5815A91F7671B8001EE1D3 /* lineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lineView.h; path = element/core/lineView.h; sourceTree = "<group>"; };
 		1B5F0BAB1F34AC440023F87A /* newLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newLabel.h; sourceTree = "<group>"; };
 		1B5F0BAC1F34AC440023F87A /* newLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newLabel.m; sourceTree = "<group>"; };
 		1B85F9C91F2B02C800179C6D /* drawArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = drawArea.h; sourceTree = "<group>"; };
@@ -372,6 +376,8 @@
 		1B85FA451F2B049D00179C6D /* b1dView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = b1dView.m; path = element/b1dView.m; sourceTree = "<group>"; };
 		1B85FA461F2B049D00179C6D /* b1dView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = b1dView.h; path = element/b1dView.h; sourceTree = "<group>"; };
 		1B85FA801F2B1AB900179C6D /* ZXingObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingObjC.xcodeproj; path = ZXingObjC/ZXingObjC.xcodeproj; sourceTree = "<group>"; };
+		1B9A30261F7612D70058CC39 /* rectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = rectView.m; path = element/core/rectView.m; sourceTree = "<group>"; };
+		1B9A30271F7612D70058CC39 /* rectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rectView.h; path = element/core/rectView.h; sourceTree = "<group>"; };
 		1BA1BB211F137530005BA203 /* printer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = printer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA1BB251F137530005BA203 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1BA1BB271F137530005BA203 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -882,14 +888,11 @@
 		1B85FA311F2B043600179C6D /* element */ = {
 			isa = PBXGroup;
 			children = (
+				1B9A301F1F7610EF0058CC39 /* core */,
 				1B85FA351F2B049D00179C6D /* scaleView.m */,
 				1B85FA361F2B049D00179C6D /* scaleView.h */,
-				1B85FA371F2B049D00179C6D /* qrView.m */,
-				1B85FA381F2B049D00179C6D /* qrView.h */,
 				1B85FA391F2B049D00179C6D /* leftScaleView.m */,
 				1B85FA3A1F2B049D00179C6D /* leftScaleView.h */,
-				1B85FA3B1F2B049D00179C6D /* lbView.m */,
-				1B85FA3C1F2B049D00179C6D /* lbView.h */,
 				1B85FA3D1F2B049D00179C6D /* lbScaleView.m */,
 				1B85FA3E1F2B049D00179C6D /* lbScaleView.h */,
 				1B85FA3F1F2B049D00179C6D /* BottomScaleView.m */,
@@ -898,8 +901,6 @@
 				1B85FA421F2B049D00179C6D /* bottomRightScaleView.h */,
 				1B85FA431F2B049D00179C6D /* baseView.m */,
 				1B85FA441F2B049D00179C6D /* baseView.h */,
-				1B85FA451F2B049D00179C6D /* b1dView.m */,
-				1B85FA461F2B049D00179C6D /* b1dView.h */,
 			);
 			name = element;
 			sourceTree = "<group>";
@@ -915,6 +916,23 @@
 				1B85FA941F2B1AB900179C6D /* ZXingObjC.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1B9A301F1F7610EF0058CC39 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				1B5815A81F7671B8001EE1D3 /* lineView.m */,
+				1B5815A91F7671B8001EE1D3 /* lineView.h */,
+				1B9A30261F7612D70058CC39 /* rectView.m */,
+				1B9A30271F7612D70058CC39 /* rectView.h */,
+				1B85FA3B1F2B049D00179C6D /* lbView.m */,
+				1B85FA3C1F2B049D00179C6D /* lbView.h */,
+				1B85FA451F2B049D00179C6D /* b1dView.m */,
+				1B85FA461F2B049D00179C6D /* b1dView.h */,
+				1B85FA371F2B049D00179C6D /* qrView.m */,
+				1B85FA381F2B049D00179C6D /* qrView.h */,
+			);
+			name = core;
 			sourceTree = "<group>";
 		};
 		1BA1BB181F137530005BA203 = {
@@ -1736,6 +1754,7 @@
 				A00E39841F66DF220081C5AF /* EFFontSizeModle.m in Sources */,
 				B98773881F20A9D50057404D /* twoDimensionalViewController.m in Sources */,
 				1B081B741F75452900308DAF /* JSONHTTPClient.m in Sources */,
+				1B9A30281F7612D70058CC39 /* rectView.m in Sources */,
 				A00E39801F66DF220081C5AF /* EFAttributeModle.m in Sources */,
 				1B081BD31F75489D00308DAF /* NetworkManager.m in Sources */,
 				A00E397E1F66DF220081C5AF /* ButtonModle.m in Sources */,
@@ -1848,6 +1867,7 @@
 				1B5F0BAD1F34AC440023F87A /* newLabel.m in Sources */,
 				B988E33F1F1EF0A8003EE56B /* UILabel+CZAddition.m in Sources */,
 				1B081B711F75452900308DAF /* JSONModelClassProperty.m in Sources */,
+				1B5815AA1F7671B8001EE1D3 /* lineView.m in Sources */,
 				90AD22A21F3A171F0002B152 /* ZXFontModel.m in Sources */,
 				90AD22921F3A12360002B152 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				90AD22981F3A12360002B152 /* UIWebView+AFNetworking.m in Sources */,

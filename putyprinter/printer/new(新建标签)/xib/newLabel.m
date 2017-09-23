@@ -193,6 +193,11 @@
     frame=CGRectMake((rw-w*sc)/2, (rh-h*sc)/2, w*sc, h*sc);
     self.parent.drawAreaView.frame=frame;
     self.parent.LabelSacle=sc;
+    
+    //选中插入模块
+    UIButton *bt=[[UIButton alloc] init];
+    bt.tag=1002;
+    [self.parent btnSwitchView:bt];
 }
 
 @end
