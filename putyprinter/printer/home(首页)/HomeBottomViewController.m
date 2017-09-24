@@ -42,7 +42,7 @@
             [self.navigationController pushViewController:_newLabelView animated:YES];
             break;
             
-        case 12:
+        case 12://打印
             _printView = [[PrintViewController alloc] init];
             [self.navigationController pushViewController:_printView animated:YES];
             break;

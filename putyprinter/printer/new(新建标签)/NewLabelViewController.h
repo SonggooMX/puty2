@@ -9,6 +9,8 @@
 
 #import "drawArea.h"
 #import <UIKit/UIKit.h>
+#import "PrintViewController.h"
+
 @interface NewLabelViewController : UIViewController
 
 @property float LabelSacle;

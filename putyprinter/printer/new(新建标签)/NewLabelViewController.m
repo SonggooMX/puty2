@@ -13,6 +13,7 @@
 #import "newLabel.h"
 #import "TextAttributeTableViewController.h"
 #import "BaseEdictFormViewController.h"
+
 @interface NewLabelViewController ()
 
 //新建标签
@@ -57,6 +58,9 @@
 
 
 @implementation NewLabelViewController
+{
+    PrintViewController *_printView;
+}
 
 -(void)updateTip:(NSString *)msg
 {
@@ -126,7 +130,7 @@
     line.backgroundColor = [UIColor whiteColor];
     UIBarButtonItem *lineItem = [[UIBarButtonItem alloc] initWithCustomView:line];
 
-     self.navigationItem.rightBarButtonItems = @[[self itemWithImage:@"print_button_n"],lineItem,[self itemWithImage:@"lock-object_button_n"],[self itemWithImage:@"delete_button_n"],[self itemWithImage:@"redo_buton_n"],[self itemWithImage:@"revoke_button_n"],[self itemWithImage:@"multiselect_button"]];
+     self.navigationItem.rightBarButtonItems = @[[self itemWithImage:@"print_button_n" withIndex:0],lineItem,[self itemWithImage:@"lock-object_button_n" withIndex:1],[self itemWithImage:@"delete_button_n" withIndex:2],[self itemWithImage:@"redo_buton_n" withIndex:3],[self itemWithImage:@"revoke_button_n" withIndex:4],[self itemWithImage:@"multiselect_button" withIndex:5]];
 }
 
 #pragma mark -隐藏顶部按钮
@@ -137,13 +141,37 @@
     self.navigationItem.rightBarButtonItems=@[];
 }
 
-- (UIBarButtonItem *)itemWithImage:(NSString *)img
+- (UIBarButtonItem *)itemWithImage:(NSString *)img withIndex:(int)tag
 {
     UIButton *btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    btn.tag=tag;
+    [btn addTarget:self action:@selector(buttonItemClick:) forControlEvents:(UIControlEventTouchUpInside)];
     btn.frame = CGRectMake(0, 0, 32, 32);
     [btn setImage:[UIImage imageNamed:img] forState:(UIControlStateNormal)];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
     return item;
+}
+#pragma mark -顶部按钮点击
+-(void) buttonItemClick:(UIButton*)sender
+{
+    int tag=(int)sender.tag;
+    switch (tag) {
+        case 5://多选
+            
+            break;
+        case 4://撤销
+            break;
+        case 3://重做
+            break;
+        case 2://删除
+            break;
+        case 1://锁定元素
+            break;
+        default://打印
+            _printView=[[PrintViewController alloc] init];
+            [self.navigationController pushViewController:_printView animated:YES];
+            break;
+    }
 }
 
 #pragma mark -选中元素属性
