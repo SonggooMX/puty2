@@ -204,6 +204,8 @@
            return @[@"LOGO",@"位置大小",@"旋转角度"];
         }
             break;
+        case BaseEdictFormTypeTxt:
+            return @[@"数据内容",@"字体",@"位置大小",@"旋转角度"];
         default:
             return @[@"标签属性",@"Exel内容",@"背景图片",@"打印参数",@"打印偏移"];
             break;

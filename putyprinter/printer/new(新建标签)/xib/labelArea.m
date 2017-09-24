@@ -71,6 +71,7 @@
     nl.fromType=1;//来源
     nl.parent=self.parent;
     [self.parent.bottomview addSubview:nl]; //添加
+    [self.parent setTopIconButtonHidden];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame

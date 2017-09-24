@@ -102,8 +102,8 @@
                                     <outletCollection property="gestureRecognizers" destination="0ZK-SM-urc" appends="YES" id="vwZ-Dh-gn4"/>
                                 </connections>
                             </view>
-                            <view tag="2" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gk3-gZ-bkW" userLabel="sec">
-                                <rect key="frame" x="73" y="0.0" width="79" height="142.5"/>
+                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gk3-gZ-bkW" userLabel="sec">
+                                <rect key="frame" x="80" y="0.0" width="79" height="142.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Een-eg-7xS">
                                         <rect key="frame" x="14.5" y="36.5" width="50" height="50"/>
@@ -130,7 +130,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9y-jr-PjC">
-                                <rect key="frame" x="79" y="0.0" width="1" height="142.5"/>
+                                <rect key="frame" x="79" y="0.0" width="0.5" height="142.5"/>
                                 <color key="backgroundColor" red="0.69011962410000005" green="0.69024020429999999" blue="0.69011199469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sui-Df-Z3Q">

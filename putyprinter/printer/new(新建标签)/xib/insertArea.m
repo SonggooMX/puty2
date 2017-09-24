@@ -38,13 +38,11 @@
     
     b1dView *v1=[[b1dView alloc] init];
     v1.parent=self.parent.drawAreaView;
+    v1.elementType=0;
     v1.parentController=self.parent;
     [v1 initView:CGRectMake(50, 50, 100, 25) withImage:img];
     [self.parent.drawAreaView addSubview:v1];
-    
-    BaseEdictFormViewController *vc = [[BaseEdictFormViewController alloc] initWithNibName:@"BaseEdictFormViewController" bundle:nil];
-    vc.type = BaseEdictFormTypeBarCode;
-    [self.parent.navigationController pushViewController:vc animated:YES];
+
 }
 
 //插入二维码
@@ -54,13 +52,11 @@
     
     qrView *v1=[[qrView alloc] init];
     v1.parent=self.parent.drawAreaView;
+    v1.elementType=1;
     v1.parentController=self.parent;
     [v1 initView:CGRectMake(100, 100, 100, 100) withImage:img];
     [self.parent.drawAreaView addSubview:v1];
     
-    BaseEdictFormViewController *vc = [[BaseEdictFormViewController alloc] initWithNibName:@"BaseEdictFormViewController" bundle:nil];
-    vc.type = BaseEdictFormTypeQRCode;
-    [self.parent.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -95,43 +91,43 @@
     
     lbView *v1=[[lbView alloc] init];
     v1.parent=self.parent.drawAreaView;
+    v1.elementType=8;
     v1.parentController=self.parent;
     [v1 initView:CGRectMake(50, 50, 100, 100) withContent:@"文本"];
     [self.parent.drawAreaView addSubview:v1];
-    
-    BaseEdictFormViewController *vc = [[BaseEdictFormViewController alloc] initWithNibName:@"BaseEdictFormViewController" bundle:nil];
-    vc.type = BaseEdictFormTypeLable;
-    [self.parent.navigationController pushViewController:vc animated:YES];
 }
 
-//插入矩形 生成一个矩形图标
+//插入矩形 生成一个矩形图标 5
 - (IBAction)btnInsertRect:(id)sender {
     rectView *v1=[[rectView alloc] init];
     v1.rectType=1;
+    v1.elementType=5;
     [v1 initView:CGRectMake(50, 50, 100, 100) withImage:NULL];
     v1.parent=self.parent.drawAreaView;
     v1.parentController=self.parent;
     [self.parent.drawAreaView addSubview:v1];
 }
 
-//插入LOGO
+//插入LOGO 6
 - (IBAction)btnInsertLogo:(id)sender {
     //logo
     LogoManagerController *vc = [LogoManagerController new];
+    
     [self.parent.navigationController pushViewController:vc animated:YES];
 }
 
-//插入线条
+//插入线条 4
 - (IBAction)btnInsertLine:(id)sender {
     lineView *v1=[[lineView alloc] init];
     v1.lineType=1;
+    v1.elementType=4;
     [v1 initView:CGRectMake(50, 50, 100, 20) withImage:NULL];
     v1.parent=self.parent.drawAreaView;
     v1.parentController=self.parent;
     [self.parent.drawAreaView addSubview:v1];
 }
 
-//插入表格
+//插入表格 3
 - (IBAction)btnInsertTabel:(id)sender {
     
 }
@@ -184,6 +180,7 @@
     // 获取点击的图片
     UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
     qrView *v1=[[qrView alloc] init];
+    v1.elementType=2;
     v1.parent=self.parent.drawAreaView;
     v1.parentController=self.parent;
     [v1 initView:CGRectMake(100, 100, 100, 100) withImage:img];

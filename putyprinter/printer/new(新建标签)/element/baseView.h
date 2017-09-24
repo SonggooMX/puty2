@@ -11,16 +11,20 @@
 #import "BottomScaleView.h"
 #import "bottomRightScaleView.h"
 #import "lbScaleView.h"
+#import "NewLabelViewController.h"
 
 @interface baseView : UIView
 
 @property CGPoint beginpoint;
 @property UIView *parent;
-@property UIViewController *parentController;
+@property NewLabelViewController *parentController;
 @property bottomRightScaleView *sview;
 @property leftScaleView *rightView;
 @property BottomScaleView *bottomView;
 @property lbScaleView *lbScaleView;
+
+//元素类型
+@property int elementType;
 
 //容器
 @property UIView *containerView;

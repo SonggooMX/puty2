@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9S-a8-UEN">
-                        <rect key="frame" x="160" y="20.5" width="148" height="32"/>
+                        <rect key="frame" x="166" y="20.5" width="142" height="32"/>
                         <color key="backgroundColor" red="0.0" green="0.48412108421325684" blue="0.88697189092636108" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="erc-qL-Azh"/>
@@ -32,7 +32,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PgR-Hk-3kI">
-                        <rect key="frame" x="12" y="20.5" width="148" height="32"/>
+                        <rect key="frame" x="12" y="20.5" width="142" height="32"/>
                         <color key="backgroundColor" red="0.0" green="0.48412108421325684" blue="0.88697189092636108" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="t7p-Tx-XVC"/>
@@ -46,7 +46,7 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="t9S-a8-UEN" firstAttribute="leading" secondItem="PgR-Hk-3kI" secondAttribute="trailing" id="0Pc-if-o9s"/>
+                    <constraint firstItem="t9S-a8-UEN" firstAttribute="leading" secondItem="PgR-Hk-3kI" secondAttribute="trailing" constant="12" id="0Pc-if-o9s"/>
                     <constraint firstItem="PgR-Hk-3kI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Aps-v6-tT8"/>
                     <constraint firstItem="t9S-a8-UEN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZnG-Xe-0Xq"/>
                     <constraint firstItem="t9S-a8-UEN" firstAttribute="width" secondItem="PgR-Hk-3kI" secondAttribute="width" id="aYO-Qo-TE5"/>

@@ -162,7 +162,7 @@
 //取消
 - (IBAction)btnCancel:(id)sender {
     if(self.fromType==0){
-    [self.parent reback];
+        [self.parent reback];
     }
     else if(self.fromType==1)
     {
@@ -194,10 +194,12 @@
     self.parent.drawAreaView.frame=frame;
     self.parent.LabelSacle=sc;
     
-    //选中插入模块
+    //选中首页插入模块
     UIButton *bt=[[UIButton alloc] init];
     bt.tag=1002;
     [self.parent btnSwitchView:bt];
+    //开启顶部icon按钮
+    [self.parent setTopIconButton];
 }
 
 @end

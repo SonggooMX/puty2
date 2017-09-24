@@ -8,7 +8,7 @@
 
 #import "drawArea.h"
 #import "baseView.h"
-
+#import "NewLabelViewController.h"
 
 @implementation drawArea
 
@@ -41,6 +41,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [((NewLabelViewController*)self.parent) setElementPropety:7 withSelect:true];
     [super touchesBegan:touches withEvent:event];
     //取消所有选中
     int len=(int)self.subviews.count;

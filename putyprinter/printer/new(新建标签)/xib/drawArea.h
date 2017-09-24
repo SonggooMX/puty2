@@ -10,4 +10,5 @@
 
 @interface drawArea : UIView
 @property (strong, nonatomic) IBOutlet UIView *contentView;
+@property UIViewController *parent;
 @end

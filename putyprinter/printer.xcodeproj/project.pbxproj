@@ -899,8 +899,6 @@
 				1B85FA401F2B049D00179C6D /* BottomScaleView.h */,
 				1B85FA411F2B049D00179C6D /* bottomRightScaleView.m */,
 				1B85FA421F2B049D00179C6D /* bottomRightScaleView.h */,
-				1B85FA431F2B049D00179C6D /* baseView.m */,
-				1B85FA441F2B049D00179C6D /* baseView.h */,
 			);
 			name = element;
 			sourceTree = "<group>";
@@ -931,6 +929,8 @@
 				1B85FA461F2B049D00179C6D /* b1dView.h */,
 				1B85FA371F2B049D00179C6D /* qrView.m */,
 				1B85FA381F2B049D00179C6D /* qrView.h */,
+				1B85FA431F2B049D00179C6D /* baseView.m */,
+				1B85FA441F2B049D00179C6D /* baseView.h */,
 			);
 			name = core;
 			sourceTree = "<group>";

@@ -81,6 +81,9 @@
     UITouch *touch = [touches anyObject];
     self.beginpoint = [touch locationInView:self.parent];
     //[super touchesBegan:touches withEvent:event];
+    
+    //设置选中元素的属性
+    [self.parentController setElementPropety:self.elementType withSelect:true];
 }
 
 //元素的移动 核心代码

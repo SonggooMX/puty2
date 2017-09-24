@@ -10,14 +10,15 @@
 
 
 typedef NS_ENUM(NSUInteger, BaseEdictFormType) {
-    BaseEdictFormTypeBarCode = 0,
-    BaseEdictFormTypeQRCode,
-    BaseEdictFormTypeImage,
-    BaseEdictFormTypeForm,
-    BaseEdictFormTypeLine,
-    BaseEdictFormTypeRectangle,
-    BaseEdictFormTypeLogo,
-    BaseEdictFormTypeLable
+    BaseEdictFormTypeBarCode = 0,//一维码 0
+    BaseEdictFormTypeQRCode,//二维码 1
+    BaseEdictFormTypeImage,//图片 2
+    BaseEdictFormTypeForm,//表格 3
+    BaseEdictFormTypeLine,//线 4
+    BaseEdictFormTypeRectangle,//框 5
+    BaseEdictFormTypeLogo,//logo 6
+    BaseEdictFormTypeLable, //标签属性 7
+    BaseEdictFormTypeTxt //文本属性 8
 };
 
 

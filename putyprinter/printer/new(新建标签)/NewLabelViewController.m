@@ -45,6 +45,9 @@
 @property(nonatomic,strong)UIView *propertyView;
 @property (weak, nonatomic) IBOutlet UIView *propertyViewContainer;
 
+//返回按钮
+@property UIBarButtonItem *rebackButton;
+
 
 @end
 
@@ -64,17 +67,17 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"新建标签";
-    UIBarButtonItem *button = [[UIBarButtonItem alloc] init];
-    //button.title = @"返回";
-    button.image = [UIImage imageNamed:@"back_button_n"];
-    button.target = self;
-    button.action = @selector(reback);
-    [self.navigationItem setLeftBarButtonItem:button];
+    self.rebackButton = [[UIBarButtonItem alloc] init];
+    self.rebackButton.image = [UIImage imageNamed:@"back_button_n"];
+    self.rebackButton.target = self;
+    self.rebackButton.action = @selector(reback);
+    [self.navigationItem setLeftBarButtonItem:self.rebackButton];
     
     CGRect rect=[UIScreen mainScreen].bounds;
     
     //绘图区域 +40=左右两边有边距
     self.drawAreaView=[[drawArea alloc] initWithFrame:CGRectMake(0, 0, self.drawViewContent.frame.size.width+40, self.drawViewContent.frame.size.height)];
+    self.drawAreaView.parent=self;
     [self.drawViewContent addSubview:self.drawAreaView];
     //[self.drawAreaView mas_makeConstraints:^(MASConstraintMaker *make) {
     //    make.top.bottom.left.right.equalTo(self.drawViewContent);
@@ -85,23 +88,8 @@
     self.nLabelView.parent=self;
     [self.bottomview addSubview:self.nLabelView]; //添加
     
-    //旋转界面
-//    NSArray *proView = [[NSBundle mainBundle] loadNibNamed:@"property" owner:self options:nil]; //通过这个方法,取得我们的视图
-//    self.propertyView = [proView objectAtIndex:0];
-    /*
-    TextAttributeTableViewController* textAttVC = [TextAttributeTableViewController new];
-    self.propertyView = textAttVC.view;
-    [self addChildViewController:textAttVC];
-    */
-    
-    BaseEdictFormViewController *vc=[BaseEdictFormViewController new];
-    self.propertyView=vc.view;
-    
-    [self.bottomFuncArea addSubview:self.propertyView]; //添加
-    //[textAttVC didMoveToParentViewController:self];
-    [self.propertyView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.left.right.equalTo(self.bottomFuncArea);
-    }];
+    //元素属性
+    [self setElementPropety:BaseEdictFormTypeLable withSelect:false];
     
     //对齐界面
     NSArray *alignView = [[NSBundle mainBundle] loadNibNamed:@"alignment" owner:self options:nil]; //通过这个方法,取得我们的视图
@@ -126,6 +114,61 @@
 //    //绘图区域
     self.drawViewContent.layer.cornerRadius=5;
     
+}
+
+#pragma mark -设置顶部按钮
+-(void) setTopIconButton
+{
+    self.navigationItem.title = @"";
+    self.rebackButton.title=@" ";
+    
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 26)];
+    line.backgroundColor = [UIColor whiteColor];
+    UIBarButtonItem *lineItem = [[UIBarButtonItem alloc] initWithCustomView:line];
+
+     self.navigationItem.rightBarButtonItems = @[[self itemWithImage:@"print_button_n"],lineItem,[self itemWithImage:@"lock-object_button_n"],[self itemWithImage:@"delete_button_n"],[self itemWithImage:@"redo_buton_n"],[self itemWithImage:@"revoke_button_n"],[self itemWithImage:@"multiselect_button"]];
+}
+
+#pragma mark -隐藏顶部按钮
+-(void) setTopIconButtonHidden
+{
+    self.navigationItem.title = @"新建标签";
+    self.rebackButton.title=@"";
+    self.navigationItem.rightBarButtonItems=@[];
+}
+
+- (UIBarButtonItem *)itemWithImage:(NSString *)img
+{
+    UIButton *btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    btn.frame = CGRectMake(0, 0, 32, 32);
+    [btn setImage:[UIImage imageNamed:img] forState:(UIControlStateNormal)];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    return item;
+}
+
+#pragma mark -选中元素属性
+-(void) setElementPropety:(int)type withSelect:(BOOL)isselected
+{
+    //属性界面
+    BaseEdictFormViewController *vc=[BaseEdictFormViewController new];
+    vc.type=type;
+    self.propertyView=vc.view;
+    [self addChildViewController:vc];
+    
+    [self.bottomFuncArea addSubview:self.propertyView]; //添加
+    [vc didMoveToParentViewController:self];
+
+    [self.propertyView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.left.right.equalTo(self.bottomFuncArea);
+    }];
+    
+    if(isselected)
+    {
+        //选中属性
+        UIButton *bt=[UIButton alloc];
+        bt.tag=1003;
+        [self btnSwitchView:bt];
+    }
 }
 
 #pragma mark - 切换编辑标签的界面
