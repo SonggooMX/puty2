@@ -176,8 +176,12 @@
     CGRect frame=self.parent.drawAreaView.frame;
     NSString *width=[self.lbWidth.text stringByReplacingOccurrencesOfString:@"mm" withString:@""];
     NSString *height=[self.lbHeight.text stringByReplacingOccurrencesOfString:@"mm" withString:@""];
-    int w=[width intValue]*8;
-    int h=[height intValue]*8;
+    
+    self.labelWidth=[width floatValue];
+    self.labelHeight=[height floatValue];
+    
+    float w=[width floatValue]*8;
+    float h=[height floatValue]*8;
     
     //画图实际区域
     CGRect reel=self.parent.drawAreaView.superview.frame;

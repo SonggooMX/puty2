@@ -14,7 +14,9 @@
 #import "TextAttributeTableViewController.h"
 #import "BaseEdictFormViewController.h"
 
+
 @interface NewLabelViewController ()
+
 
 //新建标签
 @property newLabel *nLabelView;
@@ -51,10 +53,6 @@
 
 
 @end
-
-
-
-
 
 
 @implementation NewLabelViewController
@@ -168,10 +166,20 @@
         case 1://锁定元素
             break;
         default://打印
+            //取消所有选中
+            [self.drawAreaView cancelAllSelected];
             _printView=[[PrintViewController alloc] init];
+            _printView.pv=[self convertViewToImage:self.drawAreaView];
+            _printView.labelInfo=[NSString stringWithFormat:@"X:00mm  Y:00mm  宽:%.2fmm  高:%.2fmm",self.nLabelView.labelWidth,self.nLabelView.labelHeight];
             [self.navigationController pushViewController:_printView animated:YES];
             break;
     }
+}
+
+#pragma mark -获取打印的图片
+-(UIImage*) getPrintImageView
+{
+    return [self convertViewToImage:self.drawAreaView];
 }
 
 #pragma mark -选中元素属性
@@ -197,6 +205,17 @@
         bt.tag=1003;
         [self btnSwitchView:bt];
     }
+}
+
+#pragma mark uiview 转图片
+-(UIImage*)convertViewToImage:(UIView*)v{
+    CGSize s = v.bounds.size;
+    // 下面方法，第一个参数表示区域大小。第二个参数表示是否是非透明的。如果需要显示半透明效果，需要传NO，否则传YES。第三个参数就是屏幕密度了
+    UIGraphicsBeginImageContextWithOptions(s, NO, [UIScreen mainScreen].scale);
+    [v.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage*image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 
 #pragma mark - 切换编辑标签的界面

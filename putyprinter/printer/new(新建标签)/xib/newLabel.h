@@ -40,6 +40,9 @@
 //默认从主界面跳转到新建界面 0：主界面 1：新建界面
 @property int fromType;
 
+//当前标签的实际大小 毫米
+@property float labelWidth;
+@property float labelHeight;
 
 
 @end

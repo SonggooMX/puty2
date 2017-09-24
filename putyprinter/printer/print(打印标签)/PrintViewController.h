@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewLabelViewController.h"
 
 @interface PrintViewController : UIViewController
+@property UIImageView *iv ;
+@property UIImage *pv;
+@property NSString *labelInfo;
+
+-(void) setPrintViewImage:(UIImage*)img;
 
 @end

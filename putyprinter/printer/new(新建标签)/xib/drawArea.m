@@ -39,6 +39,19 @@
     [self addSubview:self.contentView];
 }
 
+-(void) cancelAllSelected
+{
+    //取消所有选中
+    int len=(int)self.subviews.count;
+    for(int i=1;i<len;i++)
+    {
+        baseView *bs=(baseView*)self.subviews[i];
+        bs.isslected=false;
+        [bs refresh];
+    }
+    [((NewLabelViewController*)self.parent) setElementPropety:7 withSelect:true];
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [((NewLabelViewController*)self.parent) setElementPropety:7 withSelect:true];

@@ -106,12 +106,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "printer/new(&#x65b0;&#x5efa;&#x6807;&#x7b7e;)/NewLabelViewController.m"
-            timestampString = "527921496.107496"
+            timestampString = "527925490.091892"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "-itemWithImage:withIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "printer/print(&#x6253;&#x5370;&#x6807;&#x7b7e;)/PrintViewController.m"
+            timestampString = "527927288.667183"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "-image:didFinishSavingWithError:contextInfo:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

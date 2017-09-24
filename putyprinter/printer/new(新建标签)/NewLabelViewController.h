@@ -33,4 +33,7 @@
 #pragma mark -隐藏顶部按钮
 -(void) setTopIconButtonHidden;
 
+#pragma mark -获取打印的图片
+-(UIImage*) getPrintImageView;
+
 @end
