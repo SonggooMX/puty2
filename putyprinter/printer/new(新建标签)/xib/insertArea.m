@@ -33,7 +33,7 @@
 //插入一维码
 - (IBAction)btnInsertBarcode1D:(id)sender {
     
-    UIImage *img=[self createZXingImage:kBarcodeFormatCode128];
+    UIImage *img=[self createZXingImage:kBarcodeFormatCode128 withContent:@"12345678"];
     if(img==NULL) return;
     
     b1dView *v1=[[b1dView alloc] init];
@@ -49,7 +49,7 @@
 
 //插入二维码
 - (IBAction)btnInsertQR:(id)sender {
-    UIImage *img=[self createZXingImage:kBarcodeFormatQRCode];
+    UIImage *img=[self createZXingImage:kBarcodeFormatQRCode withContent:@"二维码ß"];
     if(img==NULL) return;
     
     qrView *v1=[[qrView alloc] init];
@@ -66,14 +66,14 @@
 
 
 //创建图片
--(UIImage*) createZXingImage:(int)format
+-(UIImage*) createZXingImage:(int)format withContent:(NSString*)data
 {
     NSError *error = nil;
     ZXEncodeHints *hints=[[ZXEncodeHints alloc] init];
     hints.margin=0;
     hints.encoding=NSUTF8StringEncoding;
     ZXMultiFormatWriter *writer = [ZXMultiFormatWriter writer];
-    ZXBitMatrix* result = [writer encode:@"A string to encode"
+    ZXBitMatrix* result = [writer encode:data
                                   format:format
                                    width:200
                                   height:200
@@ -96,7 +96,7 @@
     lbView *v1=[[lbView alloc] init];
     v1.parent=self.parent.drawAreaView;
     v1.parentController=self.parent;
-    [v1 initView:CGRectMake(50, 50, 100, 100) withContent:@"3243243244324324324324234"];
+    [v1 initView:CGRectMake(50, 50, 100, 100) withContent:@"文本"];
     [self.parent.drawAreaView addSubview:v1];
     
     BaseEdictFormViewController *vc = [[BaseEdictFormViewController alloc] initWithNibName:@"BaseEdictFormViewController" bundle:nil];
@@ -133,6 +133,7 @@
 
 //插入表格
 - (IBAction)btnInsertTabel:(id)sender {
+    
 }
 
 

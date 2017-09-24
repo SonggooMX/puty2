@@ -12,6 +12,7 @@
 #import "labelArea.h"
 #import "newLabel.h"
 #import "TextAttributeTableViewController.h"
+#import "BaseEdictFormViewController.h"
 @interface NewLabelViewController ()
 
 //新建标签
@@ -87,11 +88,17 @@
     //旋转界面
 //    NSArray *proView = [[NSBundle mainBundle] loadNibNamed:@"property" owner:self options:nil]; //通过这个方法,取得我们的视图
 //    self.propertyView = [proView objectAtIndex:0];
+    /*
     TextAttributeTableViewController* textAttVC = [TextAttributeTableViewController new];
     self.propertyView = textAttVC.view;
     [self addChildViewController:textAttVC];
+    */
+    
+    BaseEdictFormViewController *vc=[BaseEdictFormViewController new];
+    self.propertyView=vc.view;
+    
     [self.bottomFuncArea addSubview:self.propertyView]; //添加
-    [textAttVC didMoveToParentViewController:self];
+    //[textAttVC didMoveToParentViewController:self];
     [self.propertyView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.left.right.equalTo(self.bottomFuncArea);
     }];
