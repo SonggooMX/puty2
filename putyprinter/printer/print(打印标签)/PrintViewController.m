@@ -8,6 +8,8 @@
 
 #import "PrintViewController.h"
 #import "Masonry.h"
+#import "Print.h"
+#import "HomeBottomViewController.h"
 
 @interface PrintViewController ()
 
@@ -22,6 +24,9 @@
 
 // 功能视图
 @property(nonatomic,strong)UIView *funcView;
+
+@property UILabel *currentSelectPrinter;
+@property UIButton *btnSelectPrinter;
 
 @end
 
@@ -64,6 +69,50 @@
         make.top.bottom.left.right.equalTo(self.bottomFuncView);
     }];
     
+    //打印按钮点击
+    UIButton *btnPrint=(UIButton*)[self.funcView viewWithTag:8888];
+    [btnPrint addTarget:self action:@selector(printLabel) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    self.currentSelectPrinter=(UILabel*)[self.funcView viewWithTag:6001];
+    self.btnSelectPrinter=(UIButton*)[self.funcView viewWithTag:6000];
+    [self.btnSelectPrinter addTarget:self action:@selector(selectPrinter) forControlEvents:UIControlEventTouchUpInside];
+    
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    if(self.parent.activeDevice==nil)
+    {
+        self.currentSelectPrinter.text=@"未连接打印机";
+        return;
+    }
+    self.currentSelectPrinter.text=self.parent.activeDevice.name;
+}
+
+#pragma mark -选择打印机
+-(void) selectPrinter
+{
+    connetController *_connectView = [[connetController alloc] init];
+    _connectView.parent=self.parent;
+    
+    [self.navigationController pushViewController:_connectView animated:YES];
+}
+
+#pragma  mark -打印
+-(void) printLabel
+{
+    if(!(self.parent.activeDevice!=nil&&self.parent.activeDevice.state==CBPeripheralStateConnected&&self.parent.activeWriteCharacteristic!=nil&&self.parent.activeReadCharacteristic!=nil))
+    {
+        [self.parent alertMessage:@"打印机未连接！"];
+        return;
+    }
+    
+    //检查打印机状态
+    Print *pt=[Print new];
+    pt.parent=self.parent;
+    int w=self.pv.size.width/8;
+    int h=self.pv.size.height/8;
+    [pt printLabel:self.pv lw:w lh:h pt:1 pageTotal:1 pageIndex:1];
 }
 
 -(void) setPrintViewImage:(UIImage*)img

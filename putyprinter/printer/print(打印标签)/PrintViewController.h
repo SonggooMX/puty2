@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NewLabelViewController.h"
+#import <CoreBluetooth/CoreBluetooth.h>
+#import <CoreBluetooth/CBService.h>
+#import "connetController.h"
+#import "HomeBottomViewController.h"
 
 @interface PrintViewController : UIViewController
+
+@property HomeBottomViewController *parent;
+
 @property UIImageView *iv ;
 @property UIImage *pv;
 @property NSString *labelInfo;

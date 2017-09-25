@@ -69,6 +69,10 @@
 		1BD590AB1F74FAC800564277 /* LeftTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD590A31F74FAC800564277 /* LeftTableCell.m */; };
 		1BD590AC1F74FAC800564277 /* RightTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD590A51F74FAC800564277 /* RightTableCell.m */; };
 		1BD590AD1F74FAC800564277 /* TagTemplateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD590A71F74FAC800564277 /* TagTemplateController.m */; };
+		1BFEA4C61F7894C100C2B4B2 /* Print.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFEA4C51F7894C100C2B4B2 /* Print.m */; };
+		1BFEA4CF1F7894EB00C2B4B2 /* RepeatCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFEA4CE1F7894EB00C2B4B2 /* RepeatCount.m */; };
+		1BFEA4D11F78FCFD00C2B4B2 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1BFEA4D01F78FCFD00C2B4B2 /* 1.jpg */; };
+		1BFEA4D51F79024100C2B4B2 /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFEA4D41F79024100C2B4B2 /* ImageHelper.m */; };
 		90AD22881F3A12360002B152 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AD22651F3A12360002B152 /* AFHTTPSessionManager.m */; };
 		90AD22891F3A12360002B152 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AD22681F3A12360002B152 /* AFNetworkReachabilityManager.m */; };
 		90AD228A1F3A12360002B152 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AD226A1F3A12360002B152 /* AFSecurityPolicy.m */; };
@@ -404,6 +408,13 @@
 		1BD590A51F74FAC800564277 /* RightTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightTableCell.m; sourceTree = "<group>"; };
 		1BD590A61F74FAC800564277 /* TagTemplateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagTemplateController.h; sourceTree = "<group>"; };
 		1BD590A71F74FAC800564277 /* TagTemplateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagTemplateController.m; sourceTree = "<group>"; };
+		1BFEA4C41F7894C100C2B4B2 /* Print.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Print.h; sourceTree = "<group>"; };
+		1BFEA4C51F7894C100C2B4B2 /* Print.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Print.m; sourceTree = "<group>"; };
+		1BFEA4CD1F7894EB00C2B4B2 /* RepeatCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepeatCount.h; sourceTree = "<group>"; };
+		1BFEA4CE1F7894EB00C2B4B2 /* RepeatCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepeatCount.m; sourceTree = "<group>"; };
+		1BFEA4D01F78FCFD00C2B4B2 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		1BFEA4D31F79024100C2B4B2 /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageHelper.h; path = SSK/ImageHelper.h; sourceTree = "<group>"; };
+		1BFEA4D41F79024100C2B4B2 /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageHelper.m; path = SSK/ImageHelper.m; sourceTree = "<group>"; };
 		90AD22641F3A12360002B152 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
 		90AD22651F3A12360002B152 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
 		90AD22661F3A12360002B152 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
@@ -978,6 +989,7 @@
 		1BA1BB241F137530005BA203 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1BFEA4D01F78FCFD00C2B4B2 /* 1.jpg */,
 				1BA1BB271F137530005BA203 /* AppDelegate.h */,
 				1BA1BB281F137530005BA203 /* AppDelegate.m */,
 				B9140C871F1CB85700B9A2AB /* ViewController.h */,
@@ -1036,6 +1048,15 @@
 				1BD590A71F74FAC800564277 /* TagTemplateController.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		1BFEA4D21F79021300C2B4B2 /* SSK */ = {
+			isa = PBXGroup;
+			children = (
+				1BFEA4D31F79024100C2B4B2 /* ImageHelper.h */,
+				1BFEA4D41F79024100C2B4B2 /* ImageHelper.m */,
+			);
+			name = SSK;
 			sourceTree = "<group>";
 		};
 		90AD225B1F3A11DF0002B152 /* NetWork */ = {
@@ -1273,6 +1294,10 @@
 		B9140C8E1F1CBEDE00B9A2AB /* print(打印标签) */ = {
 			isa = PBXGroup;
 			children = (
+				1BFEA4CD1F7894EB00C2B4B2 /* RepeatCount.h */,
+				1BFEA4CE1F7894EB00C2B4B2 /* RepeatCount.m */,
+				1BFEA4C41F7894C100C2B4B2 /* Print.h */,
+				1BFEA4C51F7894C100C2B4B2 /* Print.m */,
 				B9140C8F1F1CBEDE00B9A2AB /* PrintViewController.h */,
 				B9140C901F1CBEDE00B9A2AB /* PrintViewController.m */,
 				B9140C911F1CBEDE00B9A2AB /* PrintViewController.xib */,
@@ -1455,6 +1480,7 @@
 		B92A7ACB1F1C15B6000CC07A /* Tools(工具类) */ = {
 			isa = PBXGroup;
 			children = (
+				1BFEA4D21F79021300C2B4B2 /* SSK */,
 				90AD22621F3A12360002B152 /* AFNetworking */,
 				90AD225B1F3A11DF0002B152 /* NetWork */,
 				90EE9FAA1F2A4971001E3371 /* YYModel */,
@@ -1701,6 +1727,7 @@
 				B9140CA41F1CBF0200B9A2AB /* insertArea.xib in Resources */,
 				1BA1BB341F137530005BA203 /* Assets.xcassets in Resources */,
 				A00E39661F66DF220081C5AF /* EdictBoxView.xib in Resources */,
+				1BFEA4D11F78FCFD00C2B4B2 /* 1.jpg in Resources */,
 				A00E396B1F66DF220081C5AF /* EFChangePageCell.xib in Resources */,
 				A00E397D1F66DF220081C5AF /* FontAngleCell.xib in Resources */,
 				A00E396D1F66DF220081C5AF /* EFFontSizeCell.xib in Resources */,
@@ -1825,6 +1852,7 @@
 				1B85FA4E1F2B049D00179C6D /* baseView.m in Sources */,
 				90AD22971F3A12360002B152 /* UIRefreshControl+AFNetworking.m in Sources */,
 				90EE9FA41F2A4931001E3371 /* TextCellModel.m in Sources */,
+				1BFEA4CF1F7894EB00C2B4B2 /* RepeatCount.m in Sources */,
 				1B081B771F75452900308DAF /* JSONValueTransformer.m in Sources */,
 				90AD228D1F3A12360002B152 /* AFURLSessionManager.m in Sources */,
 				1B081BAC1F7546E000308DAF /* SpecificUseModel.m in Sources */,
@@ -1866,6 +1894,7 @@
 				B94B3E4D1F1F5BAF003B607F /* connetController.m in Sources */,
 				B9E27B081F204F3800F687A1 /* logoController.m in Sources */,
 				1B85FA4B1F2B049D00179C6D /* lbScaleView.m in Sources */,
+				1BFEA4D51F79024100C2B4B2 /* ImageHelper.m in Sources */,
 				90AD228B1F3A12360002B152 /* AFURLRequestSerialization.m in Sources */,
 				1B85FA4C1F2B049D00179C6D /* BottomScaleView.m in Sources */,
 				1B081BAF1F7546E000308DAF /* TagRightCell.m in Sources */,
@@ -1877,6 +1906,7 @@
 				1B5F0BAD1F34AC440023F87A /* newLabel.m in Sources */,
 				B988E33F1F1EF0A8003EE56B /* UILabel+CZAddition.m in Sources */,
 				1B081B711F75452900308DAF /* JSONModelClassProperty.m in Sources */,
+				1BFEA4C61F7894C100C2B4B2 /* Print.m in Sources */,
 				1B5815AA1F7671B8001EE1D3 /* lineView.m in Sources */,
 				90AD22A21F3A171F0002B152 /* ZXFontModel.m in Sources */,
 				90AD22921F3A12360002B152 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -2015,7 +2045,7 @@
 				INFOPLIST_FILE = printer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.puty.printer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.puty.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2032,7 +2062,7 @@
 				GCC_PREFIX_HEADER = $SRCROOT/$PRODUCT_NAME/PrefixHeader.pch;
 				INFOPLIST_FILE = printer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.puty.printer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.puty.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

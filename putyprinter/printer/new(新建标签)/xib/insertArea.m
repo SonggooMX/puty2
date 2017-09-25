@@ -20,6 +20,8 @@
 #import "lineView.h"
 #import "BaseEdictFormViewController.h"
 #import "LogoManagerController.h"
+#import "ImageHelper.h"
+
 @implementation insertArea
 
 /*
@@ -40,7 +42,7 @@
     v1.parent=self.parent.drawAreaView;
     v1.elementType=0;
     v1.parentController=self.parent;
-    [v1 initView:CGRectMake(50, 50, 100, 25) withImage:img];
+    [v1 initView:CGRectMake(50, 50, 100, 50) withImage:img];
     [self.parent.drawAreaView addSubview:v1];
 
 }
@@ -77,7 +79,10 @@
                                    error:&error];
     if (result) {
         CGImageRef image = [[ZXImage imageWithMatrix:result] cgimage];
-        return [[UIImage alloc] initWithCGImage:image];
+        UIImage *bmp = [[UIImage alloc] initWithCGImage:image];
+        ImageHelper *helper=[ImageHelper new];
+        bmp=[helper imageBlackToTransparent:bmp withRed:0 andGreen:0 andBlue:0];
+        return bmp;
         // This CGImageRef image can be placed in a UIImage, NSImage, or written to a file.
     } else {
         //NSString *errorMessage = [error localizedDescription];

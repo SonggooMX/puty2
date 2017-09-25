@@ -55,9 +55,6 @@
 
 
 @implementation NewLabelViewController
-{
-    PrintViewController *_printView;
-}
 
 -(void)updateTip:(NSString *)msg
 {
@@ -167,7 +164,8 @@
         default://打印
             //取消所有选中
             [self.drawAreaView cancelAllSelected];
-            _printView=[[PrintViewController alloc] init];
+            PrintViewController *_printView=[[PrintViewController alloc] init];
+            _printView.parent=self.parent;
             _printView.pv=[self convertViewToImage:self.drawAreaView];
             _printView.labelInfo=[NSString stringWithFormat:@"X:00mm  Y:00mm  宽:%.2fmm  高:%.2fmm",self.nLabelView.labelWidth,self.nLabelView.labelHeight];
             [self.navigationController pushViewController:_printView animated:YES];

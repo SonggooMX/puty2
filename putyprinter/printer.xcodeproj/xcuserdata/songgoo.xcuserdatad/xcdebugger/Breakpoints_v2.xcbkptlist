@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "printer/new(&#x65b0;&#x5efa;&#x6807;&#x7b7e;)/NewLabelViewController.m"
-            timestampString = "527946462.50008"
+            timestampString = "528016497.250623"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "-itemWithImage:withIndex:"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "printer/print(&#x6253;&#x5370;&#x6807;&#x7b7e;)/PrintViewController.m"
-            timestampString = "527927288.667183"
+            timestampString = "528022609.142727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "-image:didFinishSavingWithError:contextInfo:"
             landmarkType = "7">
          </BreakpointContent>

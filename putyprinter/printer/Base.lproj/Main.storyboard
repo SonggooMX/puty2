@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cZU-HJ-7oG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cZU-HJ-7oG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -142,6 +142,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPl-dc-BML">
                                         <rect key="frame" x="187.5" y="0.0" width="187.5" height="44"/>
                                         <subviews>
+                                            <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gtd-Tt-0QO">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="44"/>
+                                                <connections>
+                                                    <action selector="btnNewLabel:" destination="rQh-Jk-zMd" eventType="touchUpInside" id="EGW-Nr-y5N"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未连接打印机" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9c-oY-HUa">
                                                 <rect key="frame" x="42.5" y="11.5" width="104" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -160,6 +166,10 @@
                                         <constraints>
                                             <constraint firstItem="tCr-LP-mDp" firstAttribute="leading" secondItem="UPl-dc-BML" secondAttribute="leading" id="9So-cC-WCA"/>
                                             <constraint firstItem="W9c-oY-HUa" firstAttribute="centerY" secondItem="UPl-dc-BML" secondAttribute="centerY" id="IWr-jh-3zL"/>
+                                            <constraint firstAttribute="trailing" secondItem="Gtd-Tt-0QO" secondAttribute="trailing" id="RN4-C6-oSE"/>
+                                            <constraint firstAttribute="bottom" secondItem="Gtd-Tt-0QO" secondAttribute="bottom" id="U9U-jh-drd"/>
+                                            <constraint firstItem="Gtd-Tt-0QO" firstAttribute="leading" secondItem="UPl-dc-BML" secondAttribute="leading" id="YLa-hs-ykg"/>
+                                            <constraint firstItem="Gtd-Tt-0QO" firstAttribute="top" secondItem="UPl-dc-BML" secondAttribute="top" id="gni-Hl-JMz"/>
                                             <constraint firstItem="W9c-oY-HUa" firstAttribute="centerX" secondItem="UPl-dc-BML" secondAttribute="centerX" id="skL-P2-uQP"/>
                                             <constraint firstItem="tCr-LP-mDp" firstAttribute="centerY" secondItem="UPl-dc-BML" secondAttribute="centerY" id="vBW-Wp-VSi"/>
                                         </constraints>
@@ -501,6 +511,9 @@
                             <constraint firstItem="Kmo-81-wn0" firstAttribute="top" secondItem="aWf-iK-NOv" secondAttribute="top" id="x5K-z2-zvC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="currentSelectPrinter" destination="W9c-oY-HUa" id="SF6-PH-tSa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Rb-ce-Gg4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

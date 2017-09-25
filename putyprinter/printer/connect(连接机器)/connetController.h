@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreBluetooth/CoreBluetooth.h>
+#import <CoreBluetooth/CBService.h>
+#import "HomeBottomViewController.h"
 
 @interface connetController : UIViewController
+
+
+@property HomeBottomViewController *parent;
 
 @end

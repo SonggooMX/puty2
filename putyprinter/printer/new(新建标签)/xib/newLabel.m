@@ -167,6 +167,8 @@
     else if(self.fromType==1)
     {
         [self removeFromSuperview];
+        //开启顶部icon按钮
+        [self.parent setTopIconButton];
     }
 }
 //确定

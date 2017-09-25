@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreBluetooth/CoreBluetooth.h>
+#import <CoreBluetooth/CBService.h>
+
+#pragma mark -蓝牙相关
 
 @interface HomeViewController : UIViewController
 
