@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreBluetooth/CoreBluetooth.h>
+#import <CoreBluetooth/CBService.h>
 
 @interface HomeBottomViewController : UIViewController
 

@@ -15,7 +15,7 @@
 #import "setViewController.h"
 #import "TagTemplateController.h"
 
-@interface HomeBottomViewController ()
+@interface HomeBottomViewController() 
 
 
 @end
@@ -31,7 +31,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 
 - (IBAction)btnNewLabel:(UIButton *)sender {
@@ -88,7 +87,6 @@
     [self.navigationController pushViewController:_newLabelView animated:YES];
     
 }
-
 
 
 @end

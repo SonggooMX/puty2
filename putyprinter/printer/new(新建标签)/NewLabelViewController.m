@@ -14,7 +14,6 @@
 #import "TextAttributeTableViewController.h"
 #import "BaseEdictFormViewController.h"
 
-
 @interface NewLabelViewController ()
 
 
@@ -260,6 +259,7 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 
 @end
