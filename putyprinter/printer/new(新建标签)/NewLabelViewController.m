@@ -49,7 +49,7 @@
 
 //返回按钮
 @property UIBarButtonItem *rebackButton;
-
+@property BaseEdictFormViewController *vc;
 
 @end
 
@@ -158,8 +158,10 @@
         case 3://重做
             break;
         case 2://删除
+            [self.drawAreaView deleteElement];
             break;
         case 1://锁定元素
+            [self.drawAreaView lockElement];
             break;
         default://打印
             //取消所有选中
@@ -173,6 +175,7 @@
     }
 }
 
+
 #pragma mark -获取打印的图片
 -(UIImage*) getPrintImageView
 {
@@ -183,14 +186,14 @@
 -(void) setElementPropety:(int)type withSelect:(BOOL)isselected withElement:(UIView *)view
 {
     //属性界面
-    BaseEdictFormViewController *vc=[BaseEdictFormViewController new];
-    vc.type=type;
-    vc.currentSelectView=view;
-    self.propertyView=vc.view;
-    [self addChildViewController:vc];
+    self.vc =[BaseEdictFormViewController new];
+    self.vc.type=type;
+    self.vc.currentSelectView=view;
+    self.propertyView=self.vc.view;
+    [self addChildViewController:self.vc];
     
     [self.bottomFuncArea addSubview:self.propertyView]; //添加
-    [vc didMoveToParentViewController:self];
+    [self.vc didMoveToParentViewController:self];
 
     [self.propertyView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.left.right.equalTo(self.bottomFuncArea);

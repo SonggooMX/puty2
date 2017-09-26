@@ -39,17 +39,49 @@
     [self addSubview:self.contentView];
 }
 
--(void) cancelAllSelected
+#pragma mark -删除选中的元素
+-(void) deleteElement
 {
-    //取消所有选中
+    NSMutableArray *arr=[NSMutableArray new];
     int len=(int)self.subviews.count;
     for(int i=1;i<len;i++)
     {
         baseView *bs=(baseView*)self.subviews[i];
-        bs.isslected=false;
-        [bs refresh];
+        if(bs.isslected==1&&bs.isLock==0)
+        {
+            [arr addObject:bs];
+        }
     }
-    [((NewLabelViewController*)self.parent) setElementPropety:7 withSelect:true withElement:nil];
+    
+    //删除
+    while(arr.count>0)
+    {
+        [arr[0] removeFromSuperview];
+    }
+    
+    int type=7;
+    UIView *sview=nil;
+    if(self.subviews.count>1)
+    {
+        sview=self.subviews[self.subviews.count-1];
+        type=((baseView*)sview).elementType;
+    }
+    [((NewLabelViewController*)self.parent) setElementPropety:type withSelect:true withElement:sview];
+}
+
+#pragma mark -锁定元素
+-(void) lockElement
+{
+    int len=(int)self.subviews.count;
+    for(int i=1;i<len;i++)
+    {
+        baseView *bs=(baseView*)self.subviews[i];
+        if(bs.isslected==1&&bs.isLock==0)
+        {
+            bs.isLock=1;
+            [bs refresh];
+        }
+    }
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

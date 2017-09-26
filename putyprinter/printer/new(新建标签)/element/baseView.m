@@ -69,7 +69,7 @@
     for(int i=1;i<len;i++)
     {
         baseView *bs=(baseView*)self.parent.subviews[i];
-        bs.isslected=false;
+        bs.isslected=0;
         [bs refresh];
     }
     

@@ -16,5 +16,9 @@
 
 #pragma mark -取消所有元素选中
 -(void) cancelAllSelected;
+#pragma mark -删除选中的元素
+-(void) deleteElement;
+#pragma mark -锁定元素
+-(void) lockElement;
 
 @end

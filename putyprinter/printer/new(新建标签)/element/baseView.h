@@ -33,6 +33,9 @@
 @property int direction;
 @property int isslected;
 
+//锁定
+@property int isLock;
+
 -(UIImage *)getImageFromView:(UIView *)view;
 
 -(void) initView:(CGRect)frame withImage:(UIImage*)image;
