@@ -27,4 +27,8 @@
 @property (nonatomic,copy)void(^selectedAcction)(NSInteger);
 
 
+//旋转
+-(void) rate;
+
+
 @end

@@ -87,7 +87,7 @@
     [self.bottomview addSubview:self.nLabelView]; //添加
     
     //元素属性
-    [self setElementPropety:BaseEdictFormTypeLable withSelect:false];
+    [self setElementPropety:BaseEdictFormTypeLable withSelect:false withElement:nil];
     
     //对齐界面
     NSArray *alignView = [[NSBundle mainBundle] loadNibNamed:@"alignment" owner:self options:nil]; //通过这个方法,取得我们的视图
@@ -180,11 +180,12 @@
 }
 
 #pragma mark -选中元素属性
--(void) setElementPropety:(int)type withSelect:(BOOL)isselected
+-(void) setElementPropety:(int)type withSelect:(BOOL)isselected withElement:(UIView *)view
 {
     //属性界面
     BaseEdictFormViewController *vc=[BaseEdictFormViewController new];
     vc.type=type;
+    vc.currentSelectView=view;
     self.propertyView=vc.view;
     [self addChildViewController:vc];
     

@@ -205,7 +205,7 @@
         }
             break;
         case BaseEdictFormTypeTxt:
-            return @[@"数据内容",@"字体",@"位置大小",@"旋转角度"];
+            return @[@"文本",@"数据内容",@"字体",@"位置大小",@"旋转角度"];
         default:
             return @[@"标签属性",@"Exel内容",@"背景图片",@"打印参数",@"打印偏移"];
             break;
@@ -346,7 +346,7 @@
                 PickViewModle *path = [self pickMOdleWithTitle:nil sub:nil];
                 path.title = @"LOGO路径";
                 path.subTitle = @"a122fdjshk.png";
-                __weak typeof(self)wself = self;
+                //__weak typeof(self)wself = self;
                 path.showPickView = ^(UIAlertController *alert) {
                     [self presentViewController:alert animated:YES completion:nil];
                 };
@@ -400,6 +400,21 @@
                 
                 _modles = @[@[path,path1,path2,mb0,mb111],@[data,btn,data1,self.pageModle],@[data11,btn1],@[print11,print12],@[print21,print22],@[self.switchModle]];
                 
+            }
+                break;
+            case BaseEdictFormTypeTxt:
+            {
+                EFMuiltiBtnModle *bm = [self muitlModleWithItems:@[@"自动",@"1.2倍",@"1.5倍",@"自定义"] tile:@"行间距"];
+                
+                EFFontSizeModle *lineWidth = [self fontsizeModleWithTitle:@"字符间距"];
+                
+                EFSwitchModel *switch1 = [EFSwitchModel modleWithType:(EFCellTypeSwitch)];
+                switch1.on=true;
+                switch1.title = @"自动换行";
+                
+                
+                NSArray *firArr = @[switch1,bm,lineWidth];
+                _modles = @[firArr,@[self.dataTyepModle,self.currentContentModle,self.datanameModle,self.pageModle],@[self.fontNameModle,self.fontsizeModle,self.aligModle],@[self.positionModle],@[self.angleModle],@[self.switchModle]];
             }
                 break;
             default:
@@ -568,7 +583,7 @@
         _positionModle = [EFBaseModle modleWithType:(EFCellTypePosition)];
         
         NSMutableArray *arr = [NSMutableArray new];
-        for (double i = 0.0;i < 9.99;i+=0.01) {
+        for (double i = 1.0;i < 999.99;i+=0.1) {
             [arr addObject:[NSString stringWithFormat:@"%.2f",i]];
         }
         _positionModle.itemsArr = arr;

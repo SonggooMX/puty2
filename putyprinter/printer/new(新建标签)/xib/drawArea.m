@@ -49,12 +49,12 @@
         bs.isslected=false;
         [bs refresh];
     }
-    [((NewLabelViewController*)self.parent) setElementPropety:7 withSelect:true];
+    [((NewLabelViewController*)self.parent) setElementPropety:7 withSelect:true withElement:nil];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [((NewLabelViewController*)self.parent) setElementPropety:7 withSelect:true];
+    [((NewLabelViewController*)self.parent) setElementPropety:7 withSelect:true withElement:nil];
     [super touchesBegan:touches withEvent:event];
     //取消所有选中
     int len=(int)self.subviews.count;

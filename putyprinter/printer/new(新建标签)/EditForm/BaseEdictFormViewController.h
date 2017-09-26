@@ -23,6 +23,7 @@ typedef NS_ENUM(NSUInteger, BaseEdictFormType) {
 
 
 #import "EFResultModle.h"
+#import "baseView.h"
 
 @interface BaseEdictFormViewController : UIViewController
 
@@ -30,6 +31,8 @@ typedef NS_ENUM(NSUInteger, BaseEdictFormType) {
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+//当前选中的元素
+@property UIView *currentSelectView;
 
 @property (nonatomic,copy)void(^resultClosure)(EFResultModle *result);
 

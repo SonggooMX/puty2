@@ -19,7 +19,7 @@
 
 - (void)setupWithCell:(EFBaseCell *)cell
 {
-    PositionCell *rcell = cell;
+    PositionCell *rcell = (PositionCell*)cell;
     if (self.x) {
         rcell.xBtn.titleLable.text = self.x;
             }

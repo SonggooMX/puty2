@@ -30,7 +30,7 @@
 - (IBAction)btnSwitchView:(id)sender;
 
 #pragma mark -选中元素属性
--(void) setElementPropety:(int)type withSelect:(BOOL)isselected;
+-(void) setElementPropety:(int)type withSelect:(BOOL)isselected withElement:(UIView*)view;
 #pragma mark -设置顶部按钮
 -(void) setTopIconButton;
 #pragma mark -隐藏顶部按钮

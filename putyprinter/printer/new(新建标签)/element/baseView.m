@@ -83,7 +83,7 @@
     //[super touchesBegan:touches withEvent:event];
     
     //设置选中元素的属性
-    [self.parentController setElementPropety:self.elementType withSelect:true];
+    [self.parentController setElementPropety:self.elementType withSelect:true withElement:self];
 }
 
 //元素的移动 核心代码

@@ -18,7 +18,7 @@
 
 - (void)setupWithCell:(EFBaseCell *)cell
 {
-    EFFontSizeCell *rcell = cell;
+    EFFontSizeCell *rcell =(EFFontSizeCell*) cell;
     rcell.titleLable.text = self.title;
     rcell.itemTitles = self.itemTitles;
     rcell.changeActin = ^(NSString *result,NSInteger index) {
