@@ -18,6 +18,7 @@
 @property CGPoint beginpoint;
 @property UIView *parent;
 @property NewLabelViewController *parentController;
+
 @property bottomRightScaleView *sview;
 @property leftScaleView *rightView;
 @property BottomScaleView *bottomView;
@@ -42,5 +43,6 @@
 //刷新
 -(void) refresh;
 -(void) rotate;
+-(void) showScaleView;
 
 @end

@@ -32,7 +32,7 @@ typedef NS_ENUM(NSUInteger, BaseEdictFormType) {
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 //当前选中的元素
-@property UIView *currentSelectView;
+@property baseView *currentSelectView;
 
 @property (nonatomic,copy)void(^resultClosure)(EFResultModle *result);
 

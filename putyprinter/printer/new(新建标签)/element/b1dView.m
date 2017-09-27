@@ -22,7 +22,11 @@
 -(void) initView:(CGRect)frame withImage:(UIImage *)image
 {
     [super initView:frame withImage:image];
-    
+    [self showScaleView];
+}
+
+-(void) showScaleView
+{
     self.rightView=[[leftScaleView alloc] init];
     self.rightView.frame=CGRectMake(self.frame.size.width-10, (self.frame.size.height-20)/2, 20, 20);
     self.rightView.hidden=YES;
@@ -61,7 +65,7 @@
 {
     
     [super refresh];
-    if(self.isslected==1)
+    if(self.isslected==1&&self.isLock==0)
     {
         self.rightView.hidden=NO;
         self.bottomView.hidden=NO;

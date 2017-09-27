@@ -89,6 +89,8 @@
 //元素的移动 核心代码
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if(self.isLock==1) return;
+    
     UITouch *touch = [touches anyObject];
     CGPoint currentLocation = [touch locationInView:self.parent];
     CGRect frame = self.frame;

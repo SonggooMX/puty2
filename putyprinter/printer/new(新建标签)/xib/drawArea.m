@@ -56,7 +56,9 @@
     //删除
     while(arr.count>0)
     {
-        [arr[0] removeFromSuperview];
+        UIView *v=arr[0];
+        [v removeFromSuperview];
+        [arr removeObject:v];
     }
     
     int type=7;
@@ -64,6 +66,10 @@
     if(self.subviews.count>1)
     {
         sview=self.subviews[self.subviews.count-1];
+        baseView *bsv=(baseView*)sview;
+        bsv.isslected=true;
+        [bsv refresh];
+        
         type=((baseView*)sview).elementType;
     }
     [((NewLabelViewController*)self.parent) setElementPropety:type withSelect:true withElement:sview];
@@ -76,11 +82,23 @@
     for(int i=1;i<len;i++)
     {
         baseView *bs=(baseView*)self.subviews[i];
-        if(bs.isslected==1&&bs.isLock==0)
+        if(bs.isslected==1)
         {
-            bs.isLock=1;
+            bs.isLock=bs.isLock==1?0:1;
             [bs refresh];
         }
+    }
+}
+
+#pragma mark -取消所有选中
+-(void) cancelAllSelected
+{
+    int len=(int)self.subviews.count;
+    for(int i=1;i<len;i++)
+    {
+        baseView *bs=(baseView*)self.subviews[i];
+        bs.isslected=0;
+        [bs refresh];
     }
 }
 

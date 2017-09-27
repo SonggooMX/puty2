@@ -605,7 +605,7 @@
 - (EFSwitchModel *)switchModle
 {
     if (!_switchModle) {
-        _switchModle = [EFBaseModle modleWithType:(EFCellTypeSwitch)];
+        _switchModle = (EFSwitchModel*)[EFBaseModle modleWithType:(EFCellTypeSwitch)];
         _switchModle.title = @"参与打印";
         _switchModle.on = YES;
         _switchModle.valueBlock = ^(BOOL value) {

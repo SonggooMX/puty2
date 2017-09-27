@@ -138,7 +138,7 @@
 -(void) refresh
 {
     [super refresh];
-    if(self.isslected==1)
+    if(self.isslected==1&&self.isLock==0)
     {
         self.sview.hidden=NO;
     }
