@@ -57,6 +57,7 @@ static  Byte ORDER_ONE_LINE[] = {0x15, 0x01};
 
 @property HomeBottomViewController *parent;
 
+
 /*******************************************************************
  函数名：printtxt
  功能：向打印机发送文本打印数据或控制命令

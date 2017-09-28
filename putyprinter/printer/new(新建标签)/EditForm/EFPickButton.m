@@ -37,6 +37,7 @@
     return self.itemTitles[self.curentIndex];
 }
 
+
 - (void)setCurentIndex:(NSInteger)curentIndex
 {
     _curentIndex = curentIndex;

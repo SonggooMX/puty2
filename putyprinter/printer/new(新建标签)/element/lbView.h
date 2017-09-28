@@ -11,5 +11,6 @@
 @interface lbView : baseView
 
 -(void) initView:(CGRect)frame withContent:(NSString*)content;
+-(void) initView:(CGRect)frame withImage:(UIImage*)image withNString:(NSString *)content;
 
 @end

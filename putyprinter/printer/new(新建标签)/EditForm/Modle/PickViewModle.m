@@ -37,9 +37,10 @@
     return [super selectedAction];
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview
 {
-    EFPickCell *rcell = cell;
+    EFPickCell *rcell = (EFPickCell*)cell;
+    rcell.bv=bview;
     rcell.titleLable.text = self.title;
     rcell.subTitleLable.text = self.subTitle;
     rcell.showPickView = self.showPickView;

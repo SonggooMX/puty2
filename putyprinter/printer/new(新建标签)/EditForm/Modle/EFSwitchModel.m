@@ -16,9 +16,9 @@
     return NSStringFromClass([EFSwitchCell class]);
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview
 {
-    EFSwitchCell *rcell = cell;
+    EFSwitchCell *rcell = (EFSwitchCell*)cell;
     rcell.titleLable.text = self.title;
     rcell.valueBlock = ^(BOOL value) {
         self.on = value;

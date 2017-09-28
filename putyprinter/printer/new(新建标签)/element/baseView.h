@@ -24,6 +24,8 @@
 @property BottomScaleView *bottomView;
 @property lbScaleView *lbScaleView;
 
+@property NSString *content;
+
 //元素类型
 @property int elementType;
 
@@ -36,10 +38,12 @@
 
 //锁定
 @property int isLock;
+//缩放
+@property float scale;
 
 -(UIImage *)getImageFromView:(UIView *)view;
 
--(void) initView:(CGRect)frame withImage:(UIImage*)image;
+-(void) initView:(CGRect)frame withImage:(UIImage*)image withNString:(NSString*)content;
 //刷新
 -(void) refresh;
 -(void) rotate;

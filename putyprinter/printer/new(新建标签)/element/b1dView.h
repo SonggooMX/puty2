@@ -11,5 +11,4 @@
 @interface b1dView : baseView
 
 
-
 @end

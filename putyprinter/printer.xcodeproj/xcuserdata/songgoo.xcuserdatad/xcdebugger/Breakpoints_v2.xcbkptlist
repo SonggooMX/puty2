@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "printer/new(&#x65b0;&#x5efa;&#x6807;&#x7b7e;)/element/baseView.m"
-            timestampString = "527914965.642745"
+            timestampString = "528129099.94029"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "-touchesMoved:withEvent:"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "printer/new(&#x65b0;&#x5efa;&#x6807;&#x7b7e;)/element/baseView.m"
-            timestampString = "527914965.642745"
+            timestampString = "528128858.199225"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "printer/new(&#x65b0;&#x5efa;&#x6807;&#x7b7e;)/element/baseView.m"
-            timestampString = "523555841.900408"
+            timestampString = "528128858.199225"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
@@ -137,13 +137,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "printer/new(&#x65b0;&#x5efa;&#x6807;&#x7b7e;)/xib/drawArea.m"
-            timestampString = "528114261.813946"
+            filePath = "printer/new(&#x65b0;&#x5efa;&#x6807;&#x7b7e;)/EditForm/EFPickButton.m"
+            timestampString = "528260008.911493"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "-touchesBegan:withEvent:"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "@implementation EFPickButton"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "printer/new(&#x65b0;&#x5efa;&#x6807;&#x7b7e;)/EditForm/PositionCell.m"
+            timestampString = "528260044.160925"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "-setXchangeActin:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -18,16 +18,18 @@
 }
 */
 
--(void) initView:(CGRect)frame withImage:(UIImage*)image
+-(void) initView:(CGRect)frame withImage:(UIImage*)image withNString:(NSString *)content
 {
-    
+    [self initView:frame withContent:content];
 }
 
 -(void) initView:(CGRect)frame withContent:(NSString*)content
 {
+    [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.frame=frame;
     UILabel *lb=[[UILabel alloc] init];
     lb.text=content;
+    self.content=content;
     lb.numberOfLines=0;
     lb.lineBreakMode=NSLineBreakByClipping;
     CGRect rect=[lb textRectForBounds:CGRectMake(0, 0, 100, 1000) limitedToNumberOfLines:0];

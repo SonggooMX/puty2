@@ -760,7 +760,7 @@
     {
         return false;
     }
-    NSLog(@"%@", cmd);
+    //NSLog(@"%@", cmd);
     //isBuffedWrite=false;
     [self printBin:cmd];
     return true;
@@ -834,14 +834,15 @@
     int rowIndex=0;
     bool ispace=true;
     
-    
+    //NSMutableArray *arrs=[NSMutableArray new];
 
     //遍历每一行的数据
     for(;rowIndex<bitmap.size.height;rowIndex++)
     {
         NSMutableArray *cdata=[self convertData2:pixelData rwth:useRowWith image:bitmap index:rowIndex offset:rowOffset];
         
-        NSLog(@"%@",cdata);
+        //NSLog(@"%@",cdata);
+        //[arrs addObject:cdata];
         
         
         if ((int)[cdata count]==2&&[[cdata objectAtIndex:0] intValue]==21)
@@ -878,7 +879,7 @@
     
     int fw=bitmap.size.width/8;
     
-    int total=(int)[data count]-(bh-spaceEnd)*2+1;//空白占2个字节 18 指令 最后的00 占 1个字节 所以加上1;
+    int total=(int)[data count]-(bh-spaceEnd)*2+1+2;//空白占2个字节 18 指令 最后的00 占 1个字节 所以加上1;
     
     char b[4];
     b[3] =  (Byte) ((total>>24) & 0xFF);

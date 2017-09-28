@@ -18,9 +18,9 @@
     return NSStringFromClass([EFAttributeCell class]);
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview
 {
-     EFAttributeCell *rcell = cell;
+     EFAttributeCell *rcell = (EFAttributeCell*)cell;
     rcell.selectedAction = ^(NSInteger index) {
         self.currentIndex = index;
         if (self.selectedAction) {

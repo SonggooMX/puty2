@@ -24,6 +24,8 @@ typedef NS_ENUM(NSUInteger, BaseEdictFormType) {
 
 #import "EFResultModle.h"
 #import "baseView.h"
+#import "b1dView.h"
+#import "lbView.h"
 
 @interface BaseEdictFormViewController : UIViewController
 

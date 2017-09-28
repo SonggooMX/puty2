@@ -22,10 +22,10 @@
 }
 */
 
--(void) initView:(CGRect)frame withImage:(UIImage *)image
+-(void) initView:(CGRect)frame withImage:(UIImage *)image withNString:(NSString*)content
 {
     UIImage *bmp=[self createImage:frame.size.width with:frame.size.height];
-    [super initView:frame withImage:bmp];
+    [super initView:frame withImage:bmp withNString:content];
     
     //右小角放一个缩放图标
     UIImageView *imageV=[[UIImageView alloc] init];

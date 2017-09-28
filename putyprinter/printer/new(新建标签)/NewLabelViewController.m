@@ -188,7 +188,7 @@
     //属性界面
     self.vc =[BaseEdictFormViewController new];
     self.vc.type=type;
-    self.vc.currentSelectView=view;
+    self.vc.currentSelectView=(baseView*)view;
     self.propertyView=self.vc.view;
     [self addChildViewController:self.vc];
     

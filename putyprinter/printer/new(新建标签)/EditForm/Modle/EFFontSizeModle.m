@@ -16,7 +16,7 @@
     return NSStringFromClass([EFFontSizeCell class]);
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview
 {
     EFFontSizeCell *rcell =(EFFontSizeCell*) cell;
     rcell.titleLable.text = self.title;

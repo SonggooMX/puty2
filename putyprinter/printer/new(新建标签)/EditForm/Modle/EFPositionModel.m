@@ -17,32 +17,28 @@
 }
 
 
-- (void)setupWithCell:(EFBaseCell *)cell
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview
 {
     PositionCell *rcell = (PositionCell*)cell;
-    if (self.x) {
-        rcell.xBtn.titleLable.text = self.x;
-            }
     
-    if (self.y) {
-        rcell.yBtn.titleLable.text = self.y;
-        
-
-    }
-    if (self.width) {
-        rcell.widthBtn.titleLable.text = self.width;
-            }
-    
-    if (self.height) {
-        rcell.heightBtn.titleLable.text = self.height;
-
-    }
     rcell.unit = self.unit;
     
     rcell.xBtn.itemTitles = self.itemsArr;
     rcell.yBtn.itemTitles = self.itemsArr;
     rcell.widthBtn.itemTitles = self.itemsArr;
     rcell.heightBtn.itemTitles = self.itemsArr;
+    
+    self.x=[NSString stringWithFormat:@"%.2fmm",bview.frame.origin.x/bview.scale/8];
+    rcell.xBtn.titleLable.text =self.x;
+    
+    self.y=[NSString stringWithFormat:@"%.2fmm",bview.frame.origin.y/bview.scale/8];
+    rcell.yBtn.titleLable.text = self.y;
+    
+    self.width=[NSString stringWithFormat:@"%.2fmm",bview.frame.size.width/bview.scale/8];
+    rcell.widthBtn.titleLable.text = self.width;
+    
+    self.height=[NSString stringWithFormat:@"%.2fmm",bview.frame.size.height/bview.scale/8];
+    rcell.heightBtn.titleLable.text = self.height;
     
     rcell.xchangeActin = ^(NSString *result,NSInteger index) {
         self.xindex = index;

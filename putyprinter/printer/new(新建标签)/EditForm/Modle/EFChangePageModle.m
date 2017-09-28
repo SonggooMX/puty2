@@ -17,9 +17,9 @@
     return NSStringFromClass([EFChangePageCell class]);
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview
 {
-    EFChangePageCell *rcell = cell;
+    EFChangePageCell *rcell = (EFChangePageCell*)cell;
  
     
     rcell.currentPage = self.currentPage;

@@ -22,6 +22,11 @@
     self.selectedAcction(sender.view.tag);
 }
 
+-(void) rate
+{
+    
+}
+
 - (void)setSeletedIndex:(NSInteger)seletedIndex
 {
     _seletedIndex = seletedIndex;

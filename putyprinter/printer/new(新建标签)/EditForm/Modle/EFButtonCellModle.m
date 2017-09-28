@@ -17,9 +17,9 @@
     return NSStringFromClass([ButtonCell class]);
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview
 {
-    ButtonCell *rcell = cell;
+    ButtonCell *rcell = (ButtonCell*)cell;
     [rcell.firBtn setTitle:self.titles.firstObject forState:(UIControlStateNormal)];
     [rcell.secBtn setTitle:self.titles.lastObject forState:(UIControlStateNormal)];
 }

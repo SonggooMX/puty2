@@ -484,7 +484,7 @@
     if (!_currentContentModle) {
         _currentContentModle = [self pickMOdleWithTitle:@"标签高度" sub:nil];;
         _currentContentModle.title = @"当前内容";
-        _currentContentModle.subTitle = @"123456";
+        _currentContentModle.subTitle = self.currentSelectView.content;
     }
     return _currentContentModle;
 }
@@ -502,7 +502,7 @@
 - (EFChangePageModle *)pageModle
 {
     if (!_pageModle) {
-        _pageModle = [EFBaseModle modleWithType:(EFCellTypeChangePage)];
+        _pageModle = (EFChangePageModle*)[EFBaseModle modleWithType:(EFCellTypeChangePage)];
         _pageModle.currentPage = 0;
         _pageModle.maxPage = 560;
         _pageModle.changepageClosure = ^(NSInteger page) {
@@ -543,7 +543,7 @@
 - (EFFontSizeModle *)fontsizeModle
 {
     if (!_fontsizeModle) {
-        _fontsizeModle = [EFBaseModle modleWithType:(EFCellTypeFontSize)];
+        _fontsizeModle = (EFFontSizeModle*)[EFBaseModle modleWithType:(EFCellTypeFontSize)];
         _fontsizeModle.title = @"文字大小";
         _fontsizeModle.itemTitles = @[@"小五",@"五号",@"小四",@"四号"];
         
@@ -554,7 +554,7 @@
 - (EFMuiltiBtnModle *)aligModle
 {
     if (!_aligModle) {
-        _aligModle = [EFBaseModle modleWithType:(EFCellTypeMuiltiBtn)];
+        _aligModle = (EFMuiltiBtnModle*)[EFBaseModle modleWithType:(EFCellTypeMuiltiBtn)];
         _aligModle.title = @"水平对其";
         _aligModle.itemStrs = @[@"居左",@"居右",@"居中",@"拉伸"];
         _aligModle.selectedAction = ^(NSInteger result) {
@@ -580,10 +580,10 @@
 - (EFPositionModel *)positionModle
 {
     if (!_positionModle) {
-        _positionModle = [EFBaseModle modleWithType:(EFCellTypePosition)];
+        _positionModle = (EFPositionModel*)[EFBaseModle modleWithType:(EFCellTypePosition)];
         
         NSMutableArray *arr = [NSMutableArray new];
-        for (double i = 1.0;i < 999.99;i+=0.1) {
+        for (double i = 1.0;i < 999.99;i+=0.01) {
             [arr addObject:[NSString stringWithFormat:@"%.2f",i]];
         }
         _positionModle.itemsArr = arr;
@@ -627,7 +627,7 @@
 {
     EFBaseModle *modle = self.modles[indexPath.section][indexPath.row];
     EFBaseCell *cell = [EFBaseCell cellWithType:modle.type tableView:tableView];
-    [modle setupWithCell:cell];
+    [modle setupWithCell:cell withBaseView:self.currentSelectView];
     return cell;
 }
 

@@ -42,21 +42,21 @@
     v1.parent=self.parent.drawAreaView;
     v1.elementType=0;
     v1.parentController=self.parent;
-    [v1 initView:CGRectMake(50, 50, 100, 50) withImage:img];
+    [v1 initView:CGRectMake(50, 50, 100, 50) withImage:img withNString:@"12345678"];
     [self.parent.drawAreaView addSubview:v1];
 
 }
 
 //插入二维码
 - (IBAction)btnInsertQR:(id)sender {
-    UIImage *img=[self createZXingImage:kBarcodeFormatQRCode withContent:@"二维码ß"];
+    UIImage *img=[self createZXingImage:kBarcodeFormatQRCode withContent:@"二维码"];
     if(img==NULL) return;
     
     qrView *v1=[[qrView alloc] init];
     v1.parent=self.parent.drawAreaView;
     v1.elementType=1;
     v1.parentController=self.parent;
-    [v1 initView:CGRectMake(100, 100, 100, 100) withImage:img];
+    [v1 initView:CGRectMake(100, 100, 100, 100) withImage:img withNString:@"二维码"];
     [self.parent.drawAreaView addSubview:v1];
     
 }
@@ -107,7 +107,7 @@
     rectView *v1=[[rectView alloc] init];
     v1.rectType=1;
     v1.elementType=5;
-    [v1 initView:CGRectMake(50, 50, 100, 100) withImage:NULL];
+    [v1 initView:CGRectMake(50, 50, 100, 100) withImage:NULL withNString:@""];
     v1.parent=self.parent.drawAreaView;
     v1.parentController=self.parent;
     [self.parent.drawAreaView addSubview:v1];
@@ -126,7 +126,7 @@
     lineView *v1=[[lineView alloc] init];
     v1.lineType=1;
     v1.elementType=4;
-    [v1 initView:CGRectMake(50, 50, 100, 20) withImage:NULL];
+    [v1 initView:CGRectMake(50, 50, 100, 20) withImage:NULL withNString:@""];
     v1.parent=self.parent.drawAreaView;
     v1.parentController=self.parent;
     [self.parent.drawAreaView addSubview:v1];
@@ -188,7 +188,7 @@
     v1.elementType=2;
     v1.parent=self.parent.drawAreaView;
     v1.parentController=self.parent;
-    [v1 initView:CGRectMake(100, 100, 100, 100) withImage:img];
+    [v1 initView:CGRectMake(100, 100, 100, 100) withImage:img withNString:@""];
     [self.parent.drawAreaView addSubview:v1];
 }
 

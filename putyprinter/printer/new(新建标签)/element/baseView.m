@@ -19,10 +19,10 @@
 }
 */
 
--(void) initView:(CGRect)frame withImage:(UIImage *)image
+-(void) initView:(CGRect)frame withImage:(UIImage *)image withNString:(NSString*)content
 {
     self.frame=frame;
-    
+    self.content=content;
     UIImageView *view=[[UIImageView alloc] initWithImage:image];
     view.frame=CGRectMake(0, 0, frame.size.width, frame.size.height);
     [self addSubview:view];
@@ -126,6 +126,7 @@
     //刷新位置
     NewLabelViewController *nlc=(NewLabelViewController*)self.parentController;
     float scale=nlc.LabelSacle;
+    self.scale=scale;
     NSString *msg=[NSString stringWithFormat:@"X:%.2fmm  Y:%.2fmm  宽:%.2fmm  高:%.2fmm",(self.frame.origin.x/scale)/8,self.frame.origin.y/scale/8,self.frame.size.width/scale/8,self.frame.size.height/scale/8];
     //NSLog(@"%@", msg);
     [nlc updateTip:msg];

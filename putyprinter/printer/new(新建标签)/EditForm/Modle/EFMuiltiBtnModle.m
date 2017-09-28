@@ -23,9 +23,9 @@
     return self.itemStrs[self.currentindex];
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview
 {
-    EFMuiltiButtonCell *rcell = cell;
+    EFMuiltiButtonCell *rcell = (EFMuiltiButtonCell*)cell;
     rcell.selectedAction = ^(NSInteger result) {
         self.currentindex = result;
         if (self.selectedAction) {

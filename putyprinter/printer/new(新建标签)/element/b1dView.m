@@ -19,9 +19,9 @@
 }
 */
 
--(void) initView:(CGRect)frame withImage:(UIImage *)image
+-(void) initView:(CGRect)frame withImage:(UIImage *)image withNString:(NSString*)content
 {
-    [super initView:frame withImage:image];
+    [super initView:frame withImage:image withNString:content];
     [self showScaleView];
 }
 

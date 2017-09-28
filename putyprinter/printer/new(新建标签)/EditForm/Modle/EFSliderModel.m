@@ -16,9 +16,9 @@
     return NSStringFromClass([EFSliderCell class]);
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview
 {
-     EFSliderCell *rcell = cell;
+     EFSliderCell *rcell = (EFSliderCell*)cell;
     rcell.title.text = self.title;
     
     
