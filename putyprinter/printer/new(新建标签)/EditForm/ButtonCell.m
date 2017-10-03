@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.firBtn.layer.cornerRadius=5;
+    self.secBtn.layer.cornerRadius=5;
 }
 
 - (IBAction)firAction:(id)sender {

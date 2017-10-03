@@ -16,7 +16,7 @@
     return NSStringFromClass([EFFontSizeCell class]);
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel *)linfo
 {
     EFFontSizeCell *rcell =(EFFontSizeCell*) cell;
     rcell.titleLable.text = self.title;
@@ -26,6 +26,23 @@
         self.curentIndex = index;
         if (self.changeActin) {
             self.changeActin(result);
+        }
+        
+        if([self.title isEqualToString:@"打印浓度"])
+        {
+            linfo.printDesnty=result.intValue;
+        }
+        else if([self.title isEqualToString:@"打印速度"])
+        {
+            linfo.printSpeed=result.intValue;
+        }
+        else if([self.title isEqualToString:@"水平打印偏移量"])
+        {
+            linfo.printHpadding=result.floatValue;
+        }
+        else if([self.title isEqualToString:@"垂直打印偏移量"])
+        {
+            linfo.printVpadding=result.floatValue;
         }
     };
     rcell.curentIndex = self.curentIndex;

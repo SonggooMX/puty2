@@ -17,7 +17,7 @@
     return NSStringFromClass([EFChangePageCell class]);
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel *)linfo
 {
     EFChangePageCell *rcell = (EFChangePageCell*)cell;
  

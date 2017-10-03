@@ -23,13 +23,21 @@
     return self.itemStrs[self.currentindex];
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel *)linfo
 {
     EFMuiltiButtonCell *rcell = (EFMuiltiButtonCell*)cell;
     rcell.selectedAction = ^(NSInteger result) {
         self.currentindex = result;
         if (self.selectedAction) {
             self.selectedAction(result);
+        }
+        if([self.title isEqualToString:@"打印方向"])
+        {
+            linfo.printDirect=(int)result;
+        }
+        else if([self.title isEqualToString:@"纸张类型"])
+        {
+            linfo.pagetType=(int)result;
         }
     };
     rcell.itemStrs = self.itemStrs;

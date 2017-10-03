@@ -16,7 +16,7 @@
     return NSStringFromClass([EFSwitchCell class]);
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel *)linfo
 {
     EFSwitchCell *rcell = (EFSwitchCell*)cell;
     rcell.titleLable.text = self.title;

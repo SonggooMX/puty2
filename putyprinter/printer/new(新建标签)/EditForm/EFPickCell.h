@@ -11,10 +11,12 @@
 
 #import "EFBaseCell.h"
 #import "baseView.h"
+#import "newLabel.h"
 
 @interface EFPickCell : EFBaseCell
 
 @property baseView *bv;
+@property newLabel *nl;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
 

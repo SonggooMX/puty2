@@ -41,8 +41,28 @@
 @property int fromType;
 
 //当前标签的实际大小 毫米
+@property NSString *labelName;
 @property float labelWidth;
 @property float labelHeight;
+
+//打印方向
+@property int printDirect;
+@property int pagetType;
+
+//打印浓度 速度
+@property int printDesnty;
+@property int printSpeed;
+
+//打印水平 垂直方向偏移量
+@property float printHpadding;
+@property float printVpadding;
+
+//标签锁定
+@property BOOL isLock;
+
+
+//刷新界面
+-(void)refresh:(NSString*)width withHeight:(NSString*)height;
 
 
 @end

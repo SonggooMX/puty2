@@ -439,7 +439,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtu-T0-jpq">
                                     <rect key="frame" x="305" y="8" width="60" height="31"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4uW-IO-Une">
+                                        <button opaque="NO" tag="2003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4uW-IO-Une">
                                             <rect key="frame" x="0.0" y="0.0" width="60" height="31"/>
                                             <connections>
                                                 <action selector="btnSelect:" destination="-1" eventType="touchUpInside" id="aMG-TX-u14"/>

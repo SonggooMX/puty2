@@ -164,11 +164,15 @@
             [self.drawAreaView lockElement];
             break;
         default://打印
+            //显示标签属性
+            [self setElementPropety:BaseEdictFormTypeLable withSelect:false withElement:nil];
             //取消所有选中
             [self.drawAreaView cancelAllSelected];
             PrintViewController *_printView=[[PrintViewController alloc] init];
             _printView.parent=self.parent;
+            self.drawAreaView.contentView.layer.cornerRadius=0;//取消圆角
             _printView.pv=[self convertViewToImage:self.drawAreaView];
+            self.drawAreaView.contentView.layer.cornerRadius=5;//打开圆角
             _printView.labelInfo=[NSString stringWithFormat:@"X:00mm  Y:00mm  宽:%.2fmm  高:%.2fmm",self.nLabelView.labelWidth,self.nLabelView.labelHeight];
             [self.navigationController pushViewController:_printView animated:YES];
             break;
@@ -189,6 +193,7 @@
     self.vc =[BaseEdictFormViewController new];
     self.vc.type=type;
     self.vc.currentSelectView=(baseView*)view;
+    self.vc.lbInfo=self.nLabelView;
     self.propertyView=self.vc.view;
     [self addChildViewController:self.vc];
     

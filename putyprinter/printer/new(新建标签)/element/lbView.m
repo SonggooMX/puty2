@@ -28,6 +28,8 @@
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.frame=frame;
     UILabel *lb=[[UILabel alloc] init];
+    //按字符换行
+    lb.lineBreakMode=NSLineBreakByCharWrapping;
     lb.text=content;
     self.content=content;
     lb.numberOfLines=0;

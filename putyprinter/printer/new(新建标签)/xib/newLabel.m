@@ -27,6 +27,12 @@
         self.contentView.frame=frame;
         [self addSubview:self.contentView];
         
+        self.printDirect=1;
+        self.pagetType=2;
+        
+        self.printDesnty=6;
+        self.printSpeed=3;
+        
         
         //设置打印方向
         [self setButtonViewStyle:self.btnPrintDirect0 :false];
@@ -81,12 +87,14 @@
             [self setButtonViewStyle:self.btnPrintDirect90 :false];
             [self setButtonViewStyle:self.btnPrintDirect180 :false];
             [self setButtonViewStyle:self.btnprintDirect270 :false];
+            self.printDirect=(int)sender.tag-1000;
             break;
         default:
             [self setButtonViewStyle:self.btnPageType0 :false];
             [self setButtonViewStyle:self.btnPageType1 :false];
             [self setButtonViewStyle:self.btnPageType2 :false];
             [self setButtonViewStyle:self.btnPageType3 :false];
+            self.pagetType=(int)sender.tag-2000;
             break;
     }
     
@@ -175,10 +183,24 @@
 - (IBAction)btnOK:(id)sender {
     [self removeFromSuperview];
     
-    CGRect frame=self.parent.drawAreaView.frame;
     NSString *width=[self.lbWidth.text stringByReplacingOccurrencesOfString:@"mm" withString:@""];
     NSString *height=[self.lbHeight.text stringByReplacingOccurrencesOfString:@"mm" withString:@""];
     
+    self.labelName=self.lbName.text;
+    
+    [self refresh:width withHeight:height];
+    
+    //选中首页插入模块
+    UIButton *bt=[[UIButton alloc] init];
+    bt.tag=1002;
+    [self.parent btnSwitchView:bt];
+    //开启顶部icon按钮
+    [self.parent setTopIconButton];
+}
+
+//刷新界面
+-(void)refresh:(NSString*)width withHeight:(NSString*)height
+{
     self.labelWidth=[width floatValue];
     self.labelHeight=[height floatValue];
     
@@ -196,16 +218,10 @@
     //缩放比例
     float sc=sw>sh?sh:sw;
     
+    CGRect frame=self.parent.drawAreaView.frame;
     frame=CGRectMake((rw-w*sc)/2, (rh-h*sc)/2, w*sc, h*sc);
     self.parent.drawAreaView.frame=frame;
     self.parent.LabelSacle=sc;
-    
-    //选中首页插入模块
-    UIButton *bt=[[UIButton alloc] init];
-    bt.tag=1002;
-    [self.parent btnSwitchView:bt];
-    //开启顶部icon按钮
-    [self.parent setTopIconButton];
 }
 
 @end

@@ -74,6 +74,7 @@
 @property (nonatomic,strong)EFAngleModel *angleModle;
 
 @property (nonatomic,strong)EFSwitchModel *switchModle;
+@property (nonatomic,strong)EFSwitchModel *switchModle2;
 
 
 @end
@@ -218,7 +219,7 @@
 - (EFMuiltiBtnModle *)muitlModleWithItems:(NSArray *)items tile:(NSString *)title
 {
     EFMuiltiBtnModle *q_dataTyepModle = [[EFMuiltiBtnModle alloc] init];
-    q_dataTyepModle.title = @"数据类型";
+    q_dataTyepModle.title = title;
     q_dataTyepModle.itemStrs = items;
     q_dataTyepModle.selectedAction = ^(NSInteger index){
         
@@ -237,7 +238,7 @@
 {
     PickViewModle *path = [PickViewModle modleWithType:(EFCellTypePickView)];
     path.title = title;
-    path.subTitle = sub ? sub : @"a122fdjshk.png";
+    path.subTitle = sub ? sub : @"";
     __weak typeof(self)wself = self;
     path.showPickView = ^(UIAlertController *alert) {
         [wself presentViewController:alert animated:YES completion:nil];
@@ -355,33 +356,29 @@
                 break;
             case BaseEdictFormTypeLable:
             {
-                
-                
-                PickViewModle *path = [self pickMOdleWithTitle:@"标签名称" sub:nil];
-                
-                
-                
-                PickViewModle *path1 = [self pickMOdleWithTitle:@"标签宽度" sub:nil];
-                
-                
-                
-                PickViewModle *path2 =[self pickMOdleWithTitle:@"标签高度" sub:nil];
-                
-                
+                NSString *lbName=self.lbInfo.labelName;
+                NSString *lbWidth=[NSString stringWithFormat:@"%.2fmm",self.lbInfo.labelWidth];
+                NSString *lbHeight=[NSString stringWithFormat:@"%.2fmm",self.lbInfo.labelHeight];
+                PickViewModle *path = [self pickMOdleWithTitle:@"标签名称" sub:lbName];
+                PickViewModle *path1 = [self pickMOdleWithTitle:@"标签宽度" sub:lbWidth];
+                PickViewModle *path2 =[self pickMOdleWithTitle:@"标签高度" sub:lbHeight];
                 EFMuiltiBtnModle *mb0 = [self muitlModleWithItems:@[@"0",@"90",@"180",@"270"] tile:@"打印方向"];
-                EFMuiltiBtnModle *mb111 = [self muitlModleWithItems:@[@"连续孔",@"定位孔",@"间接纸",@"黑标纸"] tile:@"纸张间隔"];
+                //设置打印方向
+                [mb0 setCurrentindex:self.lbInfo.printDirect];
+                
+                EFMuiltiBtnModle *mb111 = [self muitlModleWithItems:@[@"连续孔",@"定位孔",@"间接纸",@"黑标纸"] tile:@"纸张类型"];
+                [mb111 setCurrentindex:self.lbInfo.pagetType];
                 
                 PickViewModle *data = [self pickMOdleWithTitle:@"Excel数据" sub:nil];
                 data.title = @"Excel数据";
-                data.subTitle = @"不干胶";
+                data.subTitle = @"";
                 
                 EFButtonCellModle *btn = [EFButtonCellModle modleWithType:(EFCellTypeButtonCell)];
                 btn.titles = @[@"选择文件",@"清除数据"];
-                
-                
+
                 PickViewModle *data1 = [self pickMOdleWithTitle:@"标签高度" sub:nil];
                 data1.title = @"标签名称";
-                data1.subTitle = @"a122fdjshk";
+                data1.subTitle = @"";
                 
                 
                 PickViewModle *data11 =[self pickMOdleWithTitle:@"标签高度" sub:nil];
@@ -393,12 +390,41 @@
                 
                 
                 EFFontSizeModle *print11 = [self fontsizeModleWithTitle:@"打印浓度"];
+                print11.itemTitles=@[@"1(最淡)",@"2",@"3",@"4(较淡)",@"5",@"6(正常)",@"7",@"8",@"9",@"10",@"11(较浓)",@"12",@"13",@"14",@"15(最浓)"];
+                print11.curentIndex=self.lbInfo.printDesnty-1;
+                
                 EFFontSizeModle *print12 = [self fontsizeModleWithTitle:@"打印速度"];
+                print12.itemTitles=@[@"1(最慢)",@"2",@"3(正常)",@"4",@"5(最快)"];
+                print12.curentIndex=self.lbInfo.printSpeed-1;
                 
                 EFFontSizeModle *print21 = [self fontsizeModleWithTitle:@"水平打印偏移量"];
-                EFFontSizeModle *print22 = [self fontsizeModleWithTitle:@"垂直打印偏移量"];
                 
-                _modles = @[@[path,path1,path2,mb0,mb111],@[data,btn,data1,self.pageModle],@[data11,btn1],@[print11,print12],@[print21,print22],@[self.switchModle]];
+                NSMutableArray *arr = [NSMutableArray new];
+                for (double i = 0.0;i < 50.0;i+=0.1) {
+                    [arr addObject:[NSString stringWithFormat:@"%.2f",i]];
+                }
+                print21.itemTitles=arr;
+                for(int i=0;i<print21.itemTitles.count;i++)
+                {
+                    if(print21.itemTitles[i].floatValue==self.lbInfo.printHpadding)
+                    {
+                        print21.curentIndex=i;
+                        break;
+                    }
+                }
+                
+                EFFontSizeModle *print22 = [self fontsizeModleWithTitle:@"垂直打印偏移量"];
+                print22.itemTitles=arr;
+                for(int i=0;i<print22.itemTitles.count;i++)
+                {
+                    if(print22.itemTitles[i].floatValue==self.lbInfo.printVpadding)
+                    {
+                        print22.curentIndex=i;
+                        break;
+                    }
+                }
+                
+                _modles = @[@[path,path1,path2,mb0,mb111],@[data,btn,data1,self.pageModle],@[data11,btn1],@[print11,print12],@[print21,print22],@[self.switchModle2]];
                 
             }
                 break;
@@ -407,6 +433,19 @@
                 EFMuiltiBtnModle *bm = [self muitlModleWithItems:@[@"自动",@"1.2倍",@"1.5倍",@"自定义"] tile:@"行间距"];
                 
                 EFFontSizeModle *lineWidth = [self fontsizeModleWithTitle:@"字符间距"];
+                NSMutableArray *arr = [NSMutableArray new];
+                for (double i = 0.0;i < 50.0;i+=0.1) {
+                    [arr addObject:[NSString stringWithFormat:@"%.2f",i]];
+                }
+                lineWidth.itemTitles=arr;
+                for(int i=0;i<lineWidth.itemTitles.count;i++)
+                {
+                    if(lineWidth.itemTitles[i].floatValue==((lbView*)self.currentSelectView).charSpaceWidth)
+                    {
+                        lineWidth.curentIndex=i;
+                        break;
+                    }
+                }
                 
                 EFSwitchModel *switch1 = [EFSwitchModel modleWithType:(EFCellTypeSwitch)];
                 switch1.on=true;
@@ -532,7 +571,7 @@
 {
     if (!_fontNameModle) {
         _fontNameModle  = [self pickMOdleWithTitle:@"标签高度" sub:nil];
-        _fontNameModle.title = @"字体大小";
+        _fontNameModle.title = @"字体名称";
         _fontNameModle.subTitle = @"黑体";
         
     }
@@ -583,10 +622,11 @@
         _positionModle = (EFPositionModel*)[EFBaseModle modleWithType:(EFCellTypePosition)];
         
         NSMutableArray *arr = [NSMutableArray new];
-        for (double i = 1.0;i < 999.99;i+=0.01) {
+        for (double i = 1.0;i < 999.99;i+=0.1) {
             [arr addObject:[NSString stringWithFormat:@"%.2f",i]];
         }
         _positionModle.itemsArr = arr;
+        
         _positionModle.unit = @"mm";
         _positionModle.rowHeight = 90;
     }
@@ -615,6 +655,19 @@
     return _switchModle;
 }
 
+- (EFSwitchModel *)switchModle2
+{
+    if (!_switchModle) {
+        _switchModle = (EFSwitchModel*)[EFBaseModle modleWithType:(EFCellTypeSwitch)];
+        _switchModle.title = @"是否锁定";
+        _switchModle.on = YES;
+        _switchModle.valueBlock = ^(BOOL value) {
+            
+        };
+    }
+    return _switchModle;
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -627,7 +680,7 @@
 {
     EFBaseModle *modle = self.modles[indexPath.section][indexPath.row];
     EFBaseCell *cell = [EFBaseCell cellWithType:modle.type tableView:tableView];
-    [modle setupWithCell:cell withBaseView:self.currentSelectView];
+    [modle setupWithCell:cell withBaseView:self.currentSelectView withNewLabel:self.lbInfo];
     return cell;
 }
 

@@ -19,7 +19,7 @@
     return NSStringFromClass([FontAngleCell class]);
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel *)linfo
 {
     FontAngleCell *rcell = (FontAngleCell*)cell;
     rcell.seletedIndex = self.seletedIndex;

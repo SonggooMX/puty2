@@ -12,31 +12,31 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EFPickButton">
-            <rect key="frame" x="0.0" y="0.0" width="130" height="30"/>
+            <rect key="frame" x="0.0" y="0.0" width="214" height="30"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3z-qB-gde">
-                    <rect key="frame" x="98" y="0.0" width="32" height="30"/>
+                    <rect key="frame" x="182" y="0.0" width="32" height="30"/>
                     <state key="normal" image="Plus_button"/>
                     <connections>
                         <action selector="addAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="obh-b5-MwH"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjD-bg-qke">
-                    <rect key="frame" x="65.5" y="0.0" width="32" height="30"/>
+                    <rect key="frame" x="107.5" y="0.0" width="32" height="30"/>
                     <state key="normal" image="minus_button"/>
                     <connections>
                         <action selector="reduceAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="OUr-5N-wnf"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小五" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zct-a5-XLO">
-                    <rect key="frame" x="0.0" y="6.5" width="64.5" height="17"/>
+                    <rect key="frame" x="0.0" y="6.5" width="106.5" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.30192413926124573" green="0.30198186635971069" blue="0.30192047357559204" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhe-8J-lOH">
-                    <rect key="frame" x="64.5" y="0.0" width="1" height="30"/>
+                    <rect key="frame" x="106.5" y="0.0" width="1" height="30"/>
                     <color key="backgroundColor" red="0.70188313722610474" green="0.70200556516647339" blue="0.70187538862228394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="1" id="teW-RL-ch9"/>
@@ -60,7 +60,7 @@
             <connections>
                 <outlet property="titleLable" destination="Zct-a5-XLO" id="dIv-p6-DkF"/>
             </connections>
-            <point key="canvasLocation" x="-103" y="-9"/>
+            <point key="canvasLocation" x="-61" y="-9"/>
         </view>
     </objects>
     <resources>

@@ -123,13 +123,36 @@
     
     self.frame = frame;
     
+    [self refreshMsg];
+}
+
+-(void) refreshMsg
+{
     //刷新位置
     NewLabelViewController *nlc=(NewLabelViewController*)self.parentController;
     float scale=nlc.LabelSacle;
     self.scale=scale;
     NSString *msg=[NSString stringWithFormat:@"X:%.2fmm  Y:%.2fmm  宽:%.2fmm  高:%.2fmm",(self.frame.origin.x/scale)/8,self.frame.origin.y/scale/8,self.frame.size.width/scale/8,self.frame.size.height/scale/8];
-    //NSLog(@"%@", msg);
     [nlc updateTip:msg];
+}
+
+-(float) getXMM
+{
+    return self.frame.origin.x/self.scale/8;
+}
+
+-(float) getYMM
+{
+    return self.frame.origin.y/self.scale/8;
+}
+
+-(float) getWidthMM
+{
+    return self.frame.size.width/self.scale/8;
+}
+-(float) getHeightMM
+{
+    return self.frame.size.height/self.scale/8;
 }
 
 @end

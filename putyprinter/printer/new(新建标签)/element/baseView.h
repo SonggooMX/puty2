@@ -44,9 +44,17 @@
 -(UIImage *)getImageFromView:(UIView *)view;
 
 -(void) initView:(CGRect)frame withImage:(UIImage*)image withNString:(NSString*)content;
+
+-(void) refreshMsg;
+
 //刷新
 -(void) refresh;
 -(void) rotate;
 -(void) showScaleView;
+
+-(float) getWidthMM;
+-(float) getHeightMM;
+-(float) getXMM;
+-(float) getYMM;
 
 @end
