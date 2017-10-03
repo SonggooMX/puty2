@@ -299,12 +299,38 @@
                 break;
             case BaseEdictFormTypeForm:
             {
+                tableView *tv=((tableView*)self.currentSelectView);
                 EFFontSizeModle *lineWidth = [self fontsizeModleWithTitle:@"线条宽度"];
+                NSMutableArray *arr = [NSMutableArray new];
+                for (double i = 0.1;i < 50.0;i+=0.1) {
+                    [arr addObject:[NSString stringWithFormat:@"%.2f",i]];
+                }
+                lineWidth.itemTitles=arr;
+                [lineWidth setCurentIndex:tv.lineWidth*10-1];
+                
                 EFFontSizeModle *lineWidth2 = [self fontsizeModleWithTitle:@"行数"];
+                NSMutableArray *arr2 = [NSMutableArray new];
+                for (int i = 1;i < 50;i+=1) {
+                    [arr2 addObject:[NSString stringWithFormat:@"%d",i]];
+                }
+                lineWidth2.itemTitles=arr2;
+                [lineWidth2 setCurentIndex:tv.rows-1];
+                
                 EFFontSizeModle *lineWidth3 = [self fontsizeModleWithTitle:@"第1行高度"];
+                lineWidth3.itemTitles=arr;
+                [lineWidth3 setCurentIndex:100];
+                
                 EFFontSizeModle *lineWidth4 = [self fontsizeModleWithTitle:@"列数"];
+                lineWidth4.itemTitles=arr2;
+                [lineWidth4 setCurentIndex:tv.cols-1];
+                
                 EFFontSizeModle *lineWidth5 = [self fontsizeModleWithTitle:@"第1行宽度"];
+                lineWidth5.itemTitles=arr;
+                [lineWidth5 setCurentIndex:100];
+                
                 EFFontSizeModle *lineWidth6 = [self fontsizeModleWithTitle:@"第2行宽度"];
+                lineWidth6.itemTitles=arr;
+                [lineWidth6 setCurentIndex:100];
                 
                 NSArray *firArr = @[lineWidth,lineWidth2,lineWidth3,lineWidth4,lineWidth5,lineWidth6];
                

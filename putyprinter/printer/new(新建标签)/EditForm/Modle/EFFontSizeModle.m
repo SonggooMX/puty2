@@ -44,6 +44,24 @@
         {
             linfo.printVpadding=result.floatValue;
         }
+        else if([self.title isEqualToString:@"行数"])
+        {
+            tableView *tv=(tableView*)bview;
+            tv.rows=result.intValue;
+            [tv resetViewWH:bview.frame.size];
+        }
+        else if([self.title isEqualToString:@"列数"])
+        {
+            tableView *tv=(tableView*)bview;
+            tv.cols=result.intValue;
+            [tv resetViewWH:bview.frame.size];
+        }
+        else if([self.title isEqualToString:@"线条宽度"])
+        {
+            tableView *tv=(tableView*)bview;
+            tv.lineWidth=result.intValue;
+            [tv resetViewWH:bview.frame.size];
+        }
     };
     rcell.curentIndex = self.curentIndex;
 }

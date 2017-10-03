@@ -22,6 +22,7 @@
 #import "LogoManagerController.h"
 #import "ImageHelper.h"
 #import "imgView.h"
+#import "tableView.h"
 
 @implementation insertArea
 
@@ -135,7 +136,12 @@
 
 //插入表格 3
 - (IBAction)btnInsertTabel:(id)sender {
-    
+    tableView *v1=[[tableView alloc] init];
+    v1.elementType=3;
+    [v1 initView:CGRectMake(50, 50, 100, 100) withImage:NULL withNString:@""];
+    v1.parent=self.parent.drawAreaView;
+    v1.parentController=self.parent;
+    [self.parent.drawAreaView addSubview:v1];
 }
 
 

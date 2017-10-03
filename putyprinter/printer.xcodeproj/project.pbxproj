@@ -64,6 +64,7 @@
 		1BC435DC1F83A19800E9892E /* imgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC435D41F83A19800E9892E /* imgView.m */; };
 		1BC435DD1F83A19800E9892E /* baseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC435D61F83A19800E9892E /* baseView.m */; };
 		1BC435DE1F83A19800E9892E /* b1dView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC435D81F83A19800E9892E /* b1dView.m */; };
+		1BC435E71F83DA3E00E9892E /* tableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC435E51F83DA3E00E9892E /* tableView.m */; };
 		1BD590A81F74FAC800564277 /* LogoManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD5909B1F74FAC800564277 /* LogoManagerController.m */; };
 		1BD590A91F74FAC800564277 /* LogoImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD5909E1F74FAC800564277 /* LogoImageModel.m */; };
 		1BD590AA1F74FAC800564277 /* LogoTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD590A01F74FAC800564277 /* LogoTypeModel.m */; };
@@ -399,6 +400,8 @@
 		1BC435D71F83A19800E9892E /* baseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = baseView.h; path = element/core/baseView.h; sourceTree = "<group>"; };
 		1BC435D81F83A19800E9892E /* b1dView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = b1dView.m; path = element/core/b1dView.m; sourceTree = "<group>"; };
 		1BC435D91F83A19800E9892E /* b1dView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = b1dView.h; path = element/core/b1dView.h; sourceTree = "<group>"; };
+		1BC435E51F83DA3E00E9892E /* tableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = tableView.m; path = element/core/tableView.m; sourceTree = "<group>"; };
+		1BC435E61F83DA3E00E9892E /* tableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tableView.h; path = element/core/tableView.h; sourceTree = "<group>"; };
 		1BD5909A1F74FAC800564277 /* LogoManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoManagerController.h; sourceTree = "<group>"; };
 		1BD5909B1F74FAC800564277 /* LogoManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoManagerController.m; sourceTree = "<group>"; };
 		1BD5909D1F74FAC800564277 /* LogoImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoImageModel.h; sourceTree = "<group>"; };
@@ -938,6 +941,8 @@
 		1B9A301F1F7610EF0058CC39 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				1BC435E51F83DA3E00E9892E /* tableView.m */,
+				1BC435E61F83DA3E00E9892E /* tableView.h */,
 				1BC435D01F83A19800E9892E /* qrView.m */,
 				1BC435D11F83A19800E9892E /* qrView.h */,
 				1BC435D21F83A19800E9892E /* lbView.m */,
@@ -1895,6 +1900,7 @@
 				1B081BB81F7546E000308DAF /* HandwritingCell.m in Sources */,
 				B988E3421F1EF0A8003EE56B /* UIViewController+CZAddition.m in Sources */,
 				B988E3391F1EF0A8003EE56B /* NSArray+Log.m in Sources */,
+				1BC435E71F83DA3E00E9892E /* tableView.m in Sources */,
 				B92A7AED1F1C15B6000CC07A /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				B94B3E4D1F1F5BAF003B607F /* connetController.m in Sources */,
 				B9E27B081F204F3800F687A1 /* logoController.m in Sources */,
