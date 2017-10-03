@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="iB7-bt-TBX">
+                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="iB7-bt-TBX">
                         <rect key="frame" x="69.5" y="7" width="240.5" height="31"/>
                         <color key="tintColor" red="0.0" green="0.4882349967956543" blue="0.88691753149032593" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <connections>

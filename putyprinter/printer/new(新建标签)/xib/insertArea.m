@@ -21,6 +21,7 @@
 #import "BaseEdictFormViewController.h"
 #import "LogoManagerController.h"
 #import "ImageHelper.h"
+#import "imgView.h"
 
 @implementation insertArea
 
@@ -180,15 +181,32 @@
     // dismiss UIImagePickerController
     [self.parent dismissViewControllerAnimated:YES completion:nil];
     // 选择的图片信息存储于info字典中
-    NSLog(@"%@", info);
+    //NSLog(@"%@", info);
     //创建图片元素
     // 获取点击的图片
     UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
-    qrView *v1=[[qrView alloc] init];
+    
+    //压缩到标签尺寸的一半大小
+    float w=self.parent.drawAreaView.frame.size.width/2;
+    float h=self.parent.drawAreaView.frame.size.height/2;
+    
+    float scaleX=w/img.size.width;
+    float scaleY=h/img.size.height;
+    
+    float scale=scaleX>scaleY?scaleY:scaleX;
+    
+    float lw=img.size.width*scale;
+    float lh=img.size.height*scale;
+    
+    float x=(w-lw)/2;
+    float y=(h-lh)/2;
+    
+    imgView *v1=[[imgView alloc] init];
     v1.elementType=2;
+    v1.imgPath=@"";//[info objectForKey:UIImagePickerControllerMediaURL];
     v1.parent=self.parent.drawAreaView;
     v1.parentController=self.parent;
-    [v1 initView:CGRectMake(100, 100, 100, 100) withImage:img withNString:@""];
+    [v1 initView:CGRectMake(x, y, lw, lh) withImage:img withNString:@""];
     [self.parent.drawAreaView addSubview:v1];
 }
 

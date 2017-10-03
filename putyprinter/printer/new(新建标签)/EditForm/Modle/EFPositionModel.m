@@ -138,6 +138,20 @@
             [bview refreshMsg];
             return;
         }
+        else if(bview.elementType==2)
+        {
+            
+            float scale=bview.frame.size.width/bview.frame.size.height;
+            float h=result.floatValue/scale;
+            int seq=(int)([NSString stringWithFormat:@"%.1f",h].floatValue*100);
+            [rcell.heightBtn setCurentIndexNoAction:seq/10+10];
+            
+            //图片设置
+            CGRect rect=CGRectMake(bview.frame.origin.x, bview.frame.origin.y, result.floatValue*8*bview.scale, h*8*bview.scale);
+            [bview resetViewWH:rect.size];
+            [bview refreshMsg];
+            return;
+        }
         
         CGRect rect=CGRectMake(bview.frame.origin.x, bview.frame.origin.y, result.floatValue*8*bview.scale, bview.frame.size.height);
         [bview resetViewWH:rect.size];
@@ -172,6 +186,21 @@
             [bview refreshMsg];
             return;
         }
+        else if(bview.elementType==2)
+        {
+            
+            float scale=bview.frame.size.height/bview.frame.size.width;
+            float h=result.floatValue/scale;
+            int seq=(int)([NSString stringWithFormat:@"%.1f",h].floatValue*100);
+            [rcell.widthBtn setCurentIndexNoAction:seq/10+10];
+            
+            //图片设置
+            CGRect rect=CGRectMake(bview.frame.origin.x, bview.frame.origin.y, h*8*bview.scale, result.floatValue*8*bview.scale);
+            [bview resetViewWH:rect.size];
+            [bview refreshMsg];
+            return;
+        }
+        
         
         CGRect rect=CGRectMake(bview.frame.origin.x, bview.frame.origin.y, bview.frame.size.width, result.floatValue*8*bview.scale);
         [bview resetViewWH:rect.size];

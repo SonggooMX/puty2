@@ -283,7 +283,7 @@
                 
                 PickViewModle *path = [PickViewModle modleWithType:(EFCellTypePickView)];
                 path.title = @"图片路径";
-                path.subTitle = @"a122fdjshk.png";
+                path.subTitle = @"";
                 __weak typeof(self)wself = self;
                 path.showPickView = ^(UIAlertController *alert) {
                     [wself presentViewController:alert animated:YES completion:nil];
@@ -291,6 +291,7 @@
                 
                 EFSwitchModel *switch2 = [EFSwitchModel modleWithType:(EFCellTypeSwitch)];
                 switch2.title = @"图片缩放";
+                switch2.on=true;
                 
                 NSArray *firArr = @[slider,switch1,path,switch2];
                 _modles = @[firArr,@[self.positionModle],@[self.angleModle],@[self.switchModle]];
