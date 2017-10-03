@@ -627,7 +627,7 @@
         }
         _positionModle.itemsArr = arr;
         
-        _positionModle.unit = @"mm";
+        _positionModle.unit = @"";
         _positionModle.rowHeight = 90;
     }
     return _positionModle;

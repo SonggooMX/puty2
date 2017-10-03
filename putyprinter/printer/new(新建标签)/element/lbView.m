@@ -43,6 +43,23 @@
     self.containerView=lb;
     
     //添加缩放图标
+    [self showScaleView];
+    
+    [self refresh];
+}
+
+-(void) resetViewWH:(CGSize)size
+{
+    self.frame=CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
+    self.containerView.frame=CGRectMake(self.containerView.frame.origin.x, self.containerView.frame.origin.y, size.width, size.height);
+    
+    self.lbScaleView.frame=CGRectMake(self.frame.size.width-10, (self.frame.size.height-20)/2, 20, 20);
+}
+
+-(void) showScaleView
+{
+    [super showScaleView];
+    
     self.lbScaleView=[[lbScaleView alloc] init];
     self.lbScaleView.frame=CGRectMake(self.frame.size.width-10, (self.frame.size.height-20)/2, 20, 20);
     self.lbScaleView.hidden=YES;
@@ -54,8 +71,6 @@
     rightImage.frame=CGRectMake(0, 0, 20, 20);
     [self.lbScaleView addSubview:rightImage];
     [self addSubview:self.lbScaleView];
-    
-    [self refresh];
 }
 
 //刷新

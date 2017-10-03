@@ -21,6 +21,7 @@
 
 -(void) initView:(CGRect)frame withImage:(UIImage *)image withNString:(NSString*)content
 {
+    self.bmp=image;
     self.frame=frame;
     self.content=content;
     UIImageView *view=[[UIImageView alloc] initWithImage:image];
@@ -28,6 +29,16 @@
     [self addSubview:view];
     self.containerView=view;
     [self refresh];
+}
+
+-(void) resetViewWH:(CGSize)size
+{
+    
+}
+
+-(void) showScaleView
+{
+    
 }
 
 -(void) rotate
@@ -62,6 +73,10 @@
     }
 }
 
+-(void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //取消所有元素选中
@@ -94,14 +109,9 @@
     UITouch *touch = [touches anyObject];
     CGPoint currentLocation = [touch locationInView:self.parent];
     CGRect frame = self.frame;
-    
-    //NSLog(@"sx:%f,sy:%f",self.beginpoint.x,self.beginpoint.y);
-    //NSLog(@"x:%f,y:%f",currentLocation.x,currentLocation.y);
 
     int directX=currentLocation.x-self.beginpoint.x;
     int directY=currentLocation.y - self.beginpoint.y;
-    
-    //NSLog(@"dx:%d,dy:%d",directX,directY);
     
    frame.origin.x+=directX;
     
@@ -132,27 +142,37 @@
     NewLabelViewController *nlc=(NewLabelViewController*)self.parentController;
     float scale=nlc.LabelSacle;
     self.scale=scale;
-    NSString *msg=[NSString stringWithFormat:@"X:%.2fmm  Y:%.2fmm  宽:%.2fmm  高:%.2fmm",(self.frame.origin.x/scale)/8,self.frame.origin.y/scale/8,self.frame.size.width/scale/8,self.frame.size.height/scale/8];
+    
+    float x=[NSString stringWithFormat:@"%.1f",self.frame.origin.x/scale/8].floatValue;
+    float y=[NSString stringWithFormat:@"%.1f",self.frame.origin.y/scale/8].floatValue;
+    float w=[NSString stringWithFormat:@"%.1f",self.frame.size.width/scale/8].floatValue;
+    float h=[NSString stringWithFormat:@"%.1f",self.frame.size.height/scale/8].floatValue;
+    
+    NSString *msg=[NSString stringWithFormat:@"X:%.2fmm  Y:%.2fmm  宽:%.2fmm  高:%.2fmm",x,y,w,h];
     [nlc updateTip:msg];
 }
 
 -(float) getXMM
 {
-    return self.frame.origin.x/self.scale/8;
+    float x=[NSString stringWithFormat:@"%.1f0", self.frame.origin.x/self.scale/8].floatValue;
+    return x;
 }
 
 -(float) getYMM
 {
-    return self.frame.origin.y/self.scale/8;
+    float y=[NSString stringWithFormat:@"%.1f0",self.frame.origin.y/self.scale/8].floatValue;
+    return y;
 }
 
 -(float) getWidthMM
 {
-    return self.frame.size.width/self.scale/8;
+    float w=[NSString stringWithFormat:@"%.1f0",self.frame.size.width/self.scale/8].floatValue;
+    return w;
 }
 -(float) getHeightMM
 {
-    return self.frame.size.height/self.scale/8;
+    float h=[NSString stringWithFormat:@"%.1f0",self.frame.size.height/self.scale/8].floatValue;
+    return h;
 }
 
 @end

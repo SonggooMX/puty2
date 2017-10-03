@@ -10,5 +10,6 @@
 
 @interface b1dView : baseView
 
+-(void) resetViewWH:(CGSize)size;
 
 @end

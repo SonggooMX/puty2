@@ -27,19 +27,48 @@
     UIImage *bmp=[self createImage:frame.size.width with:frame.size.height];
     [super initView:frame withImage:bmp withNString:content];
     
+    [self showScaleView];
+    
+}
+
+//重新设置宽高
+-(void) resetViewWH:(CGSize)size
+{
+    self.frame=CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
+    self.containerView.frame=CGRectMake(self.containerView.frame.origin.x, self.containerView.frame.origin.y, size.width, size.height);
+    self.rightView.frame=CGRectMake(self.frame.size.width-10, (self.frame.size.height-20)/2, 20, 20);
+    self.bottomView.frame=CGRectMake((self.frame.size.width-20)/2, self.frame.size.height-10, 20, 20);
+}
+
+-(void) showScaleView
+{
+    [super showScaleView];
+    
+    self.rightView=[[leftScaleView alloc] init];
+    self.rightView.frame=CGRectMake(self.frame.size.width-10, (self.frame.size.height-20)/2, 20, 20);
+    self.rightView.hidden=YES;
+    self.rightView.pparent=self.parent;
+    self.rightView.parent=self;
+    
     //右小角放一个缩放图标
-    UIImageView *imageV=[[UIImageView alloc] init];
-    imageV.image=[UIImage imageNamed:@"Diagonal_expansion_button"];
-    imageV.frame=CGRectMake(0, 0, 20, 20);
+    UIImageView *rightImage=[[UIImageView alloc] init];
+    rightImage.image=[UIImage imageNamed:@"Left_and_right_expansion_button"];
+    rightImage.frame=CGRectMake(0, 0, 20, 20);
+    [self.rightView addSubview:rightImage];
+    [self addSubview:self.rightView];
     
-    self.sview=[[bottomRightScaleView alloc] init];
-    self.sview.frame=CGRectMake(self.frame.size.width-13, self.frame.size.height-13, 20, 20);
-    self.sview.pparent=self.parent;
-    self.sview.parent=self;
-    self.sview.hidden=YES;
-    [self.sview addSubview:imageV];
-    [self addSubview:self.sview];
     
+    self.bottomView=[[BottomScaleView alloc] init];
+    self.bottomView.frame=CGRectMake((self.frame.size.width-20)/2, self.frame.size.height-10, 20, 20);
+    self.bottomView.hidden=YES;
+    self.bottomView.pparent=self.parent;
+    self.bottomView.parent=self;
+    
+    UIImageView *bottomImage=[[UIImageView alloc] init];
+    bottomImage.image=[UIImage imageNamed:@"Up_and_down_expansion_button"];
+    bottomImage.frame=CGRectMake(0, 0, 20, 20);
+    [self.bottomView addSubview:bottomImage];
+    [self addSubview:self.bottomView];
 }
 
 //创建框图片
@@ -97,11 +126,13 @@
     [super refresh];
     if(self.isslected==1&&self.isLock==0)
     {
-        self.sview.hidden=NO;
+        self.rightView.hidden=NO;
+        self.bottomView.hidden=NO;
     }
     else
     {
-        self.sview.hidden=YES;
+        self.rightView.hidden=YES;
+        self.bottomView.hidden=YES;
     }
 }
 

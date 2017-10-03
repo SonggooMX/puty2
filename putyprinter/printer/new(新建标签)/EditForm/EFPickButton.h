@@ -23,4 +23,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLable;
 
+-(void) setCurentIndexNoAction:(NSInteger)curentIndex;
+
 @end

@@ -9,7 +9,6 @@
 #import "baseView.h"
 
 @interface lineView : baseView
-@property const NSString *content;
 
 //线宽
 @property float lineWidth;

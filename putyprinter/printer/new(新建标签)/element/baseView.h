@@ -15,6 +15,7 @@
 
 @interface baseView : UIView
 
+@property UIImage *bmp;
 @property CGPoint beginpoint;
 @property UIView *parent;
 @property NewLabelViewController *parentController;
@@ -56,5 +57,7 @@
 -(float) getHeightMM;
 -(float) getXMM;
 -(float) getYMM;
+
+-(void) resetViewWH:(CGSize)size;
 
 @end

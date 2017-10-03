@@ -25,8 +25,19 @@
     [self showScaleView];
 }
 
+//重新设置宽高
+-(void) resetViewWH:(CGSize)size
+{
+    self.frame=CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
+    self.containerView.frame=CGRectMake(self.containerView.frame.origin.x, self.containerView.frame.origin.y, size.width, size.height);
+    self.rightView.frame=CGRectMake(self.frame.size.width-10, (self.frame.size.height-20)/2, 20, 20);
+    self.bottomView.frame=CGRectMake((self.frame.size.width-20)/2, self.frame.size.height-10, 20, 20);
+}
+
 -(void) showScaleView
 {
+    [super showScaleView];
+    
     self.rightView=[[leftScaleView alloc] init];
     self.rightView.frame=CGRectMake(self.frame.size.width-10, (self.frame.size.height-20)/2, 20, 20);
     self.rightView.hidden=YES;
@@ -65,6 +76,7 @@
 {
     
     [super refresh];
+    
     if(self.isslected==1&&self.isLock==0)
     {
         self.rightView.hidden=NO;

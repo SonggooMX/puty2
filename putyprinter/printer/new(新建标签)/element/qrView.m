@@ -27,6 +27,21 @@
     [super initView:frame withImage:image withNString:content];
     
     //右小角放一个缩放图标
+    [self showScaleView];
+}
+
+-(void) resetViewWH:(CGSize)size
+{
+    self.frame=CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
+    self.containerView.frame=CGRectMake(self.containerView.frame.origin.x, self.containerView.frame.origin.y, size.width, size.height);
+    
+    self.sview.frame=CGRectMake(self.frame.size.width-13, self.frame.size.height-13, 20, 20);
+}
+
+-(void) showScaleView
+{
+    [super showScaleView];
+    
     UIImageView *imageV=[[UIImageView alloc] init];
     imageV.image=[UIImage imageNamed:@"Diagonal_expansion_button"];
     imageV.frame=CGRectMake(0, 0, 20, 20);
@@ -38,7 +53,6 @@
     self.sview.hidden=YES;
     [self.sview addSubview:imageV];
     [self addSubview:self.sview];
-    
 }
 
 -(void) rotate

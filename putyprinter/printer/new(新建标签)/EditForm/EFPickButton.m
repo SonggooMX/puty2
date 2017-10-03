@@ -52,7 +52,19 @@
     if (self.changeActin) {
         self.changeActin([self result],curentIndex);
     }
+}
+
+-(void) setCurentIndexNoAction:(NSInteger)curentIndex
+{
+    _curentIndex = curentIndex;
+    if (_curentIndex > 0 && _curentIndex >= self.itemTitles.count) {
+        _curentIndex = 0;
+    }
     
+    if (_curentIndex < 0) {
+        _curentIndex = self.itemTitles.count -1;
+    }
+    self.titleLable.text = [self result];
 }
 
 - (IBAction)addAction:(id)sender {

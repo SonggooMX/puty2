@@ -7,6 +7,7 @@
 //
 
 #import "scaleView.h"
+#import "baseView.h";
 
 @implementation scaleView
 
@@ -26,6 +27,11 @@
     UITouch *touch = [touches anyObject];
     self.beginpoint = [touch locationInView:self.pparent];
     //[super touchesBegan:touches withEvent:event];
+}
+
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [((baseView*)self.parent) resetViewWH:self.parent.frame.size];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
