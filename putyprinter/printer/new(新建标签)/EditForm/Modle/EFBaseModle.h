@@ -30,6 +30,8 @@ typedef NS_ENUM(NSUInteger, EFCellType) {
 
 @interface EFBaseModle : NSObject
 
+@property UIViewController *parent;
+
 @property (nonatomic,assign)EFCellType type;
 
 @property (nonatomic,strong)NSString *title;

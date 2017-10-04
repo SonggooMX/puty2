@@ -94,9 +94,8 @@
 
 //插入文本
 - (IBAction)btnInsertText:(id)sender {
-    
-    
     lbView *v1=[[lbView alloc] init];
+    v1.autoWarp=1;
     v1.parent=self.parent.drawAreaView;
     v1.elementType=8;
     v1.parentController=self.parent;

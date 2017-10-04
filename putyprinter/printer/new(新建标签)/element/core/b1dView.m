@@ -29,9 +29,20 @@
 -(void) resetViewWH:(CGSize)size
 {
     self.frame=CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
-    self.containerView.frame=CGRectMake(self.containerView.frame.origin.x, self.containerView.frame.origin.y, size.width, size.height);
-    self.rightView.frame=CGRectMake(self.frame.size.width-10, (self.frame.size.height-20)/2, 20, 20);
-    self.bottomView.frame=CGRectMake((self.frame.size.width-20)/2, self.frame.size.height-10, 20, 20);
+    
+    if(self.direction==0||self.direction==2){
+    self.containerView.frame=CGRectMake(self.containerView.frame.origin.y, self.containerView.frame.origin.x, size.width, size.height);
+        self.rightView.frame=CGRectMake(self.frame.size.width-10, (self.frame.size.height-20)/2, 20, 20);
+        
+        self.bottomView.frame=CGRectMake((self.frame.size.width-20)/2, self.frame.size.height-10, 20, 20);
+    }
+    else
+    {
+        self.containerView.frame=CGRectMake(self.containerView.frame.origin.x, self.containerView.frame.origin.y, size.height, size.width);
+        self.rightView.frame=CGRectMake(self.frame.size.height-10, (self.frame.size.width-20)/2, 20, 20);
+        
+        self.bottomView.frame=CGRectMake((self.frame.size.height-20)/2, self.frame.size.width-10, 20, 20);
+    }
 }
 
 -(void) showScaleView
@@ -65,9 +76,9 @@
     [self addSubview:self.bottomView];
 }
 
--(void)rotate
+-(void) rotate:(int)angle
 {
-    [super rotate];
+    [super rotate:angle];
     [self refresh];
 }
 

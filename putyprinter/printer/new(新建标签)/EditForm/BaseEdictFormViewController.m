@@ -457,7 +457,17 @@
                 break;
             case BaseEdictFormTypeTxt:
             {
-                EFMuiltiBtnModle *bm = [self muitlModleWithItems:@[@"自动",@"1.2倍",@"1.5倍",@"自定义"] tile:@"行间距"];
+                lbView *lb=(lbView*)self.currentSelectView;
+                
+                NSString *lst=@"自定义";
+                if(lb.rowSpaceMode==3)
+                {
+                    lst=[NSString stringWithFormat:@"%.2f",lb.rowSpaceHeight];
+                }
+                
+                EFMuiltiBtnModle *bm = [self muitlModleWithItems:@[@"自动",@"1.2倍",@"1.5倍",lst] tile:@"行间距"];
+                bm.parent=self;
+                [bm setCurrentindex:lb.rowSpaceMode];
                 
                 EFFontSizeModle *lineWidth = [self fontsizeModleWithTitle:@"字符间距"];
                 NSMutableArray *arr = [NSMutableArray new];
@@ -475,7 +485,7 @@
                 }
                 
                 EFSwitchModel *switch1 = [EFSwitchModel modleWithType:(EFCellTypeSwitch)];
-                switch1.on=true;
+                switch1.on=lb.autoWarp==1;
                 switch1.title = @"自动换行";
                 
                 

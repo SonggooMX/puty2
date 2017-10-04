@@ -22,6 +22,13 @@
     self.selectedAcction(sender.view.tag);
 }
 
+- (IBAction)btnClick:(id)sender {
+    UIButton *btn=(UIButton*)sender;
+    self.seletedIndex = btn.tag;
+    self.selectedAcction(btn.tag);
+}
+
+
 -(void) rate
 {
     

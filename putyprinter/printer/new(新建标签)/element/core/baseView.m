@@ -41,12 +41,13 @@
     
 }
 
--(void) rotate
+-(void) rotate:(int)angle
 {
-    self.direction++;
-    self.direction=self.direction>3?0:self.direction;
+    int count=angle-self.direction;
+    self.direction=angle;
+    
     UIView *first=self;
-    first.transform=CGAffineTransformRotate(first.transform, M_PI_2);
+    first.transform=CGAffineTransformRotate(first.transform, M_PI_2*count);
     
     [self refresh];
 }

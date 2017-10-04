@@ -9,7 +9,6 @@
 #import "baseView.h"
 
 @interface rectView : baseView
-@property const NSString *content;
 
 //内部填充
 @property int fillRect;

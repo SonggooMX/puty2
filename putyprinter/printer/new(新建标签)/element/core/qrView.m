@@ -55,9 +55,9 @@
     [self addSubview:self.sview];
 }
 
--(void) rotate
+-(void) rotate:(int)angle
 {
-    [super rotate];
+    [super rotate:angle];
     
     
 }

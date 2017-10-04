@@ -53,7 +53,7 @@
 
 //刷新
 -(void) refresh;
--(void) rotate;
+-(void) rotate:(int)angle;
 -(void) showScaleView;
 
 -(float) getWidthMM;

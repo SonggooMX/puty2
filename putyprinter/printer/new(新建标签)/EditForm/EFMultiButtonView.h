@@ -16,6 +16,8 @@
 
 @property (nonatomic,strong)NSArray <ButtonModle *>*itemStrs;
 
+@property NSMutableArray *buttons;
+
 @property (nonatomic,strong)ButtonModle *currentModle;
 
 @property (nonatomic,assign)NSInteger currentindex;

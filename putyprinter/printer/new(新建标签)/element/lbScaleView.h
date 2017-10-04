@@ -14,7 +14,4 @@
 @property UIView *parent;
 @property UIView *pparent;
 
-
--(CGRect)getContentRect:(NSString*)content withWidth:(CGFloat)width;
-
 @end

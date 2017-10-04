@@ -8,6 +8,7 @@
 
 #import "lbScaleView.h"
 #import "baseView.h"
+#import "lbView.h"
 
 @implementation lbScaleView
 
@@ -50,7 +51,7 @@
     CGRect frame=self.superview.frame;
     
     //文本顶部容器view
-    baseView *sp=(baseView*)self.parent;
+    lbView *sp=(lbView*)self.parent;
     
     UILabel *lb=(UILabel*)self.superview.subviews.firstObject;
     
@@ -58,11 +59,11 @@
     if(sp.direction==1||sp.direction==3)
     {
         //获取文本的实际大小尺寸 固定文本宽度 获取文本的实际高度
-        realSize=[self getContentRect:lb.text withWidth:frame.size.height+directY];
+        realSize=[sp getContentRect:lb withW:frame.size.height+directY];
     }
     else
     {
-        realSize=[self getContentRect:lb.text withWidth:frame.size.width+directX];
+        realSize=[sp getContentRect:lb withW:frame.size.width+directX];
     }
     
     //NSLog(@"rx:%.2f,ry:%.2f,rw:%.2f,rh:%.2f",realSize.origin.x,realSize.origin.y,realSize.size.width,realSize.size.height);
@@ -250,17 +251,6 @@
         cframe.origin.x+=directX;
     }
     cv.frame=cframe;
-}
-
-//获取文本内容的实际显示大小
--(CGRect)getContentRect:(NSString *)content withWidth:(CGFloat)width
-{
-    UILabel *lb=[[UILabel alloc] init];
-    lb.text=content;
-    lb.numberOfLines=0;
-    [lb sizeToFit];
-    CGRect rect=[lb textRectForBounds:CGRectMake(0, 0, width, 1000) limitedToNumberOfLines:0];
-    return rect;
 }
 
 

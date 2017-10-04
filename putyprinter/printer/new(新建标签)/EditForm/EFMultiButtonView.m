@@ -32,7 +32,7 @@
     self.currentindex = 0;
 }
 
-- (void)addBtnWithIndex:(NSInteger)index
+- (UIButton*)addBtnWithIndex:(NSInteger)index
 {
     
     UIButton *btn = [UIButton buttonWithType:(UIButtonTypeSystem)];
@@ -52,6 +52,8 @@
     [btn addTarget:self action:@selector(btnClick:) forControlEvents:(UIControlEventTouchUpInside)];
     
     [self setFrameWithBtn:btn index:index];
+    
+    return btn;
     
 }
 
@@ -92,10 +94,13 @@
         }
     }
     _itemStrs = arr;
-    for (int i = 0; i < itemStrs.count ;i++) {
-        [self addBtnWithIndex:i];
-    }
     
+    NSMutableArray *bts=[NSMutableArray new];
+    for (int i = 0; i < itemStrs.count ;i++) {
+        UIButton *btn=[self addBtnWithIndex:i];
+        [bts addObject:btn];
+    }
+    self.buttons=bts;
 }
 
 - (CGFloat)itemWidth

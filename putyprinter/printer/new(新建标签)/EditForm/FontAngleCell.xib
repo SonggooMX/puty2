@@ -27,6 +27,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzU-xO-dUt">
                                         <rect key="frame" x="14.5" y="36.5" width="50" height="50"/>
                                         <state key="normal" image="0degree_button"/>
+                                        <connections>
+                                            <action selector="btnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="z53-9m-wK0"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMR-9h-yIb">
                                         <rect key="frame" x="31.5" y="91.5" width="15" height="17"/>
@@ -48,7 +51,7 @@
                                     <outletCollection property="gestureRecognizers" destination="NDe-29-bZM" appends="YES" id="FzG-te-RQa"/>
                                 </connections>
                             </view>
-                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAb-NG-sjq" userLabel="thr">
+                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAb-NG-sjq" userLabel="thr">
                                 <rect key="frame" x="160" y="0.0" width="79" height="142.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="180°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulp-Jx-hju">
@@ -57,9 +60,12 @@
                                         <color key="textColor" red="0.001844842685" green="0.48047381639999998" blue="0.87500625850000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9P-Gm-vBV">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9P-Gm-vBV">
                                         <rect key="frame" x="14.5" y="36.5" width="50" height="50"/>
                                         <state key="normal" image="180degree_button"/>
+                                        <connections>
+                                            <action selector="btnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="B1s-wX-XqX"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -75,12 +81,15 @@
                                     <outletCollection property="gestureRecognizers" destination="2dy-E2-EAq" appends="YES" id="0bq-IJ-hv2"/>
                                 </connections>
                             </view>
-                            <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFI-XK-cSM" userLabel="for">
+                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFI-XK-cSM" userLabel="for">
                                 <rect key="frame" x="240" y="0.0" width="79" height="142.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lw8-bL-SUw">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lw8-bL-SUw">
                                         <rect key="frame" x="14.5" y="36.5" width="50" height="50"/>
                                         <state key="normal" image="270degree_button"/>
+                                        <connections>
+                                            <action selector="btnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="t1L-2J-Yui"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="270°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ot4-be-5D0">
                                         <rect key="frame" x="24.5" y="91.5" width="30.5" height="17"/>
@@ -102,12 +111,15 @@
                                     <outletCollection property="gestureRecognizers" destination="0ZK-SM-urc" appends="YES" id="vwZ-Dh-gn4"/>
                                 </connections>
                             </view>
-                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gk3-gZ-bkW" userLabel="sec">
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gk3-gZ-bkW" userLabel="sec">
                                 <rect key="frame" x="80" y="0.0" width="79" height="142.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Een-eg-7xS">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Een-eg-7xS">
                                         <rect key="frame" x="14.5" y="36.5" width="50" height="50"/>
                                         <state key="normal" image="90degree_button"/>
+                                        <connections>
+                                            <action selector="btnClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eB8-yc-H1h"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="90°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2P8-FZ-4gd">
                                         <rect key="frame" x="28" y="91.5" width="23.5" height="17"/>

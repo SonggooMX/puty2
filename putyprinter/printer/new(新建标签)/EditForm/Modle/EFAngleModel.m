@@ -28,6 +28,9 @@
         if (self.selectedAcction) {
             self.selectedAcction(index);
         }
+        
+        //旋转角度
+        [bview rotate:(int)self.seletedIndex];
     };
 }
 @end

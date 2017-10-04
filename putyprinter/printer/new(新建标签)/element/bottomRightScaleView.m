@@ -159,6 +159,7 @@
     //缩放图标 元素中的缩放图标view uiimageview
     cv=self.superview.subviews.lastObject;
     cframe=cv.frame;
+    
     if(bv.direction==1||bv.direction==2)
     {
         cframe.origin.x-=directX;
