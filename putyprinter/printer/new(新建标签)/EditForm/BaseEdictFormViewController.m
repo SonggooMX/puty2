@@ -490,7 +490,7 @@
                 
                 
                 NSArray *firArr = @[switch1,bm,lineWidth];
-                _modles = @[firArr,@[self.dataTyepModle,self.currentContentModle,self.datanameModle,self.pageModle],@[self.fontNameModle,self.fontsizeModle,self.aligModle],@[self.positionModle],@[self.angleModle],@[self.switchModle]];
+                _modles = @[firArr,@[self.dataTyepModle,self.currentContentModle,self.datanameModle,self.pageModle],@[self.fontNameModle,self.fontsizeModle,self.aligModle,self.attributeModle],@[self.positionModle],@[self.angleModle],@[self.switchModle]];
             }
                 break;
             default:
@@ -620,8 +620,9 @@
 {
     if (!_fontsizeModle) {
         _fontsizeModle = (EFFontSizeModle*)[EFBaseModle modleWithType:(EFCellTypeFontSize)];
-        _fontsizeModle.title = @"文字大小";
-        _fontsizeModle.itemTitles = @[@"小五",@"五号",@"小四",@"四号"];
+        _fontsizeModle.title = @"字体大小";
+        _fontsizeModle.itemTitles =self.currentSelectView.fontSizeTitles; //@[@"小五",@"五号",@"小四",@"四号"];
+        [_fontsizeModle setCurentIndex:self.currentSelectView.fontSizeIndex];
         
     }
     return _fontsizeModle;
@@ -631,8 +632,8 @@
 {
     if (!_aligModle) {
         _aligModle = (EFMuiltiBtnModle*)[EFBaseModle modleWithType:(EFCellTypeMuiltiBtn)];
-        _aligModle.title = @"水平对其";
-        _aligModle.itemStrs = @[@"居左",@"居右",@"居中",@"拉伸"];
+        _aligModle.title = @"对齐方式";
+        _aligModle.itemStrs = @[@"居左",@"居中",@"居右",@"拉伸"];
         _aligModle.selectedAction = ^(NSInteger result) {
             
         };

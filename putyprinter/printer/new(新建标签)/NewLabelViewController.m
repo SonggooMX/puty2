@@ -169,6 +169,11 @@
             //取消所有选中
             [self.drawAreaView cancelAllSelected];
             PrintViewController *_printView=[[PrintViewController alloc] init];
+            
+            _printView.printSpeed=self.nLabelView.printSpeed;
+            _printView.printDes=self.nLabelView.printDesnty;
+            _printView.printDirect=self.nLabelView.printDirect;
+            
             _printView.parent=self.parent;
             self.drawAreaView.contentView.layer.cornerRadius=0;//取消圆角
             _printView.pv=[self convertViewToImage:self.drawAreaView];

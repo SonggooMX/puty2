@@ -8,8 +8,28 @@
 
 #import "baseView.h"
 #import "NewLabelViewController.h"
+#import "ZXingObjC/ZXWriter.h"
+#import "ZXingObjC/ZXImage.h"
+#import "ZXingObjC/ZXEncodeHints.h"
+#import "ZXingObjC/ZXMultiFormatWriter.h"
+#import "ImageHelper.h"
 
 @implementation baseView
+
+//字体大小名称
+-(NSArray *) fontSizeTitles{
+    NSArray *arr=@[@"大特号",@"特号",@"初号",@"小初号",@"大一号",@"一号",@"二号",@"小二号",
+                         @"三号",@"四号",@"小四号",@"五号",@"小五号",@"六号",@"小六号",@"七号",@"八号"];
+    return arr;
+}
+
+//字体大小
+-(NSArray<NSString*> *) fontSizeContents{
+    NSArray<NSString*> *arr=@[@"22.142",@"18.979",@"14.761",@"12.653",@"11.071",
+                   @"9.841",@"7.381",@"6.326",@"5.623",@"4.920",@"4.218",
+                   @"3.690",@"3.163",@"2.812",@"2.416",@"1.845",@"1.581"];
+    return arr;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -19,15 +39,80 @@
 }
 */
 
+//创建图片
+-(UIImage*) createZXingImage:(int)format withContent:(NSString*)data
+{
+    NSError *error = nil;
+    ZXEncodeHints *hints=[[ZXEncodeHints alloc] init];
+    hints.margin=0;
+    hints.encoding=NSUTF8StringEncoding;
+    ZXMultiFormatWriter *writer = [ZXMultiFormatWriter writer];
+    ZXBitMatrix* result = [writer encode:data
+                                  format:format
+                                   width:200
+                                  height:200
+                                   hints:hints
+                                   error:&error];
+    if (result) {
+        CGImageRef image = [[ZXImage imageWithMatrix:result] cgimage];
+        UIImage *bmp = [[UIImage alloc] initWithCGImage:image];
+        ImageHelper *helper=[ImageHelper new];
+        bmp=[helper imageBlackToTransparent:bmp withRed:0 andGreen:0 andBlue:0];
+        return bmp;
+        // This CGImageRef image can be placed in a UIImage, NSImage, or written to a file.
+    } else {
+        //NSString *errorMessage = [error localizedDescription];
+        return NULL;
+    }
+}
+
 -(void) initView:(CGRect)frame withImage:(UIImage *)image withNString:(NSString*)content
 {
+    [self.containerView removeFromSuperview];
+    [self.b1dlb removeFromSuperview];
+    
     self.bmp=image;
     self.frame=frame;
     self.content=content;
+    
     UIImageView *view=[[UIImageView alloc] initWithImage:image];
-    view.frame=CGRectMake(0, 0, frame.size.width, frame.size.height);
     [self addSubview:view];
+    
+    if(self.elementType==0)
+    {
+        self.b1dlb=[[UILabel alloc] init];
+        float fontsize=((NSString*)[self.fontSizeContents objectAtIndex:self.fontSizeIndex]).floatValue*8;
+        UIFont *font=[UIFont fontWithName:@"STHeitiSC-Light" size:fontsize];
+        self.b1dlb.font=font;
+        self.b1dlb.textAlignment=1;
+        self.b1dlb.text=content;
+        self.content=content;
+        self.b1dlb.numberOfLines=1;
+        self.b1dlb.lineBreakMode=NSLineBreakByCharWrapping;
+        CGRect rect=[self.b1dlb textRectForBounds:CGRectMake(0, 0, frame.size.width, 1000) limitedToNumberOfLines:1];
+        
+        float top=frame.size.height-rect.size.height;
+        float left=(frame.size.width-rect.size.width)/2;
+        
+        self.b1dlb.frame=CGRectMake(left, top, rect.size.width,rect.size.height);
+        
+        [self addSubview:self.b1dlb];
+        
+        view.frame=CGRectMake(0, 0, frame.size.width, frame.size.height-self.b1dlb.frame.size.height);
+    }
+    else
+    {
+        view.frame=CGRectMake(0, 0, frame.size.width, frame.size.height);
+    }
+    
     self.containerView=view;
+    
+    [self showScaleView];
+    
+    int angle=self.direction;
+    
+    [self rotate:angle];
+    
     [self refresh];
 }
 
@@ -38,7 +123,10 @@
 
 -(void) showScaleView
 {
-    
+    [self.rightView removeFromSuperview];
+    [self.lbScaleView removeFromSuperview];
+    [self.bottomView removeFromSuperview];
+    [self.sview removeFromSuperview];
 }
 
 -(void) rotate:(int)angle

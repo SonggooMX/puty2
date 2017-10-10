@@ -43,20 +43,30 @@
 -(void) initView:(CGRect)frame withContent:(NSString*)content
 {
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    self.content=content;
+    
     self.frame=frame;
-    UILabel *lb=[[UILabel alloc] init];
-    //按字符换行
-    //lb.lineBreakMode=NSLineBreakByCharWrapping;
-    //lb.numberOfLines=1;
+    
+    UILabel *lb=[self createLabel:0];
+    [self addSubview:lb];
+    CGRect rect=lb.frame;
+    
+    /*[[UILabel alloc] init];
+    float fontsize=((NSString*)[self.fontSizeContents objectAtIndex:self.fontSizeIndex]).floatValue*8;
+    UIFont *font=[UIFont fontWithName:@"STHeitiSC-Light" size:fontsize];
+    lb.font=font;
+    lb.textAlignment=self.alignMode;
     lb.text=content;
     self.content=content;
     lb.numberOfLines=self.autoWarp==1?0:1;
     lb.lineBreakMode=NSLineBreakByCharWrapping;
-    CGRect rect=[lb textRectForBounds:CGRectMake(0, 0, 100, 1000) limitedToNumberOfLines:self.autoWarp==1?0:1];
+    CGRect rect=[lb textRectForBounds:CGRectMake(0, 0, frame.size.width, 1000) limitedToNumberOfLines:self.autoWarp==1?0:1];
     lb.frame=CGRectMake(0, 0, rect.size.width,rect.size.height);
     [self addSubview:lb];
+    */
     
-    self.frame=CGRectMake(frame.origin.x, frame.origin.y, rect.size.width, rect.size.height);
+    self.frame=CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, rect.size.height);
     
     self.containerView=lb;
     
@@ -64,6 +74,42 @@
     [self showScaleView];
     
     [self refresh];
+}
+
+-(UILabel *) createLabel:(float)height
+{
+    UILabel *lb=[[UILabel alloc] init];
+    lb.text=self.content;
+    if(self.rowSpaceMode==3)
+    {
+        self.rowSpaceHeight=height;
+    }
+    else if(self.rowSpaceMode==1)
+    {
+        self.rowSpaceHeight=0.2f*[self getLineSpace:lb withW:100].size.height;
+    }
+    else if(self.rowSpaceMode==2)
+    {
+        self.rowSpaceHeight=0.5f*[self getLineSpace:lb withW:100].size.height;
+    }
+    else
+    {
+        self.rowSpaceHeight=0.0f;
+    }
+    
+    NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+    paraStyle.lineSpacing = self.rowSpaceHeight; //设置行间距
+    NSDictionary *dic =@{NSParagraphStyleAttributeName:paraStyle,NSKernAttributeName:@(self.charSpaceWidth)};//设置字间距
+    NSAttributedString *attributeStr = [[NSAttributedString alloc] initWithString:lb.text attributes:dic];
+    lb.attributedText=attributeStr;
+    float fontsize=((NSString*)[self.fontSizeContents objectAtIndex:self.fontSizeIndex]).floatValue*8;
+    UIFont *font=[UIFont fontWithName:@"STHeitiSC-Light" size:fontsize];
+    lb.font=font;
+    lb.textAlignment=self.alignMode;
+    //float w=(self.direction==0||self.direction==2)?self.frame.size.width:self.frame.size.height;
+    CGRect rect=[lb textRectForBounds:CGRectMake(0, 0, self.frame.size.width, 1000) limitedToNumberOfLines:self.autoWarp==1?0:1];
+    lb.frame=rect;
+    return lb;
 }
 
 //自动换行
@@ -76,34 +122,9 @@
 //设置行间距 1 自定义  0  1倍 1.5倍 1.2倍
 -(void) setLineSpace:(float)height withMode:(int)mode
 {
-    UILabel *lb=((UILabel*)self.containerView);
-    self.rowSpaceMode=mode;
-    if(mode==3)
-    {
-        self.rowSpaceHeight=height;
-    }
-    else if(mode==1)
-    {
-        self.rowSpaceHeight=0.2f*[self getLineSpace:lb withW:100].size.height;
-    }
-    else if(mode==2)
-    {
-        self.rowSpaceHeight=0.5f*[self getLineSpace:lb withW:100].size.height;
-    }
-    else
-    {
-        self.rowSpaceHeight=0.0f;
-    }
     
-    NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
-    paraStyle.lineSpacing = self.rowSpaceHeight; //设置行间距
-    NSDictionary *dic =@{NSParagraphStyleAttributeName:paraStyle};
-     NSAttributedString *attributeStr = [[NSAttributedString alloc] initWithString:lb.text attributes:dic];
-    lb.attributedText=attributeStr;
-    CGRect rect=[lb textRectForBounds:CGRectMake(0, 0, self.frame.size.width, 1000) limitedToNumberOfLines:self.autoWarp==1?0:1];
-    lb.frame=rect;
     
-    [self resetViewWH:rect.size];
+    //[self resetViewWH:CGSizeMake(self.frame.size.width, rect.size.height)];
 }
 
 -(void) resetViewWH:(CGSize)size

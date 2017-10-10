@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "Print.h"
 #import "HomeBottomViewController.h"
+#import "PrintConditions.h"
 
 @interface PrintViewController ()
 
@@ -28,6 +29,8 @@
 @property UILabel *currentSelectPrinter;
 @property UIButton *btnSelectPrinter;
 
+@property PrintConditions *pc;
+
 @end
 
 
@@ -36,6 +39,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    CGRect rect=[UIScreen mainScreen].bounds;
     
     self.navigationItem.title = @"打印";
     UIBarButtonItem *button = [[UIBarButtonItem alloc] init];
@@ -60,33 +65,22 @@
     //标签信息
     [((UILabel*)[self.topDrawView viewWithTag:9988]) setText:self.labelInfo];
     
-    // 新建功能视图
-    NSArray *funcViews = [[NSBundle mainBundle] loadNibNamed:@"print" owner:self options:nil]; //通过这个方法,取得我们的视图
-    self.funcView = [funcViews objectAtIndex:0];
+    // 打印参数界面
+    self.pc=[[PrintConditions alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, 320)];
+   
+    [self.pc setConfigPrintDirect:self.printDirect];
+    [self.pc setConfigPrintSpeed:self.printSpeed-1];
+    [self.pc setConfigPrintDes:self.printDes-1];
+    
+    self.pc.parent=self;
+    //NSArray *funcViews = [[NSBundle mainBundle] loadNibNamed:@"print" owner:self options:nil]; //通过这个方法,取得我们的视图
+    //self.funcView = [funcViews objectAtIndex:0];
     //    self.subView.frame = CGRectMake(0, 0, rect.size.width, 284); //设置frame
-    [self.bottomFuncView addSubview:self.funcView]; //添加
+    [self.bottomFuncView addSubview:self.pc]; //添加
     [self.funcView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.left.right.equalTo(self.bottomFuncView);
     }];
     
-    //打印按钮点击
-    UIButton *btnPrint=(UIButton*)[self.funcView viewWithTag:8888];
-    [btnPrint addTarget:self action:@selector(printLabel) forControlEvents:(UIControlEventTouchUpInside)];
-    
-    self.currentSelectPrinter=(UILabel*)[self.funcView viewWithTag:6001];
-    self.btnSelectPrinter=(UIButton*)[self.funcView viewWithTag:6000];
-    [self.btnSelectPrinter addTarget:self action:@selector(selectPrinter) forControlEvents:UIControlEventTouchUpInside];
-    
-}
-
--(void) viewWillAppear:(BOOL)animated
-{
-    if(self.parent.activeDevice==nil)
-    {
-        self.currentSelectPrinter.text=@"未连接打印机";
-        return;
-    }
-    self.currentSelectPrinter.text=self.parent.activeDevice.name;
 }
 
 #pragma mark -选择打印机
@@ -98,6 +92,17 @@
     [self.navigationController pushViewController:_connectView animated:YES];
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    if(self.parent.activeDevice==nil)
+    {
+        self.pc.lbSelectPrinter.text=@"未连接打印机";
+        return;
+    }
+    self.pc.lbSelectPrinter.text=self.parent.activeDevice.name;
+}
+
+
 #pragma  mark -打印
 -(void) printLabel
 {
@@ -107,12 +112,20 @@
         return;
     }
     
+    //设置图片打印方向及尺寸
+    
     //检查打印机状态
     Print *pt=[Print new];
     pt.parent=self.parent;
     int w=self.pv.size.width/8;
     int h=self.pv.size.height/8;
-    [pt printLabel:self.pv lw:w lh:h pt:1 pageTotal:1 pageIndex:1];
+    
+    //self.pv imager
+    
+    for(int i=1;i<=self.pc.printCopys;i++)
+    {
+        [pt printLabel:self.pv lw:w lh:h pt:1 pageTotal:self.pc.printCopys pageIndex:i];
+    }
 }
 
 -(void) setPrintViewImage:(UIImage*)img

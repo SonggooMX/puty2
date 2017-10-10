@@ -22,11 +22,6 @@
     rcell.titleLable.text = self.title;
     rcell.itemTitles = self.itemTitles;
     rcell.changeActin = ^(NSString *result,NSInteger index) {
-        _result = result;
-        self.curentIndex = index;
-        if (self.changeActin) {
-            self.changeActin(result);
-        }
         
         if([self.title isEqualToString:@"打印浓度"])
         {
@@ -59,8 +54,38 @@
         else if([self.title isEqualToString:@"线条宽度"])
         {
             tableView *tv=(tableView*)bview;
-            tv.lineWidth=result.intValue;
+            tv.lineWidth=result.floatValue;
             [tv resetViewWH:bview.frame.size];
+        }
+        else if([self.title isEqualToString:@"字符间距"])
+        {
+            lbView *lb=(lbView*)bview;
+            lb.charSpaceWidth=result.floatValue;
+            [lb setLineSpace:lb.rowSpaceHeight withMode:lb.rowSpaceMode];
+        }
+        else if([self.title isEqualToString:@"字体大小"])
+        {
+            int seq=(int)index;
+            seq=seq>=17?0:seq;
+            seq=seq<=-1?16:seq;
+            bview.fontSizeIndex=seq;
+            
+            if(bview.elementType==8)
+            {
+                //lbView *lb=(lbView*)bview;
+                //[lb setLineSpace:lb.rowSpaceHeight withMode:lb.rowSpaceMode];
+                [bview initView:bview.frame withImage:nil withNString:bview.content];
+            }
+            else if(bview.elementType==0)
+            {
+                [bview initView:bview.frame withImage:nil withNString:bview.content];
+            }
+        }
+        
+        _result = result;
+        self.curentIndex = index;
+        if (self.changeActin) {
+            self.changeActin(result);
         }
     };
     rcell.curentIndex = self.curentIndex;

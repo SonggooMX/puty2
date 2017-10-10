@@ -22,10 +22,7 @@
 
 //字符间距
 @property float charSpaceWidth;
-//字体名称
-@property NSString *fontName;
-//字体大小
-@property int fontSizeIndex;
+
 //对齐模式 
 @property int alignMode;
 

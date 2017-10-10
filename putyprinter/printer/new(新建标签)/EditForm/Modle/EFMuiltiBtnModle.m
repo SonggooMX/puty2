@@ -39,6 +39,12 @@
         {
             linfo.pagetType=(int)result;
         }
+        else if([self.title isEqualToString:@"对齐方式"])
+        {
+            lbView *lb=(lbView*)bview;
+            lb.alignMode=(int)result;
+            [lb setLineSpace:lb.rowSpaceHeight withMode:lb.rowSpaceMode];
+        }
         else if([self.title isEqualToString:@"行间距"])
         {
             int mode=(int)result;

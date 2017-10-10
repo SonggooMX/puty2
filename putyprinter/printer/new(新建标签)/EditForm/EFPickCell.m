@@ -54,6 +54,11 @@
             [self.nl refresh:[NSString stringWithFormat:@"%.2f",self.nl.labelWidth] withHeight:walert.textFields.firstObject.text];
             return;
         }
+        else if([self.titleLable.text isEqualToString:@"当前内容"])
+        {
+            self.bv.content=walert.textFields.firstObject.text;
+        }
+        
         self.subTitleLable.text=walert.textFields.firstObject.text;
         //刷新数据
         CGRect rect=self.bv.frame;

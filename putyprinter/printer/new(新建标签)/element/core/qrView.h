@@ -7,6 +7,10 @@
 //
 
 #import "baseView.h"
+#import "ZXingObjC/ZXWriter.h"
+#import "ZXingObjC/ZXImage.h"
+#import "ZXingObjC/ZXEncodeHints.h"
+#import "ZXingObjC/ZXMultiFormatWriter.h"
 
 @interface qrView : baseView
 

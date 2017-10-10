@@ -15,6 +15,7 @@
 
 @interface baseView : UIView
 
+@property UILabel *b1dlb;
 @property UIImage *bmp;
 @property CGPoint beginpoint;
 @property UIView *parent;
@@ -45,7 +46,16 @@
 //参与打印
 @property int isPrint;
 
+//当前字体名称
+@property NSString *fontName;
+//字体大小
+@property int fontSizeIndex;
+
 -(UIImage *)getImageFromView:(UIView *)view;
+
+//文字
+-(NSArray *) fontSizeTitles;
+-(NSArray *) fontSizeContents;
 
 -(void) initView:(CGRect)frame withImage:(UIImage*)image withNString:(NSString*)content;
 
@@ -62,5 +72,7 @@
 -(float) getYMM;
 
 -(void) resetViewWH:(CGSize)size;
+
+-(UIImage*) createZXingImage:(int)format withContent:(NSString*)data;
 
 @end

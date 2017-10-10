@@ -21,8 +21,15 @@
 
 -(void) initView:(CGRect)frame withImage:(UIImage *)image withNString:(NSString*)content
 {
+    if(image==nil){
+        UIImage *img=[self createZXingImage:kBarcodeFormatCode128 withContent:content];
+        if(img==NULL) return;
+        image=img;
+    }
     [super initView:frame withImage:image withNString:content];
+
     [self showScaleView];
+    [self refresh];
 }
 
 //重新设置宽高
@@ -31,14 +38,30 @@
     self.frame=CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
     
     if(self.direction==0||self.direction==2){
-    self.containerView.frame=CGRectMake(self.containerView.frame.origin.y, self.containerView.frame.origin.x, size.width, size.height);
+        
+        
+        float top=self.frame.size.height-self.b1dlb.frame.size.height;
+        float left=(self.frame.size.width-self.b1dlb.frame.size.width)/2;
+        
+    self.containerView.frame=CGRectMake(self.containerView.frame.origin.y, self.containerView.frame.origin.x, size.width, size.height-self.b1dlb.frame.size.height);
+        
+        self.b1dlb.frame=CGRectMake(left, top, self.b1dlb.frame.size.width,self.b1dlb.frame.size.height);
+        
+        
         self.rightView.frame=CGRectMake(self.frame.size.width-10, (self.frame.size.height-20)/2, 20, 20);
         
         self.bottomView.frame=CGRectMake((self.frame.size.width-20)/2, self.frame.size.height-10, 20, 20);
     }
     else
     {
-        self.containerView.frame=CGRectMake(self.containerView.frame.origin.x, self.containerView.frame.origin.y, size.height, size.width);
+        float top=self.frame.size.width-self.b1dlb.frame.size.height;
+        float left=(self.frame.size.height-self.b1dlb.frame.size.width)/2;
+        
+        self.containerView.frame=CGRectMake(self.containerView.frame.origin.x, self.containerView.frame.origin.y, size.height, size.width-self.b1dlb.frame.size.height);
+        
+        self.b1dlb.frame=CGRectMake(left, top, self.b1dlb.frame.size.width,self.b1dlb.frame.size.height);
+        
+        
         self.rightView.frame=CGRectMake(self.frame.size.height-10, (self.frame.size.width-20)/2, 20, 20);
         
         self.bottomView.frame=CGRectMake((self.frame.size.height-20)/2, self.frame.size.width-10, 20, 20);

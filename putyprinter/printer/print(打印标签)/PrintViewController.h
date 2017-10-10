@@ -20,6 +20,16 @@
 @property UIImage *pv;
 @property NSString *labelInfo;
 
+@property int printDes;
+@property int printSpeed;
+@property int printDirect;
+
+#pragma mark -标签的实际宽高(毫米)
+@property float labelWidth;
+@property float labelHeight;
+
 -(void) setPrintViewImage:(UIImage*)img;
+-(void) printLabel;
+-(void) selectPrinter;
 
 @end

@@ -29,6 +29,13 @@
     //[super touchesBegan:touches withEvent:event];
 }
 
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    //[((baseView*)self.parent) resetViewWH:self.parent.frame.size];
+    baseView *bv=(baseView*)self.parent;
+    [bv initView:bv.frame withImage:nil withNString:bv.content];
+}
+
 //元素的缩放 （二维码 右下角缩放大小）
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {

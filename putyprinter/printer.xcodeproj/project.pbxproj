@@ -40,6 +40,9 @@
 		1B081BD31F75489D00308DAF /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B081BCF1F75489D00308DAF /* NetworkManager.m */; };
 		1B359BDC1F77EEDA0082B645 /* bluetoothscell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B359BDB1F77EEDA0082B645 /* bluetoothscell.xib */; };
 		1B359BDF1F77EEF30082B645 /* bluetoothscell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B359BDE1F77EEF30082B645 /* bluetoothscell.m */; };
+		1B4156EF1F8BA9F7003EAAD6 /* print_Old.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4156EE1F8BA9F7003EAAD6 /* print_Old.xib */; };
+		1B4156F81F8BACEF003EAAD6 /* PrintConditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B4156F71F8BACEF003EAAD6 /* PrintConditions.m */; };
+		1B4156FA1F8BAD5D003EAAD6 /* PrintConditions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4156F91F8BAD5D003EAAD6 /* PrintConditions.xib */; };
 		1B5815AA1F7671B8001EE1D3 /* lineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5815A81F7671B8001EE1D3 /* lineView.m */; };
 		1B5F0BAD1F34AC440023F87A /* newLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F0BAC1F34AC440023F87A /* newLabel.m */; };
 		1B85F9CB1F2B02C800179C6D /* drawArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B85F9CA1F2B02C800179C6D /* drawArea.m */; };
@@ -358,6 +361,10 @@
 		1B359BDB1F77EEDA0082B645 /* bluetoothscell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bluetoothscell.xib; sourceTree = "<group>"; };
 		1B359BDD1F77EEF30082B645 /* bluetoothscell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bluetoothscell.h; sourceTree = "<group>"; };
 		1B359BDE1F77EEF30082B645 /* bluetoothscell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bluetoothscell.m; sourceTree = "<group>"; };
+		1B4156EE1F8BA9F7003EAAD6 /* print_Old.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = print_Old.xib; sourceTree = "<group>"; };
+		1B4156F61F8BACEF003EAAD6 /* PrintConditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrintConditions.h; sourceTree = "<group>"; };
+		1B4156F71F8BACEF003EAAD6 /* PrintConditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrintConditions.m; sourceTree = "<group>"; };
+		1B4156F91F8BAD5D003EAAD6 /* PrintConditions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrintConditions.xib; sourceTree = "<group>"; };
 		1B5815A81F7671B8001EE1D3 /* lineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = lineView.m; path = element/core/lineView.m; sourceTree = "<group>"; };
 		1B5815A91F7671B8001EE1D3 /* lineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lineView.h; path = element/core/lineView.h; sourceTree = "<group>"; };
 		1B5F0BAB1F34AC440023F87A /* newLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newLabel.h; sourceTree = "<group>"; };
@@ -1320,6 +1327,10 @@
 		B9140C921F1CBEDE00B9A2AB /* xib */ = {
 			isa = PBXGroup;
 			children = (
+				1B4156F61F8BACEF003EAAD6 /* PrintConditions.h */,
+				1B4156F71F8BACEF003EAAD6 /* PrintConditions.m */,
+				1B4156F91F8BAD5D003EAAD6 /* PrintConditions.xib */,
+				1B4156EE1F8BA9F7003EAAD6 /* print_Old.xib */,
 				B9140D491F1DEA4800B9A2AB /* draw.xib */,
 				B9140C9E1F1CBF0200B9A2AB /* print.xib */,
 			);
@@ -1712,6 +1723,7 @@
 				B9140CA21F1CBF0200B9A2AB /* alignment.xib in Resources */,
 				90EA07101F376DD8003E707D /* textAtt.plist in Resources */,
 				90AD22A71F3A17B30002B152 /* ZXFontTableViewCell.xib in Resources */,
+				1B4156FA1F8BAD5D003EAAD6 /* PrintConditions.xib in Resources */,
 				B94B3E4E1F1F5BAF003B607F /* connetController.xib in Resources */,
 				B98773841F20A9A90057404D /* oneDimensionalViewController.xib in Resources */,
 				A00E39721F66DF220081C5AF /* EFPickButton.xib in Resources */,
@@ -1727,6 +1739,7 @@
 				B9140D4A1F1DEA4800B9A2AB /* draw.xib in Resources */,
 				A00E39771F66DF220081C5AF /* EFSliderCell.xib in Resources */,
 				B9E27B0E1F204F8700F687A1 /* defaultController.xib in Resources */,
+				1B4156EF1F8BA9F7003EAAD6 /* print_Old.xib in Resources */,
 				A00E39681F66DF220081C5AF /* EFAttributeCell.xib in Resources */,
 				B9E27B091F204F3800F687A1 /* logoController.xib in Resources */,
 				1B081BB91F7546E000308DAF /* HandWritingCell.xib in Resources */,
@@ -1836,6 +1849,7 @@
 				1BC435DA1F83A19800E9892E /* qrView.m in Sources */,
 				90EE9FB51F2A4971001E3371 /* NSObject+YYModel.m in Sources */,
 				1B081B731F75452900308DAF /* JSONAPI.m in Sources */,
+				1B4156F81F8BACEF003EAAD6 /* PrintConditions.m in Sources */,
 				1B081B721F75452900308DAF /* JSONModelError.m in Sources */,
 				B987738D1F20A9FE0057404D /* pictureViewController.m in Sources */,
 				A00E39691F66DF220081C5AF /* EFBaseCell.m in Sources */,

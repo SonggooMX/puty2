@@ -32,6 +32,8 @@
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [((baseView*)self.parent) resetViewWH:self.parent.frame.size];
+    //baseView *bv=(baseView*)self.parent;
+    //[bv initView:bv.frame withImage:nil withNString:bv.content];
 }
 
 //一维码缩放

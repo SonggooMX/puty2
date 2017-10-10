@@ -43,6 +43,7 @@
     b1dView *v1=[[b1dView alloc] init];
     v1.parent=self.parent.drawAreaView;
     v1.elementType=0;
+    v1.fontSizeIndex=14;
     v1.parentController=self.parent;
     [v1 initView:CGRectMake(50, 50, 100, 50) withImage:img withNString:@"12345678"];
     [self.parent.drawAreaView addSubview:v1];
@@ -96,6 +97,7 @@
 - (IBAction)btnInsertText:(id)sender {
     lbView *v1=[[lbView alloc] init];
     v1.autoWarp=1;
+    v1.fontSizeIndex=11;
     v1.parent=self.parent.drawAreaView;
     v1.elementType=8;
     v1.parentController=self.parent;

@@ -24,10 +24,14 @@
 
 -(void) initView:(CGRect)frame withImage:(UIImage *)image withNString:(NSString*)content
 {
+    if(image==nil){
+        UIImage *img=[self createZXingImage:kBarcodeFormatQRCode withContent:content];
+        if(img==NULL) return;
+        image=img;
+    }
     [super initView:frame withImage:image withNString:content];
-    
-    //右小角放一个缩放图标
     [self showScaleView];
+    [self refresh];
 }
 
 -(void) resetViewWH:(CGSize)size

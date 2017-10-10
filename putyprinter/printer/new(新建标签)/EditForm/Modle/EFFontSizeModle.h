@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "EFBaseModle.h"
 #import "tableView.h"
+#import "lbView.h"
 
 @interface EFFontSizeModle : EFBaseModle
 
