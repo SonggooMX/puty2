@@ -41,7 +41,6 @@ static int head=-1,tail=-1;
 static Byte sndBuf[BUF_SIZE];
 static BOOL isBuffedWrite = YES;
 static BOOL taskInRunning = NO;
-static int sendDataComplete=0;//数据发送完毕
 static NSMutableData *lastData = nil;
 static int currentPrintStatus=-1;//当前打印机状态
 
@@ -56,7 +55,7 @@ static  Byte ORDER_ONE_LINE[] = {0x15, 0x01};
 @interface Print : UIViewController
 
 @property HomeBottomViewController *parent;
-
+@property int sendDataComplete;//数据发送完毕
 
 /*******************************************************************
  函数名：printtxt

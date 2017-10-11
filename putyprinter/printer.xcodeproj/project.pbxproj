@@ -45,6 +45,10 @@
 		1B4156FA1F8BAD5D003EAAD6 /* PrintConditions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4156F91F8BAD5D003EAAD6 /* PrintConditions.xib */; };
 		1B5815AA1F7671B8001EE1D3 /* lineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5815A81F7671B8001EE1D3 /* lineView.m */; };
 		1B5F0BAD1F34AC440023F87A /* newLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F0BAC1F34AC440023F87A /* newLabel.m */; };
+		1B67D6C81F8C9D2900EAF585 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B67D6C71F8C9D2900EAF585 /* Util.m */; };
+		1B67D6DD1F8CB71D00EAF585 /* SSKProgressHUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B67D6DC1F8CB71D00EAF585 /* SSKProgressHUD.xib */; };
+		1B67D6E01F8CB81400EAF585 /* SSKProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B67D6DF1F8CB81400EAF585 /* SSKProgressHUD.m */; };
+		1B67D6E31F8CC15D00EAF585 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B67D6E21F8CC15D00EAF585 /* MBProgressHUD.m */; };
 		1B85F9CB1F2B02C800179C6D /* drawArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B85F9CA1F2B02C800179C6D /* drawArea.m */; };
 		1B85F9CE1F2B033E00179C6D /* labelArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B85F9CD1F2B033E00179C6D /* labelArea.m */; };
 		1B85F9D11F2B039500179C6D /* insertArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B85F9D01F2B039500179C6D /* insertArea.m */; };
@@ -369,6 +373,13 @@
 		1B5815A91F7671B8001EE1D3 /* lineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lineView.h; path = element/core/lineView.h; sourceTree = "<group>"; };
 		1B5F0BAB1F34AC440023F87A /* newLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newLabel.h; sourceTree = "<group>"; };
 		1B5F0BAC1F34AC440023F87A /* newLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newLabel.m; sourceTree = "<group>"; };
+		1B67D6C61F8C9D2900EAF585 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		1B67D6C71F8C9D2900EAF585 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		1B67D6DC1F8CB71D00EAF585 /* SSKProgressHUD.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSKProgressHUD.xib; path = "printer/Tools(工具类)/MBProgressHUD/SSKProgressHUD.xib"; sourceTree = SOURCE_ROOT; };
+		1B67D6DE1F8CB81400EAF585 /* SSKProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKProgressHUD.h; path = "printer/Tools(工具类)/MBProgressHUD/SSKProgressHUD.h"; sourceTree = SOURCE_ROOT; };
+		1B67D6DF1F8CB81400EAF585 /* SSKProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKProgressHUD.m; path = "printer/Tools(工具类)/MBProgressHUD/SSKProgressHUD.m"; sourceTree = SOURCE_ROOT; };
+		1B67D6E11F8CC15D00EAF585 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		1B67D6E21F8CC15D00EAF585 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		1B85F9C91F2B02C800179C6D /* drawArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = drawArea.h; sourceTree = "<group>"; };
 		1B85F9CA1F2B02C800179C6D /* drawArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = drawArea.m; sourceTree = "<group>"; };
 		1B85F9CC1F2B033E00179C6D /* labelArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = labelArea.h; sourceTree = "<group>"; };
@@ -1327,12 +1338,17 @@
 		B9140C921F1CBEDE00B9A2AB /* xib */ = {
 			isa = PBXGroup;
 			children = (
+				1B67D6E11F8CC15D00EAF585 /* MBProgressHUD.h */,
+				1B67D6E21F8CC15D00EAF585 /* MBProgressHUD.m */,
 				1B4156F61F8BACEF003EAAD6 /* PrintConditions.h */,
 				1B4156F71F8BACEF003EAAD6 /* PrintConditions.m */,
 				1B4156F91F8BAD5D003EAAD6 /* PrintConditions.xib */,
 				1B4156EE1F8BA9F7003EAAD6 /* print_Old.xib */,
 				B9140D491F1DEA4800B9A2AB /* draw.xib */,
 				B9140C9E1F1CBF0200B9A2AB /* print.xib */,
+				1B67D6DC1F8CB71D00EAF585 /* SSKProgressHUD.xib */,
+				1B67D6DE1F8CB81400EAF585 /* SSKProgressHUD.h */,
+				1B67D6DF1F8CB81400EAF585 /* SSKProgressHUD.m */,
 			);
 			path = xib;
 			sourceTree = "<group>";
@@ -1507,6 +1523,8 @@
 				90EE9FAA1F2A4971001E3371 /* YYModel */,
 				B988E3201F1EF0A7003EE56B /* Additions */,
 				B92A7ACC1F1C15B6000CC07A /* Masonry */,
+				1B67D6C61F8C9D2900EAF585 /* Util.h */,
+				1B67D6C71F8C9D2900EAF585 /* Util.m */,
 			);
 			path = "Tools(工具类)";
 			sourceTree = "<group>";
@@ -1742,6 +1760,7 @@
 				1B4156EF1F8BA9F7003EAAD6 /* print_Old.xib in Resources */,
 				A00E39681F66DF220081C5AF /* EFAttributeCell.xib in Resources */,
 				B9E27B091F204F3800F687A1 /* logoController.xib in Resources */,
+				1B67D6DD1F8CB71D00EAF585 /* SSKProgressHUD.xib in Resources */,
 				1B081BB91F7546E000308DAF /* HandWritingCell.xib in Resources */,
 				B9140CA51F1CBF0200B9A2AB /* labelArea.xib in Resources */,
 				A00E398B1F66DF220081C5AF /* PositionCell.xib in Resources */,
@@ -1780,6 +1799,7 @@
 			files = (
 				90AD22AB1F3A1C570002B152 /* ZXLoginViewController.m in Sources */,
 				B988E3411F1EF0A8003EE56B /* UIView+CZAddition.m in Sources */,
+				1B67D6E01F8CB81400EAF585 /* SSKProgressHUD.m in Sources */,
 				90AD228A1F3A12360002B152 /* AFSecurityPolicy.m in Sources */,
 				B9140C931F1CBEDE00B9A2AB /* PrintViewController.m in Sources */,
 				B9140C891F1CB85700B9A2AB /* ViewController.m in Sources */,
@@ -1821,6 +1841,7 @@
 				B9E27B031F204F2300F687A1 /* fontController.m in Sources */,
 				A00E39881F66DF220081C5AF /* EFSwitchModel.m in Sources */,
 				90EE9FA71F2A4931001E3371 /* TextAttArrayCell.m in Sources */,
+				1B67D6C81F8C9D2900EAF585 /* Util.m in Sources */,
 				A00E397A1F66DF220081C5AF /* EFToolBar.m in Sources */,
 				1BD590AA1F74FAC800564277 /* LogoTypeModel.m in Sources */,
 				1BD590AC1F74FAC800564277 /* RightTableCell.m in Sources */,
@@ -1938,6 +1959,7 @@
 				90AD22921F3A12360002B152 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				90AD22981F3A12360002B152 /* UIWebView+AFNetworking.m in Sources */,
 				1B081BB51F7546E000308DAF /* MCURLResponse.m in Sources */,
+				1B67D6E31F8CC15D00EAF585 /* MBProgressHUD.m in Sources */,
 				1BA1BB261F137530005BA203 /* main.m in Sources */,
 				1B85FA491F2B049D00179C6D /* leftScaleView.m in Sources */,
 				1B85FA4D1F2B049D00179C6D /* bottomRightScaleView.m in Sources */,

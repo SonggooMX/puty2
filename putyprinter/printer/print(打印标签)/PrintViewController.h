@@ -11,6 +11,9 @@
 #import <CoreBluetooth/CBService.h>
 #import "connetController.h"
 #import "HomeBottomViewController.h"
+#import "Util.h"
+#import "Print.h"
+#import "MBProgressHUD.h"
 
 @interface PrintViewController : UIViewController
 
@@ -27,6 +30,8 @@
 #pragma mark -标签的实际宽高(毫米)
 @property float labelWidth;
 @property float labelHeight;
+
+@property Print *pt;
 
 -(void) setPrintViewImage:(UIImage*)img;
 -(void) printLabel;

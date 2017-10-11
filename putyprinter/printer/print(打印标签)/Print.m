@@ -20,7 +20,7 @@
 - (BOOL) printBin:(NSData *)bin
 {
     //NSLog(@"%@",bin);
-    sendDataComplete=(int)[bin length];
+    self.sendDataComplete=(int)[bin length];
     
     if(self.parent.activeDevice==nil || !(self.parent.activeDevice.state==CBPeripheralStateConnected))
     {
@@ -411,14 +411,14 @@
     if ( data==nil)
     {
         taskInRunning=NO;
-        sendDataComplete=0;
+        self.sendDataComplete=0;
         NSLog(@"stop SendTask");
     }
     else if ([data length] > 0 )
     {
-          NSLog(@"datalen=%d",(int)[data length]);
+          //NSLog(@"datalen=%d",(int)[data length]);
         
-          sendDataComplete=sendDataComplete-(int)[data length];
+          self.sendDataComplete=self.sendDataComplete-(int)[data length];
         
            [self.parent.activeDevice writeValue:data forCharacteristic:self.parent.activeWriteCharacteristic type:CBCharacteristicWriteWithResponse];
         Boolean ret=YES;
@@ -446,7 +446,7 @@
         }
         
         //数据发送完毕
-        if(sendDataComplete<=0)
+        if(self.sendDataComplete<=0)
         {
             
         }

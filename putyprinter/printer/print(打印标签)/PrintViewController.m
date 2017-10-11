@@ -112,20 +112,71 @@
         return;
     }
     
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeAnnularDeterminate;
+    hud.label.text = @"请稍后，正在打印...";
+    [hud showAnimated:true];
+    
+    //设置图片大小
+    Util *ut=[Util new];
+    UIImage *bmp=[ut PostScale:self.pv withW:self.labelWidth*8 withH:self.labelHeight*8];
+    
     //设置图片打印方向及尺寸
+    switch (self.printDirect*90) {
+        case 270:
+            bmp=[ut image:bmp rotation:UIImageOrientationLeft];
+            break;
+        case 180:
+            bmp=[ut image:bmp rotation:UIImageOrientationDown];
+            break;
+        case 90:
+            bmp=[ut image:bmp rotation:UIImageOrientationRight];
+            break;
+        default:
+            break;
+    }
+    
+    //[self saveImageToPhotos:bmp];
+    
+    
     
     //检查打印机状态
-    Print *pt=[Print new];
-    pt.parent=self.parent;
-    int w=self.pv.size.width/8;
-    int h=self.pv.size.height/8;
+    self.pt=[Print new];
+    self.pt.parent=self.parent;
+    
+    int w=bmp.size.width/8;
+    int h=bmp.size.height/8;
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        // Do something...
+        for(int i=1;i<=self.pc.lbPrintCopys.text.intValue;i++)
+        {
+            while (self.pt.sendDataComplete>0) {
+                NSLog(@"%d",self.pt.sendDataComplete);
+            }
+            self.pt.sendDataComplete=1;
+            //[mbphud hideHUD];
+            //[mbphud showMessage:[NSString stringWithFormat:@"请稍后，正在打印%d/%d",i,self.pc.lbPrintCopys.text.intValue]];
+            [self.pt printLabel:bmp lw:w lh:h pt:1 pageTotal:self.pc.printCopys pageIndex:i];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
+    
+    //[mbphud hideHUD];
     
     //self.pv imager
+    //NSThread *thread1 = [[NSThread alloc]initWithTarget:self selector:@selector(run:) object:@"方式一启动"];
     
-    for(int i=1;i<=self.pc.printCopys;i++)
-    {
-        [pt printLabel:self.pv lw:w lh:h pt:1 pageTotal:self.pc.printCopys pageIndex:i];
-    }
+    //需要启动一下
+    //[thread1 start];
+}
+
+-(void) run:(NSString*)content
+{
+    
 }
 
 -(void) setPrintViewImage:(UIImage*)img

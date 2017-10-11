@@ -174,6 +174,9 @@
             _printView.printDes=self.nLabelView.printDesnty;
             _printView.printDirect=self.nLabelView.printDirect;
             
+            _printView.labelWidth=self.nLabelView.labelWidth;
+            _printView.labelHeight=self.nLabelView.labelHeight;
+            
             _printView.parent=self.parent;
             self.drawAreaView.contentView.layer.cornerRadius=0;//取消圆角
             _printView.pv=[self convertViewToImage:self.drawAreaView];
@@ -221,8 +224,9 @@
 #pragma mark uiview 转图片
 -(UIImage*)convertViewToImage:(UIView*)v{
     CGSize s = v.bounds.size;
+    s=CGSizeMake(s.width-1, s.height-1);
     // 下面方法，第一个参数表示区域大小。第二个参数表示是否是非透明的。如果需要显示半透明效果，需要传NO，否则传YES。第三个参数就是屏幕密度了
-    UIGraphicsBeginImageContextWithOptions(s, NO, [UIScreen mainScreen].scale);
+    UIGraphicsBeginImageContextWithOptions(s, YES, [UIScreen mainScreen].scale);
     [v.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage*image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
