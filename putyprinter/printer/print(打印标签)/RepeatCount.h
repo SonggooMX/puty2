@@ -10,9 +10,9 @@
 
 @interface RepeatCount : NSObject
 
-@property(nonatomic, nonnull) NSString *value;
-@property(nonatomic, nonnull) NSString *count;
+@property int value;
+@property int count;
 
-- (void) init:(NSString*)value second:(NSString*)count;
+- (void) init:(int)value second:(int)count;
 
 @end

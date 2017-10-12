@@ -10,7 +10,7 @@
 
 @implementation RepeatCount
 
--(void) init:(NSString*)value second:(NSString*)count
+-(void) init:(int)value second:(int)count
 {
     self.value=(value);
     self.count=(count);

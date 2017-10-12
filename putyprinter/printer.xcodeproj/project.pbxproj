@@ -60,6 +60,7 @@
 		1B85FA951F2B1AC700179C6D /* ZXingObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B85FA941F2B1AB900179C6D /* ZXingObjC.framework */; };
 		1B85FA961F2B1ACE00179C6D /* ZXingObjC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B85FA941F2B1AB900179C6D /* ZXingObjC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1B9A30281F7612D70058CC39 /* rectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9A30261F7612D70058CC39 /* rectView.m */; };
+		1B9B6E481F8F3AB200D242A0 /* 221.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B9B6E471F8F3AB200D242A0 /* 221.png */; };
 		1BA1BB261F137530005BA203 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA1BB251F137530005BA203 /* main.m */; };
 		1BA1BB291F137530005BA203 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA1BB281F137530005BA203 /* AppDelegate.m */; };
 		1BA1BB2F1F137530005BA203 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BA1BB2D1F137530005BA203 /* Main.storyboard */; };
@@ -72,6 +73,7 @@
 		1BC435DD1F83A19800E9892E /* baseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC435D61F83A19800E9892E /* baseView.m */; };
 		1BC435DE1F83A19800E9892E /* b1dView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC435D81F83A19800E9892E /* b1dView.m */; };
 		1BC435E71F83DA3E00E9892E /* tableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC435E51F83DA3E00E9892E /* tableView.m */; };
+		1BD13B361F8DE3EA00172340 /* 22.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1BD13B351F8DE3EA00172340 /* 22.jpg */; };
 		1BD590A81F74FAC800564277 /* LogoManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD5909B1F74FAC800564277 /* LogoManagerController.m */; };
 		1BD590A91F74FAC800564277 /* LogoImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD5909E1F74FAC800564277 /* LogoImageModel.m */; };
 		1BD590AA1F74FAC800564277 /* LogoTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD590A01F74FAC800564277 /* LogoTypeModel.m */; };
@@ -399,6 +401,7 @@
 		1B85FA801F2B1AB900179C6D /* ZXingObjC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZXingObjC.xcodeproj; path = ZXingObjC/ZXingObjC.xcodeproj; sourceTree = "<group>"; };
 		1B9A30261F7612D70058CC39 /* rectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = rectView.m; path = element/core/rectView.m; sourceTree = "<group>"; };
 		1B9A30271F7612D70058CC39 /* rectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rectView.h; path = element/core/rectView.h; sourceTree = "<group>"; };
+		1B9B6E471F8F3AB200D242A0 /* 221.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 221.png; sourceTree = "<group>"; };
 		1BA1BB211F137530005BA203 /* printer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = printer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BA1BB251F137530005BA203 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1BA1BB271F137530005BA203 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -420,6 +423,7 @@
 		1BC435D91F83A19800E9892E /* b1dView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = b1dView.h; path = element/core/b1dView.h; sourceTree = "<group>"; };
 		1BC435E51F83DA3E00E9892E /* tableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = tableView.m; path = element/core/tableView.m; sourceTree = "<group>"; };
 		1BC435E61F83DA3E00E9892E /* tableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tableView.h; path = element/core/tableView.h; sourceTree = "<group>"; };
+		1BD13B351F8DE3EA00172340 /* 22.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 22.jpg; sourceTree = "<group>"; };
 		1BD5909A1F74FAC800564277 /* LogoManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoManagerController.h; sourceTree = "<group>"; };
 		1BD5909B1F74FAC800564277 /* LogoManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoManagerController.m; sourceTree = "<group>"; };
 		1BD5909D1F74FAC800564277 /* LogoImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoImageModel.h; sourceTree = "<group>"; };
@@ -982,6 +986,8 @@
 		1BA1BB181F137530005BA203 = {
 			isa = PBXGroup;
 			children = (
+				1B9B6E471F8F3AB200D242A0 /* 221.png */,
+				1BD13B351F8DE3EA00172340 /* 22.jpg */,
 				1B85FA801F2B1AB900179C6D /* ZXingObjC.xcodeproj */,
 				1BA1BB231F137530005BA203 /* printer */,
 				1BA1BB221F137530005BA203 /* Products */,
@@ -1728,6 +1734,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9140DAE1F1EE42800B9A2AB /* historyMaster.xib in Resources */,
+				1BD13B361F8DE3EA00172340 /* 22.jpg in Resources */,
 				B98773891F20A9D50057404D /* twoDimensionalViewController.xib in Resources */,
 				B9140C941F1CBEDE00B9A2AB /* PrintViewController.xib in Resources */,
 				B987737F1F20A97C0057404D /* defaultTextViewController.xib in Resources */,
@@ -1771,6 +1778,7 @@
 				A00E39661F66DF220081C5AF /* EdictBoxView.xib in Resources */,
 				1BFEA4D11F78FCFD00C2B4B2 /* 1.jpg in Resources */,
 				A00E396B1F66DF220081C5AF /* EFChangePageCell.xib in Resources */,
+				1B9B6E481F8F3AB200D242A0 /* 221.png in Resources */,
 				A00E397D1F66DF220081C5AF /* FontAngleCell.xib in Resources */,
 				A00E396D1F66DF220081C5AF /* EFFontSizeCell.xib in Resources */,
 				B94B3E491F1F55EC003B607F /* WIFI.xib in Resources */,

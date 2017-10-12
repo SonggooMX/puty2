@@ -36,6 +36,7 @@
 #import "RepeatCount.h"
 #import "HomeBottomViewController.h"
 
+
 static int head=-1,tail=-1;
 //static BOOL timerStarted = NO;
 static Byte sndBuf[BUF_SIZE];

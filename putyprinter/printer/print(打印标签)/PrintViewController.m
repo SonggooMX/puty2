@@ -137,7 +137,7 @@
             break;
     }
     
-    //[self saveImageToPhotos:bmp];
+    [self saveImageToPhotos:bmp];
     
     
     
@@ -158,7 +158,7 @@
             self.pt.sendDataComplete=1;
             //[mbphud hideHUD];
             //[mbphud showMessage:[NSString stringWithFormat:@"请稍后，正在打印%d/%d",i,self.pc.lbPrintCopys.text.intValue]];
-            [self.pt printLabel:bmp lw:w lh:h pt:1 pageTotal:self.pc.printCopys pageIndex:i];
+            [self.pt printLabel:bmp lw:w lh:h pt:1 pageTotal:self.pc.lbPrintCopys.text.intValue pageIndex:i];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];

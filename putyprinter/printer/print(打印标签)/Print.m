@@ -727,10 +727,10 @@
 
 - (BOOL) printLabel:(UIImage*)bitmap lw:(int)labelWidth lh:(int)labelHeight pt:(int)pageType pageTotal:(int) total pageIndex:(int) index
 {
-    //labelWidth=70;
-    //labelHeight=50;
+    //labelWidth=25;
+    //labelHeight=38;
     //bitmap=[UIImage imageNamed:@"test50.png"];
-    //bitmap=[UIImage imageNamed:@"1.jpg"];
+    //bitmap=[UIImage imageNamed:@"22.jpg"];
     //制作203dpi图片
     int realWidth = labelWidth * 8;
     int realHeight = labelHeight * 8;
@@ -814,7 +814,7 @@
     // 压缩方法调用
     int rowWidth = bitmap.size.width;      // 图片宽度
     int useRowWith = (rowWidth >= MAX_WIDTH * 8) ? MAX_WIDTH * 8 : rowWidth;      // 这行有效宽度
-    int rowOffset = (rowWidth >= MAX_WIDTH * 8) ? 0 : MAX_WIDTH - rowWidth / 8;   // 这行开始偏移量
+    int rowOffset =0; //(rowWidth >= MAX_WIDTH * 8) ? 0 : MAX_WIDTH - rowWidth / 8;   // 这行开始偏移量
     // ========================================= 得到图片的数据 ==================================
     int imageWidth = bitmap.size.width;
     int imageHeight = bitmap.size.height;
@@ -834,16 +834,12 @@
     int rowIndex=0;
     bool ispace=true;
     
-    //NSMutableArray *arrs=[NSMutableArray new];
-
+    
+    
     //遍历每一行的数据
     for(;rowIndex<bitmap.size.height;rowIndex++)
     {
         NSMutableArray *cdata=[self convertData2:pixelData rwth:useRowWith image:bitmap index:rowIndex offset:rowOffset];
-        
-        //NSLog(@"%@",cdata);
-        //[arrs addObject:cdata];
-        
         
         if ((int)[cdata count]==2&&[[cdata objectAtIndex:0] intValue]==21)
         {
@@ -879,7 +875,7 @@
     
     int fw=bitmap.size.width/8;
     
-    int total=(int)[data count]-(bh-spaceEnd)*2+1+2;//空白占2个字节 18 指令 最后的00 占 1个字节 所以加上1;
+    int total=(int)[data count]-(bh-spaceEnd)*2+1;//空白占2个字节 18 指令 最后的00 占 1个字节 所以加上1;
     
     char b[4];
     b[3] =  (Byte) ((total>>24) & 0xFF);
@@ -934,7 +930,7 @@
     
     // 得到图片每一行的数据 // 未压缩之前的图片
     NSMutableArray *rowData=[self pixelToByteArray:pixelData rowWith:useRowWith bitmap:bitmap index:rowIndex];
-
+    
     // ========================================= 判断是否全空行 =================================
     //NSLog(@"%@",rowData);
     
@@ -965,7 +961,7 @@
     NSMutableArray *list=[[NSMutableArray alloc] initWithCapacity:0];
     if (rowOffset + front > 0) {
         RepeatCount *rc=[RepeatCount alloc];
-        [rc init:@"0" second:[NSString stringWithFormat:@"%d",front+rowOffset]];
+        [rc init:0x00 second:front+rowOffset];
         [list addObject:rc];
     }
     
@@ -975,16 +971,13 @@
         int re=[rowData[e] intValue];
         if (rs != re) {
             RepeatCount *rc=[RepeatCount alloc];
-            [rc init:[NSString stringWithFormat:@"%d",[rowData[s] intValue]]
-              second:[NSString stringWithFormat:@"%d",e - s]];
+            [rc init:[rowData[s] intValue] second:e - s];
             [list addObject:rc];
             s = e;
         }
     }
-    
     RepeatCount *rc=[RepeatCount alloc];
-    [rc init:[NSString stringWithFormat:@"%d",[rowData[s] intValue]]
-      second:[NSString stringWithFormat:@"%d",e - s]];
+    [rc init:[rowData[s] intValue ] second:e - s];
     [list addObject:rc];
     // ========================================= 处理上面的数据 ==================================
     [data addObject:[NSNumber numberWithInt:0x18]];
@@ -992,10 +985,10 @@
     for (int i = 0; i < [list count]; ) {
         int d2=0;//大于1小于2的数据
         RepeatCount *rc=[list objectAtIndex:i];
-        int ct=[rc.count intValue];
+        int ct=(int)rc.count;
         if (ct >2) {
             [data addObject:[NSNumber numberWithInt:(ct | 0x80)]];
-            [data addObject:[NSNumber numberWithInt:[rc.value intValue]]];
+            [data addObject:[NSNumber numberWithInt:(rc.value)]];
             i++;
         } else {
             if(ct==2)
@@ -1016,9 +1009,9 @@
             [data addObject:[NSNumber numberWithInt:(lastOne - i + d2)]];    // 长度
             for (int j = i; j < lastOne; j++) {
                 RepeatCount *rc=[list objectAtIndex:j];
-                for(int k=0;k<[rc.count intValue];k++)
+                for(int k=0;k<(int)rc.count;k++)
                 {
-                    [data addObject:[NSNumber numberWithInt:[rc.value intValue]]];
+                    [data addObject:[NSNumber numberWithInt:(rc.value)]];
                 }
             }
             i = lastOne;
@@ -1035,13 +1028,11 @@
  *            <p/>
  *            m=1： 表示本次打印完成后自动定位缝隙
  *            <p/>
+ * @param nL
  *            表示本次打印的标签总长度为nL+nH*256个点
  *            <p/>
+ * @param nH
  *            表示本次打印的标签总长度为nL+nH*256个点
- *            <p/>
- *            表示打印浓度，取值范围：1~15，0表示不设置浓度，采用打印机默认浓度
- *            <p/>
- *            表示缝隙检测阈值，取值范围：1~33，0表示不设置阈值，采用打印机默认阈值
  *            <p/>
  */
 - (NSData*) startPrintOrder:(int)nL lenH:(int)nH spaceLH:(int)sL spaceNH:(int)sH width:(int)fw device:(int) de pcs:(int) l1 seq:(int) l2 data1:(int) d1 data2:(int) d2 data3:(int) d3 data4:(int) d4;
@@ -1050,6 +1041,7 @@
     NSData *cmd=[[NSData alloc] initWithBytes:data length:13];
     return  cmd;
 }
+
 
 - (BOOL) drawLine:(int)start to:(int)end lh:(int)height
 {
