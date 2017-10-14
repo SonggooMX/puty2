@@ -38,7 +38,7 @@
             }
             self.subTitleLable.text = [[NSString stringWithFormat:@"%.2f",walert.textFields.firstObject.text.floatValue] stringByAppendingFormat:@"mm"];
             //刷新标签
-            [self.nl refresh:walert.textFields.firstObject.text withHeight:[NSString stringWithFormat:@"%.2f",self.nl.labelHeight]];
+            [self.nl refresh:walert.textFields.firstObject.text withHeight:[NSString stringWithFormat:@"%.2f",self.nl.parent.CURRENT_LABEL_INFO.labelHeight]];
             return;
         }
         if([self.titleLable.text isEqualToString:@"标签高度"])
@@ -51,7 +51,7 @@
             }
             self.subTitleLable.text = [[NSString stringWithFormat:@"%.2f",walert.textFields.firstObject.text.floatValue] stringByAppendingFormat:@"mm"];
             //刷新标签
-            [self.nl refresh:[NSString stringWithFormat:@"%.2f",self.nl.labelWidth] withHeight:walert.textFields.firstObject.text];
+            [self.nl refresh:[NSString stringWithFormat:@"%.2f",self.nl.parent.CURRENT_LABEL_INFO.labelWidth] withHeight:walert.textFields.firstObject.text];
             return;
         }
         else if([self.titleLable.text isEqualToString:@"当前内容"])

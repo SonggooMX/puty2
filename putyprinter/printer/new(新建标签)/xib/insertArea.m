@@ -37,34 +37,34 @@
 //插入一维码
 - (IBAction)btnInsertBarcode1D:(id)sender {
     
-    UIImage *img=[self createZXingImage:kBarcodeFormatCode128 withContent:@"12345678"];
-    if(img==NULL) return;
-    
     b1dView *v1=[[b1dView alloc] init];
     v1.parent=self.parent.drawAreaView;
-    v1.elementType=0;
-    v1.fontSizeIndex=14;
     v1.parentController=self.parent;
-    [v1 initView:CGRectMake(50, 50, 100, 50) withImage:img withNString:@"12345678"];
+    
+    CGSize size=self.parent.drawAreaView.frame.size;
+    float left=(size.width-100)/2;
+    float top=(size.height-50)/2;
+    
+    
+    [v1 initView:CGRectMake(left, top, 100, 50) withImage:nil withNString:@"12345678"];
     [self.parent.drawAreaView addSubview:v1];
 
 }
 
 //插入二维码
 - (IBAction)btnInsertQR:(id)sender {
-    UIImage *img=[self createZXingImage:kBarcodeFormatQRCode withContent:@"二维码"];
-    if(img==NULL) return;
-    
     qrView *v1=[[qrView alloc] init];
     v1.parent=self.parent.drawAreaView;
-    v1.elementType=1;
     v1.parentController=self.parent;
-    [v1 initView:CGRectMake(100, 100, 100, 100) withImage:img withNString:@"二维码"];
+    
+    CGSize size=self.parent.drawAreaView.frame.size;
+    float left=(size.width-100)/2;
+    float top=(size.height-100)/2;
+    
+    [v1 initView:CGRectMake(left, top, 100, 100) withImage:nil withNString:@"二维码"];
     [self.parent.drawAreaView addSubview:v1];
     
 }
-
-
 
 //创建图片
 -(UIImage*) createZXingImage:(int)format withContent:(NSString*)data

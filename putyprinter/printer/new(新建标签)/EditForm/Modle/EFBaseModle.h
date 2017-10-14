@@ -46,7 +46,7 @@ typedef NS_ENUM(NSUInteger, EFCellType) {
 
 + (instancetype)modleWithType:(EFCellType)type;
 
-- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel*)linfo;
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel*)linfo withTB:(UITableView*)tb;
 
 
 @end

@@ -10,6 +10,73 @@
 
 @implementation Util
 
+#pragma mark - 获取颜色值
+-(NSArray *) getImageLeftBlackPoint:(UIImage*)bitmap
+{
+    uint32_t *pixelData=[self getPixData:bitmap];
+    int useRowWith=bitmap.size.width;
+    
+    int left = 0,top=0;
+    
+    for(int h=0;h<bitmap.size.height;h++)
+    {
+        int row=h;
+        for (int w = 0; w < useRowWith; w++) {
+            //得到像素值 ARGB
+            int seq=(row*(int)bitmap.size.width)+w;
+            int pixel = pixelData[seq];
+            
+            int red = ((pixel & 0x00FF0000) >> 16);
+            int green = ((pixel & 0x0000FF00) >> 8);
+            int blue = (pixel & 0x000000FF);
+            
+            //取得灰度值
+            int gray =(int) (red * 0.3 + green * 0.59 + blue * 0.11);
+            if(gray>0)
+            {
+                left=w;
+                top=row;
+                break;
+            }
+        }
+    }
+    
+    NSArray *result=@[[NSString stringWithFormat:@"%d",left],[NSString stringWithFormat:@"%d",top]];
+    return result;
+}
+
+#pragma mark - 获取图片的所有像素值
+-(uint32_t*) getPixData:(UIImage*)bitmap
+{
+    int imageWidth=bitmap.size.width;
+    int imageHeight=bitmap.size.height;
+    
+    size_t bytesPerRow = imageWidth * 4;
+    uint32_t* rgbImageBuf = (uint32_t*)malloc(bytesPerRow * imageHeight);
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
+    CGContextRef context = CGBitmapContextCreate(rgbImageBuf, imageWidth, imageHeight, 8, bytesPerRow, colorSpace,kCGImageAlphaPremultipliedFirst);
+    CGContextDrawImage(context, CGRectMake(0, 0, imageWidth, imageHeight), bitmap.CGImage);
+    
+    uint32_t *pixelData=rgbImageBuf;
+    return pixelData;
+}
+
+//缩放图片
+-(UIImage*) PostScale:(UIImage*)image withW:(float)pw withH:(float)ph withL:(int)left withT:(int)top
+{
+    //绘图的context
+    UIGraphicsBeginImageContext(CGSizeMake(pw, ph));
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetAllowsAntialiasing(context, true); //抗锯齿设置
+    
+    //绘制图片
+    [image drawInRect:CGRectMake(left, top, pw, ph)];
+    
+    UIImage *newPic = UIGraphicsGetImageFromCurrentImageContext();
+    
+    return newPic;
+}
 
 //缩放图片
 -(UIImage*) PostScale:(UIImage*)image withW:(float)pw withH:(float)ph

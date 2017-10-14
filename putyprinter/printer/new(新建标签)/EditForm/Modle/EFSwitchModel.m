@@ -18,7 +18,7 @@
     return NSStringFromClass([EFSwitchCell class]);
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel *)linfo
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel *)linfo withTB:(UITableView *)tb
 {
     EFSwitchCell *rcell = (EFSwitchCell*)cell;
     rcell.titleLable.text = self.title;
@@ -30,7 +30,7 @@
         }
         else if([self.title isEqualToString:@"是否锁定"])
         {
-            linfo.isLock=value;
+            linfo.parent.CURRENT_LABEL_INFO.isLock=value;
         }
         else if([self.title isEqualToString:@"自动换行"])
         {

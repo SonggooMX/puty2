@@ -11,6 +11,9 @@
 @interface Util : NSObject
 
 - (UIImage *)image:(UIImage *)image rotation:(UIImageOrientation)orientation;
+-(UIImage*) PostScale:(UIImage*)image withW:(float)pw withH:(float)ph withL:(int)left withT:(int)top;
 -(UIImage*) PostScale:(UIImage*)temp withW:(float)pw withH:(float)ph;
+-(NSArray *) getImageLeftBlackPoint:(UIImage*)bitmap;
+-(uint32_t*) getPixData:(UIImage*)bitmap;
 
 @end

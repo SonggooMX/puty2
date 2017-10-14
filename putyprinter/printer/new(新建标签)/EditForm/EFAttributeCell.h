@@ -17,7 +17,10 @@
 @property (weak, nonatomic) IBOutlet UIView *deleteView;
 @property (weak, nonatomic) IBOutlet UIView *iView;
 
+@property baseView *baseV;
+
 @property (nonatomic,assign)NSInteger currentIndex;
+
 @property (nonatomic,copy)void(^selectedAction)(NSInteger index);
 
 @end

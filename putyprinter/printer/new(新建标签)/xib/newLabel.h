@@ -40,6 +40,7 @@
 //默认从主界面跳转到新建界面 0：主界面 1：新建界面
 @property int fromType;
 
+/*
 //当前标签的实际大小 毫米
 @property NSString *labelName;
 @property float labelWidth;
@@ -59,10 +60,11 @@
 
 //标签锁定
 @property BOOL isLock;
-
+*/
 
 //刷新界面
 -(void)refresh:(NSString*)width withHeight:(NSString*)height;
-
+//设置标签信息
+-(void) setLabelInfowithFrom:(int)type withVC:(NewLabelViewController*)vcc;
 
 @end

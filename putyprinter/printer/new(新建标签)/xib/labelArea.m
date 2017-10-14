@@ -68,8 +68,8 @@
     //新增界面
     CGRect rect=[UIScreen mainScreen].bounds;
     newLabel *nl=[[newLabel alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, 284)];
-    nl.fromType=1;//来源
-    nl.parent=self.parent;
+    [nl setLabelInfowithFrom:1 withVC:self.parent];
+    
     [self.parent.bottomview addSubview:nl]; //添加
     [self.parent setTopIconButtonHidden];
 }

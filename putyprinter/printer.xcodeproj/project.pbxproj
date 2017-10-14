@@ -45,6 +45,7 @@
 		1B4156FA1F8BAD5D003EAAD6 /* PrintConditions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B4156F91F8BAD5D003EAAD6 /* PrintConditions.xib */; };
 		1B5815AA1F7671B8001EE1D3 /* lineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5815A81F7671B8001EE1D3 /* lineView.m */; };
 		1B5F0BAD1F34AC440023F87A /* newLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F0BAC1F34AC440023F87A /* newLabel.m */; };
+		1B6068031F8FA86500D5B132 /* LabelInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6068021F8FA86500D5B132 /* LabelInfo.m */; };
 		1B67D6C81F8C9D2900EAF585 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B67D6C71F8C9D2900EAF585 /* Util.m */; };
 		1B67D6DD1F8CB71D00EAF585 /* SSKProgressHUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B67D6DC1F8CB71D00EAF585 /* SSKProgressHUD.xib */; };
 		1B67D6E01F8CB81400EAF585 /* SSKProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B67D6DF1F8CB81400EAF585 /* SSKProgressHUD.m */; };
@@ -375,6 +376,8 @@
 		1B5815A91F7671B8001EE1D3 /* lineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lineView.h; path = element/core/lineView.h; sourceTree = "<group>"; };
 		1B5F0BAB1F34AC440023F87A /* newLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newLabel.h; sourceTree = "<group>"; };
 		1B5F0BAC1F34AC440023F87A /* newLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newLabel.m; sourceTree = "<group>"; };
+		1B6068011F8FA86500D5B132 /* LabelInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LabelInfo.h; path = element/LabelInfo.h; sourceTree = "<group>"; };
+		1B6068021F8FA86500D5B132 /* LabelInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LabelInfo.m; path = element/LabelInfo.m; sourceTree = "<group>"; };
 		1B67D6C61F8C9D2900EAF585 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		1B67D6C71F8C9D2900EAF585 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		1B67D6DC1F8CB71D00EAF585 /* SSKProgressHUD.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSKProgressHUD.xib; path = "printer/Tools(工具类)/MBProgressHUD/SSKProgressHUD.xib"; sourceTree = SOURCE_ROOT; };
@@ -943,6 +946,8 @@
 				1B85FA401F2B049D00179C6D /* BottomScaleView.h */,
 				1B85FA411F2B049D00179C6D /* bottomRightScaleView.m */,
 				1B85FA421F2B049D00179C6D /* bottomRightScaleView.h */,
+				1B6068011F8FA86500D5B132 /* LabelInfo.h */,
+				1B6068021F8FA86500D5B132 /* LabelInfo.m */,
 			);
 			name = element;
 			sourceTree = "<group>";
@@ -1962,6 +1967,7 @@
 				B988E33F1F1EF0A8003EE56B /* UILabel+CZAddition.m in Sources */,
 				1B081B711F75452900308DAF /* JSONModelClassProperty.m in Sources */,
 				1BFEA4C61F7894C100C2B4B2 /* Print.m in Sources */,
+				1B6068031F8FA86500D5B132 /* LabelInfo.m in Sources */,
 				1B5815AA1F7671B8001EE1D3 /* lineView.m in Sources */,
 				90AD22A21F3A171F0002B152 /* ZXFontModel.m in Sources */,
 				90AD22921F3A12360002B152 /* AFNetworkActivityIndicatorManager.m in Sources */,

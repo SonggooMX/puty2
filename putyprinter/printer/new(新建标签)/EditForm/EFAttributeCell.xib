@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7j-EW-nQ4">
@@ -44,10 +44,36 @@
                             <constraint firstItem="4n0-TP-mJG" firstAttribute="centerX" secondItem="V7j-EW-nQ4" secondAttribute="centerX" id="Irr-y5-Ohf"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SuJ-nu-07x">
+                        <rect key="frame" x="80" y="0.0" width="80" height="119.5"/>
+                        <subviews>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKS-P1-yVy">
+                                <rect key="frame" x="2.5" y="12" width="75" height="72"/>
+                                <state key="normal" image="i_nor_button"/>
+                                <state key="selected" image="i_sel_button"/>
+                                <connections>
+                                    <action selector="btnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="CwC-l4-6i7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="斜体" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cna-ne-Adn">
+                                <rect key="frame" x="25.5" y="90.5" width="29" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XKS-P1-yVy" firstAttribute="top" secondItem="SuJ-nu-07x" secondAttribute="top" constant="12" id="2ap-i6-6qw"/>
+                            <constraint firstItem="Cna-ne-Adn" firstAttribute="centerX" secondItem="SuJ-nu-07x" secondAttribute="centerX" id="SXm-rA-Y41"/>
+                            <constraint firstAttribute="bottom" secondItem="Cna-ne-Adn" secondAttribute="bottom" constant="12" id="kAi-w2-kvV"/>
+                            <constraint firstItem="XKS-P1-yVy" firstAttribute="centerX" secondItem="SuJ-nu-07x" secondAttribute="centerX" id="lnq-9j-qA8"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5f-ak-KmZ">
                         <rect key="frame" x="160" y="0.0" width="80" height="119.5"/>
                         <subviews>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ko9-nd-DSb">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ko9-nd-DSb">
                                 <rect key="frame" x="2.5" y="12" width="75" height="72"/>
                                 <state key="normal" image="u_nor_button"/>
                                 <state key="selected" image="U_sel_button"/>
@@ -94,32 +120,6 @@
                             <constraint firstItem="qRX-As-O5L" firstAttribute="centerX" secondItem="qsK-1i-mju" secondAttribute="centerX" id="SQ6-Nz-IGn"/>
                             <constraint firstItem="zCP-yR-bdW" firstAttribute="centerX" secondItem="qsK-1i-mju" secondAttribute="centerX" id="cCH-GK-TZi"/>
                             <constraint firstAttribute="bottom" secondItem="zCP-yR-bdW" secondAttribute="bottom" constant="12" id="coV-py-JaN"/>
-                        </constraints>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SuJ-nu-07x">
-                        <rect key="frame" x="80" y="0.0" width="80" height="119.5"/>
-                        <subviews>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKS-P1-yVy">
-                                <rect key="frame" x="2.5" y="12" width="75" height="72"/>
-                                <state key="normal" image="i_nor_button"/>
-                                <state key="selected" image="i_sel_button"/>
-                                <connections>
-                                    <action selector="btnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="CwC-l4-6i7"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="斜体" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cna-ne-Adn">
-                                <rect key="frame" x="25.5" y="90.5" width="29" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="XKS-P1-yVy" firstAttribute="top" secondItem="SuJ-nu-07x" secondAttribute="top" constant="12" id="2ap-i6-6qw"/>
-                            <constraint firstItem="Cna-ne-Adn" firstAttribute="centerX" secondItem="SuJ-nu-07x" secondAttribute="centerX" id="SXm-rA-Y41"/>
-                            <constraint firstAttribute="bottom" secondItem="Cna-ne-Adn" secondAttribute="bottom" constant="12" id="kAi-w2-kvV"/>
-                            <constraint firstItem="XKS-P1-yVy" firstAttribute="centerX" secondItem="SuJ-nu-07x" secondAttribute="centerX" id="lnq-9j-qA8"/>
                         </constraints>
                     </view>
                 </subviews>

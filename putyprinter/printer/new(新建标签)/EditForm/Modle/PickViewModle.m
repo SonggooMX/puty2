@@ -37,7 +37,7 @@
     return [super selectedAction];
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel*)linfo
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel*)linfo withTB:(UITableView *)tb
 {
     EFPickCell *rcell = (EFPickCell*)cell;
     rcell.bv=bview;

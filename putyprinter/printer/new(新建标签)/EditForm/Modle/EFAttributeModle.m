@@ -18,9 +18,11 @@
     return NSStringFromClass([EFAttributeCell class]);
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel *)linfo
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel *)linfo withTB:(UITableView *)tb
 {
-     EFAttributeCell *rcell = (EFAttributeCell*)cell;
+    EFAttributeCell *rcell = (EFAttributeCell*)cell;
+    rcell.baseV=bview;
+
     rcell.selectedAction = ^(NSInteger index) {
         self.currentIndex = index;
         if (self.selectedAction) {

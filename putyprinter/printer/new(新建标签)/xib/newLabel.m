@@ -27,27 +27,33 @@
         self.contentView.frame=frame;
         [self addSubview:self.contentView];
         
-        self.printDirect=1;
-        self.pagetType=2;
-        
-        self.printDesnty=6;
-        self.printSpeed=3;
-        
-        
-        //设置打印方向
-        [self setButtonViewStyle:self.btnPrintDirect0 :false];
-        [self setButtonViewStyle:self.btnPrintDirect90 :true];
-        [self setButtonViewStyle:self.btnPrintDirect180 :false];
-        [self setButtonViewStyle:self.btnprintDirect270 :false];
-        
-        //纸张类型
-        [self setButtonViewStyle:self.btnPageType0 :false];
-        [self setButtonViewStyle:self.btnPageType1 :false];
-        [self setButtonViewStyle:self.btnPageType2 :true];
-        [self setButtonViewStyle:self.btnPageType3 :false];
-        
     }
     return self;
+}
+
+//设置标签信息
+-(void) setLabelInfowithFrom:(int)type withVC:(NewLabelViewController*)vc
+{
+    self.fromType=type;
+    self.parent=vc;
+    
+    self.lbWidth.text=[NSString stringWithFormat:@"%.2fmm",self.parent.CURRENT_LABEL_INFO.labelWidth];
+    self.lbHeight.text=[NSString stringWithFormat:@"%.2fmm",self.parent.CURRENT_LABEL_INFO.labelHeight];
+    
+    self.lbName.text=self.parent.CURRENT_LABEL_INFO.labelName;
+    
+    
+    //设置打印方向
+    [self setButtonViewStyle:self.btnPrintDirect0 :false];
+    [self setButtonViewStyle:self.btnPrintDirect90 :true];
+    [self setButtonViewStyle:self.btnPrintDirect180 :false];
+    [self setButtonViewStyle:self.btnprintDirect270 :false];
+    
+    //纸张类型
+    [self setButtonViewStyle:self.btnPageType0 :false];
+    [self setButtonViewStyle:self.btnPageType1 :false];
+    [self setButtonViewStyle:self.btnPageType2 :true];
+    [self setButtonViewStyle:self.btnPageType3 :false];
 }
 
 #pragma mark - 设置样式
@@ -87,14 +93,14 @@
             [self setButtonViewStyle:self.btnPrintDirect90 :false];
             [self setButtonViewStyle:self.btnPrintDirect180 :false];
             [self setButtonViewStyle:self.btnprintDirect270 :false];
-            self.printDirect=(int)sender.tag-1000;
+            self.parent.CURRENT_LABEL_INFO.printDirect=(int)sender.tag-1000;
             break;
         default:
             [self setButtonViewStyle:self.btnPageType0 :false];
             [self setButtonViewStyle:self.btnPageType1 :false];
             [self setButtonViewStyle:self.btnPageType2 :false];
             [self setButtonViewStyle:self.btnPageType3 :false];
-            self.pagetType=(int)sender.tag-2000;
+            self.parent.CURRENT_LABEL_INFO.pagetType=(int)sender.tag-2000;
             break;
     }
     
@@ -146,10 +152,10 @@
                 self.lbName.text=alertVC.textFields.firstObject.text;
                 break;
             case 1102:
-                self.lbWidth.text=[NSString stringWithFormat:@"%@mm",alertVC.textFields.firstObject.text];
+                self.lbWidth.text=[NSString stringWithFormat:@"%.2fmm",alertVC.textFields.firstObject.text.floatValue];
                 break;
             case 1103:
-                self.lbHeight.text=[NSString stringWithFormat:@"%@mm",alertVC.textFields.firstObject.text];
+                self.lbHeight.text=[NSString stringWithFormat:@"%.2fmm",alertVC.textFields.firstObject.text.floatValue];
                 break;
             default:
                 break;
@@ -186,7 +192,7 @@
     NSString *width=[self.lbWidth.text stringByReplacingOccurrencesOfString:@"mm" withString:@""];
     NSString *height=[self.lbHeight.text stringByReplacingOccurrencesOfString:@"mm" withString:@""];
     
-    self.labelName=self.lbName.text;
+    self.parent.CURRENT_LABEL_INFO.labelName=self.lbName.text;
     
     [self refresh:width withHeight:height];
     
@@ -196,13 +202,15 @@
     [self.parent btnSwitchView:bt];
     //开启顶部icon按钮
     [self.parent setTopIconButton];
+    NSString *msg=[NSString stringWithFormat:@"X:%.2fmm  Y:%.2fmm  宽:%.2fmm  高:%.2fmm",0.0f,0.0f,[width floatValue],[height floatValue]];
+    [self.parent updateTip:msg];
 }
 
 //刷新界面
 -(void)refresh:(NSString*)width withHeight:(NSString*)height
 {
-    self.labelWidth=[width floatValue];
-    self.labelHeight=[height floatValue];
+    self.parent.CURRENT_LABEL_INFO.labelWidth=[width floatValue];
+    self.parent.CURRENT_LABEL_INFO.labelHeight=[height floatValue];
     
     float w=[width floatValue]*8;
     float h=[height floatValue]*8;

@@ -9,6 +9,7 @@
 #import "EFMuiltiBtnModle.h"
 #import "EFMuiltiButtonCell.h"
 #import "lbView.h"
+#import "b1dView.h"
 
 @implementation EFMuiltiBtnModle
 
@@ -23,7 +24,7 @@
     return self.itemStrs[self.currentindex];
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel *)linfo
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel *)linfo withTB:(UITableView *)tb
 {
     EFMuiltiButtonCell *rcell = (EFMuiltiButtonCell*)cell;
     rcell.selectedAction = ^(NSInteger result) {
@@ -33,17 +34,26 @@
         }
         if([self.title isEqualToString:@"打印方向"])
         {
-            linfo.printDirect=(int)result;
+            linfo.parent.CURRENT_LABEL_INFO.printDirect=(int)result;
         }
         else if([self.title isEqualToString:@"纸张类型"])
         {
-            linfo.pagetType=(int)result;
+            linfo.parent.CURRENT_LABEL_INFO.pagetType=(int)result;
         }
         else if([self.title isEqualToString:@"对齐方式"])
         {
-            lbView *lb=(lbView*)bview;
-            lb.alignMode=(int)result;
-            [lb setLineSpace:lb.rowSpaceHeight withMode:lb.rowSpaceMode];
+            if(bview.elementType==8)
+            {
+                lbView *lb=(lbView*)bview;
+                lb.alignMode=(int)result;
+                [lb setLineSpace:lb.rowSpaceHeight withMode:lb.rowSpaceMode];
+            }
+            else if(bview.elementType==0)
+            {
+                b1dView *b1d=(b1dView*)bview;
+                b1d.alignMode=(int)result;
+                [b1d resetViewWH:b1d.frame.size];
+            }
         }
         else if([self.title isEqualToString:@"行间距"])
         {
@@ -70,10 +80,32 @@
             
             [lb setLineSpace:space withMode:mode];
         }
+        else if([self.title isEqualToString:@"编码属性"])
+        {
+            [self setEncodeMode:bview withIndex:(int)result];
+        }
+        else if([self.title isEqualToString:@"文字位置"])
+        {
+            [self setTextPlace:bview withIndex:(int)result];
+        }
     };
     rcell.itemStrs = self.itemStrs;
     rcell.titleLable.text = self.title;
     rcell.currentindex = self.currentindex;
+}
+
+//设置编码
+-(void) setEncodeMode:(baseView*)bv withIndex:(int)index
+{
+    b1dView *b1d=(b1dView*)bv;
+    b1d.encodeMode=index;
+    [b1d resetContainerViewImage:nil];
+}
+-(void) setTextPlace:(baseView*)bv withIndex:(int)index
+{
+    b1dView *b1d=(b1dView*)bv;
+    b1d.showTextMode=index;
+    [b1d resetViewWH:b1d.frame.size];
 }
 
 -(void) showRowSpaceHeight:(lbView*)lb withCell:(EFMuiltiButtonCell*)cell

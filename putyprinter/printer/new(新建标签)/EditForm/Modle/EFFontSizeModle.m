@@ -16,7 +16,7 @@
     return NSStringFromClass([EFFontSizeCell class]);
 }
 
-- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel *)linfo
+- (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel *)linfo withTB:(UITableView *)tb
 {
     EFFontSizeCell *rcell =(EFFontSizeCell*) cell;
     rcell.titleLable.text = self.title;
@@ -25,19 +25,19 @@
         
         if([self.title isEqualToString:@"打印浓度"])
         {
-            linfo.printDesnty=result.intValue;
+            linfo.parent.CURRENT_LABEL_INFO.printDes=result.intValue;
         }
         else if([self.title isEqualToString:@"打印速度"])
         {
-            linfo.printSpeed=result.intValue;
+            linfo.parent.CURRENT_LABEL_INFO.printSpeed=result.intValue;
         }
         else if([self.title isEqualToString:@"水平打印偏移量"])
         {
-            linfo.printHpadding=result.floatValue;
+            linfo.parent.CURRENT_LABEL_INFO.printHpadding=result.floatValue;
         }
         else if([self.title isEqualToString:@"垂直打印偏移量"])
         {
-            linfo.printVpadding=result.floatValue;
+            linfo.parent.CURRENT_LABEL_INFO.printVpadding=result.floatValue;
         }
         else if([self.title isEqualToString:@"行数"])
         {
@@ -78,7 +78,7 @@
             }
             else if(bview.elementType==0)
             {
-                [bview initView:bview.frame withImage:nil withNString:bview.content];
+                [bview resetViewWH:bview.frame.size];
             }
         }
         

@@ -16,4 +16,9 @@
 
 -(void) resetViewWH:(CGSize)size;
 
+//编码模式
+@property int encodeMode;
+//文本显示模式
+@property int showTextMode;
+
 @end

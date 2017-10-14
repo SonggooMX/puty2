@@ -84,7 +84,6 @@
         float fontsize=((NSString*)[self.fontSizeContents objectAtIndex:self.fontSizeIndex]).floatValue*8;
         UIFont *font=[UIFont fontWithName:@"STHeitiSC-Light" size:fontsize];
         self.b1dlb.font=font;
-        self.b1dlb.textAlignment=1;
         self.b1dlb.text=content;
         self.content=content;
         self.b1dlb.numberOfLines=1;
@@ -114,6 +113,13 @@
     [self rotate:angle];
     
     [self refresh];
+}
+
+//重新设置图片
+-(void) resetContainerViewImage:(UIImage*)bitmap
+{
+    UIImageView *uv=(UIImageView *) self.containerView;
+    uv.image=bitmap;
 }
 
 -(void) resetViewWH:(CGSize)size

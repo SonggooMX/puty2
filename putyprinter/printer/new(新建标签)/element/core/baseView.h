@@ -50,7 +50,19 @@
 @property NSString *fontName;
 //字体大小
 @property int fontSizeIndex;
+//粗体
+@property int fontBlod;
+//斜体
+@property int fontItalic;
+//下划线
+@property int fontUnderline;
+//删除线
+@property int fontDeleteline;
+//对齐模式
+@property int alignMode;
 
+
+-(void) resetContainerViewImage:(UIImage*)bitmap;
 -(UIImage *)getImageFromView:(UIView *)view;
 
 //文字

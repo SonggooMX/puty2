@@ -61,8 +61,21 @@
     self.lbElementPosInfo.text=msg;
 }
 
+-(void) createLabelInfo
+{
+    self.CURRENT_LABEL_INFO=[LabelInfo new];
+    self.CURRENT_LABEL_INFO.labelName=@"新建标签1";
+    self.CURRENT_LABEL_INFO.printDirect=1;//打印方向
+    self.CURRENT_LABEL_INFO.pagetType=2;//间隙纸
+    self.CURRENT_LABEL_INFO.printDes=6;//打印浓度
+    self.CURRENT_LABEL_INFO.printSpeed=3;//打印速度
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //初始化标签信息
+    [self createLabelInfo];
     
     self.navigationItem.title = @"新建标签";
     self.rebackButton = [[UIBarButtonItem alloc] init];
@@ -74,12 +87,12 @@
     CGRect rect=[UIScreen mainScreen].bounds;
     
     //绘图区域 +40=左右两边有边距
-    self.drawAreaView=[[drawArea alloc] initWithFrame:CGRectMake(0, 0, self.drawViewContent.frame.size.width+40, self.drawViewContent.frame.size.height)];
+    self.drawAreaView=[[drawArea alloc] initWithFrame:CGRectMake(0, 0, self.drawViewContent.frame.size.width, self.drawViewContent.frame.size.height)];
     self.drawAreaView.parent=self;
     [self.drawViewContent addSubview:self.drawAreaView];
-    //[self.drawAreaView mas_makeConstraints:^(MASConstraintMaker *make) {
-    //    make.top.bottom.left.right.equalTo(self.drawViewContent);
-    //}];
+    [self.drawAreaView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.left.right.equalTo(self.drawViewContent);
+    }];
     
     //新增界面
     self.nLabelView=[[newLabel alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, 284)];
@@ -170,18 +183,18 @@
             [self.drawAreaView cancelAllSelected];
             PrintViewController *_printView=[[PrintViewController alloc] init];
             
-            _printView.printSpeed=self.nLabelView.printSpeed;
-            _printView.printDes=self.nLabelView.printDesnty;
-            _printView.printDirect=self.nLabelView.printDirect;
+            _printView.printSpeed=_CURRENT_LABEL_INFO.printSpeed;
+            _printView.printDes=_CURRENT_LABEL_INFO.printDes;
+            _printView.printDirect=_CURRENT_LABEL_INFO.printDirect;
             
-            _printView.labelWidth=self.nLabelView.labelWidth;
-            _printView.labelHeight=self.nLabelView.labelHeight;
+            _printView.labelWidth=_CURRENT_LABEL_INFO.labelWidth;
+            _printView.labelHeight=_CURRENT_LABEL_INFO.labelHeight;
             
             _printView.parent=self.parent;
             self.drawAreaView.contentView.layer.cornerRadius=0;//取消圆角
             _printView.pv=[self convertViewToImage:self.drawAreaView];
             self.drawAreaView.contentView.layer.cornerRadius=5;//打开圆角
-            _printView.labelInfo=[NSString stringWithFormat:@"X:00mm  Y:00mm  宽:%.2fmm  高:%.2fmm",self.nLabelView.labelWidth,self.nLabelView.labelHeight];
+            _printView.labelInfo=[NSString stringWithFormat:@"X:00mm  Y:00mm  宽:%.2fmm  高:%.2fmm",_CURRENT_LABEL_INFO.labelWidth,_CURRENT_LABEL_INFO.labelHeight];
             [self.navigationController pushViewController:_printView animated:YES];
             break;
     }

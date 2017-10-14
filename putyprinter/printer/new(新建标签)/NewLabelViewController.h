@@ -11,10 +11,13 @@
 #import <UIKit/UIKit.h>
 #import "PrintViewController.h"
 #import "HomeBottomViewController.h"
+#import "LabelInfo.h"
 
 @interface NewLabelViewController : UIViewController
 
 @property HomeBottomViewController *parent;
+//标签信息
+@property LabelInfo *CURRENT_LABEL_INFO;
 
 @property float LabelSacle;
 
@@ -22,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIView *drawViewContent;
 // 整个底部功能区
 @property (weak, nonatomic) IBOutlet UIView *bottomview;
+
 
 -(void)updateTip:(NSString*)msg;
 

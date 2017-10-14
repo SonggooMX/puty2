@@ -24,12 +24,9 @@
 
 -(void) initView:(CGRect)frame withImage:(UIImage *)image withNString:(NSString*)content
 {
-    if(image==nil){
-        UIImage *img=[self createZXingImage:kBarcodeFormatQRCode withContent:content];
-        if(img==NULL) return;
-        image=img;
-    }
-    [super initView:frame withImage:image withNString:content];
+    self.elementType=1;
+    UIImage *img=[self createZXingImage:kBarcodeFormatQRCode withContent:content];
+    [super initView:frame withImage:img withNString:content];
     [self showScaleView];
     [self refresh];
 }

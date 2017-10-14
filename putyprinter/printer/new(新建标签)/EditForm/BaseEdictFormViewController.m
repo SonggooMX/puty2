@@ -29,6 +29,7 @@
 #import "EFSliderModel.h"
 #import "EFPositionModel.h"
 #import "EFButtonCellModle.h"
+#import "b1dView.h"
 
 
 
@@ -383,18 +384,18 @@
                 break;
             case BaseEdictFormTypeLable:
             {
-                NSString *lbName=self.lbInfo.labelName;
-                NSString *lbWidth=[NSString stringWithFormat:@"%.2fmm",self.lbInfo.labelWidth];
-                NSString *lbHeight=[NSString stringWithFormat:@"%.2fmm",self.lbInfo.labelHeight];
+                NSString *lbName=self.lbInfo.parent.CURRENT_LABEL_INFO.labelName;
+                NSString *lbWidth=[NSString stringWithFormat:@"%.2fmm",self.lbInfo.parent.CURRENT_LABEL_INFO.labelWidth];
+                NSString *lbHeight=[NSString stringWithFormat:@"%.2fmm",self.lbInfo.parent.CURRENT_LABEL_INFO.labelHeight];
                 PickViewModle *path = [self pickMOdleWithTitle:@"标签名称" sub:lbName];
                 PickViewModle *path1 = [self pickMOdleWithTitle:@"标签宽度" sub:lbWidth];
                 PickViewModle *path2 =[self pickMOdleWithTitle:@"标签高度" sub:lbHeight];
                 EFMuiltiBtnModle *mb0 = [self muitlModleWithItems:@[@"0",@"90",@"180",@"270"] tile:@"打印方向"];
                 //设置打印方向
-                [mb0 setCurrentindex:self.lbInfo.printDirect];
+                [mb0 setCurrentindex:self.lbInfo.parent.CURRENT_LABEL_INFO.printDirect];
                 
                 EFMuiltiBtnModle *mb111 = [self muitlModleWithItems:@[@"连续孔",@"定位孔",@"间接纸",@"黑标纸"] tile:@"纸张类型"];
-                [mb111 setCurrentindex:self.lbInfo.pagetType];
+                [mb111 setCurrentindex:self.lbInfo.parent.CURRENT_LABEL_INFO.pagetType];
                 
                 PickViewModle *data = [self pickMOdleWithTitle:@"Excel数据" sub:nil];
                 data.title = @"Excel数据";
@@ -418,11 +419,11 @@
                 
                 EFFontSizeModle *print11 = [self fontsizeModleWithTitle:@"打印浓度"];
                 print11.itemTitles=@[@"1(最淡)",@"2",@"3",@"4(较淡)",@"5",@"6(正常)",@"7",@"8",@"9",@"10",@"11(较浓)",@"12",@"13",@"14",@"15(最浓)"];
-                print11.curentIndex=self.lbInfo.printDesnty-1;
+                print11.curentIndex=self.lbInfo.parent.CURRENT_LABEL_INFO.printDes-1;
                 
                 EFFontSizeModle *print12 = [self fontsizeModleWithTitle:@"打印速度"];
                 print12.itemTitles=@[@"1(最慢)",@"2",@"3(正常)",@"4",@"5(最快)"];
-                print12.curentIndex=self.lbInfo.printSpeed-1;
+                print12.curentIndex=self.lbInfo.parent.CURRENT_LABEL_INFO.printSpeed-1;
                 
                 EFFontSizeModle *print21 = [self fontsizeModleWithTitle:@"水平打印偏移量"];
                 
@@ -433,7 +434,7 @@
                 print21.itemTitles=arr;
                 for(int i=0;i<print21.itemTitles.count;i++)
                 {
-                    if(print21.itemTitles[i].floatValue==self.lbInfo.printHpadding)
+                    if(print21.itemTitles[i].floatValue==self.lbInfo.parent.CURRENT_LABEL_INFO.printHpadding)
                     {
                         print21.curentIndex=i;
                         break;
@@ -444,7 +445,7 @@
                 print22.itemTitles=arr;
                 for(int i=0;i<print22.itemTitles.count;i++)
                 {
-                    if(print22.itemTitles[i].floatValue==self.lbInfo.printVpadding)
+                    if(print22.itemTitles[i].floatValue==self.lbInfo.parent.CURRENT_LABEL_INFO.printVpadding)
                     {
                         print22.curentIndex=i;
                         break;
@@ -533,10 +534,8 @@
         _codeAttribuModle.itemStrs = @[@"自动",@"TIF25",@"39",@"128",@"酷德巴码",@"EAN-8",@"EAN-13",@"UPC",@"MSI",@"ISBN"];
         _codeAttribuModle.title = @"编码属性";
         _codeAttribuModle.rowHeight = 118;
+        _codeAttribuModle.currentindex=((b1dView*)self.currentSelectView).encodeMode;
         _codeAttribuModle.selectedAction = ^(NSInteger result) {
-            
-            
-            
         };
     }
     return _codeAttribuModle;
@@ -594,6 +593,7 @@
         _textPositionModle = [[EFMuiltiBtnModle alloc] init];
         _textPositionModle.itemStrs = @[@"无文字",@"条码上方",@"条码下方"];
         _textPositionModle.title = @"文字位置";
+        _textPositionModle.currentindex=((b1dView*)self.currentSelectView).showTextMode;
         _textPositionModle.rowHeight = 44;
         _textPositionModle.selectedAction = ^(NSInteger result) {
             
@@ -634,6 +634,7 @@
         _aligModle = (EFMuiltiBtnModle*)[EFBaseModle modleWithType:(EFCellTypeMuiltiBtn)];
         _aligModle.title = @"对齐方式";
         _aligModle.itemStrs = @[@"居左",@"居中",@"居右",@"拉伸"];
+        _aligModle.currentindex=self.currentSelectView.alignMode;
         _aligModle.selectedAction = ^(NSInteger result) {
             
         };
@@ -718,7 +719,7 @@
 {
     EFBaseModle *modle = self.modles[indexPath.section][indexPath.row];
     EFBaseCell *cell = [EFBaseCell cellWithType:modle.type tableView:tableView];
-    [modle setupWithCell:cell withBaseView:self.currentSelectView withNewLabel:self.lbInfo];
+    [modle setupWithCell:cell withBaseView:self.currentSelectView withNewLabel:self.lbInfo withTB:tableView];
     return cell;
 }
 
