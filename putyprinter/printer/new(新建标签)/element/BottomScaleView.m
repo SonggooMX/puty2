@@ -228,6 +228,9 @@
         }
         cv.frame=cframe;
     }
+    
+    //刷新顶部坐标显示
+    [sp refreshMsg];
 }
 
 @end

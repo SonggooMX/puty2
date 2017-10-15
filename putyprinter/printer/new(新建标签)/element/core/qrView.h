@@ -14,4 +14,12 @@
 
 @interface qrView : baseView
 
+//二维码类型
+@property int codeType;
+
+//编码方式
+@property int encodeMode;
+//纠错级别
+@property int errorLevel;
+
 @end

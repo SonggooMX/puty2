@@ -230,6 +230,8 @@
         }
         cv.frame=cframe;
     }
+    
+    [sp refreshMsg];
 }
 
 

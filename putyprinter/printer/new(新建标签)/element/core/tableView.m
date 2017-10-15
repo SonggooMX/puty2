@@ -32,6 +32,8 @@
     
     [super initView:frame withImage:bmp withNString:content];
     
+    [self resetViewWH:frame.size];
+    
     [self showScaleView];
     
 }
@@ -39,9 +41,16 @@
 //重新设置宽高
 -(void) resetViewWH:(CGSize)size
 {
-    UIImage *bmp=[self createImage:size.width with:size.height];
-    self.bmp=bmp;
-    ((UIImageView*)self.containerView).image=bmp;
+    [super resetViewWH:size];
+    
+    if(self.direction==1||self.direction==3)
+    {
+            ((UIImageView*)self.containerView).image=[self createImage:size.height with:size.width];
+    }
+    else
+    {
+            ((UIImageView*)self.containerView).image=[self createImage:size.width with:size.height];
+    }
     
     if(self.direction==0||self.direction==2){
         self.containerView.frame=CGRectMake(self.containerView.frame.origin.y, self.containerView.frame.origin.x, size.width, size.height);

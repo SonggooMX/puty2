@@ -31,9 +31,8 @@
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    //[((baseView*)self.parent) resetViewWH:self.parent.frame.size];
     baseView *bv=(baseView*)self.parent;
-    [bv initView:bv.frame withImage:nil withNString:bv.content];
+    [bv resetViewWH:bv.frame.size];
 }
 
 //元素的缩放 （二维码 右下角缩放大小）
@@ -107,6 +106,12 @@
     }
     else
     {
+        if(bv.elementType==2)
+        {
+            float scale=frame.size.width/frame.size.height;
+            directY=directX/scale;
+        }
+        
         frame.size.width+=(directX);;
         frame.size.height+=(directY);
     }
@@ -178,6 +183,8 @@
         cframe.origin.y+=directY;
     }
     cv.frame=cframe;
+    
+    [bv refreshMsg];
 }
 
 @end

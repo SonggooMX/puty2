@@ -10,6 +10,7 @@
 #import "EFMuiltiButtonCell.h"
 #import "lbView.h"
 #import "b1dView.h"
+#import "qrView.h"
 
 @implementation EFMuiltiBtnModle
 
@@ -46,7 +47,7 @@
             {
                 lbView *lb=(lbView*)bview;
                 lb.alignMode=(int)result;
-                [lb setLineSpace:lb.rowSpaceHeight withMode:lb.rowSpaceMode];
+                [lb resetViewWH:lb.frame.size];
             }
             else if(bview.elementType==0)
             {
@@ -84,14 +85,48 @@
         {
             [self setEncodeMode:bview withIndex:(int)result];
         }
+        else if([self.title isEqualToString:@"二维码类型"])
+        {
+            [self setCodeType:bview withIndex:(int)result];
+        }
+        else if([self.title isEqualToString:@"纠错级别"])
+        {
+            [self setErrorLevel:bview withIndex:(int)result];
+        }
+        else if([self.title isEqualToString:@"编码方式"])
+        {
+            [self setCodeEnMode:bview withIndex:(int)result];
+        }
         else if([self.title isEqualToString:@"文字位置"])
         {
             [self setTextPlace:bview withIndex:(int)result];
         }
+        
     };
     rcell.itemStrs = self.itemStrs;
     rcell.titleLable.text = self.title;
     rcell.currentindex = self.currentindex;
+}
+
+-(void) setCodeType:(baseView*)bv withIndex:(int)index
+{
+    qrView *view=(qrView*)bv;
+    view.codeType=index;
+    [view resetContainerViewImage:nil];
+}
+
+-(void) setErrorLevel:(baseView*)bv withIndex:(int)index
+{
+    qrView *view=(qrView*)bv;
+    view.errorLevel=index;
+    [view resetContainerViewImage:nil];
+}
+
+-(void) setCodeEnMode:(baseView*)bv withIndex:(int)index
+{
+    qrView *view=(qrView*)bv;
+    view.encodeMode=index;
+    [view resetContainerViewImage:nil];
 }
 
 //设置编码
@@ -101,6 +136,8 @@
     b1d.encodeMode=index;
     [b1d resetContainerViewImage:nil];
 }
+
+
 -(void) setTextPlace:(baseView*)bv withIndex:(int)index
 {
     b1dView *b1d=(b1dView*)bv;

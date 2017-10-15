@@ -8,10 +8,6 @@
 
 #import "baseView.h"
 #import "NewLabelViewController.h"
-#import "ZXingObjC/ZXWriter.h"
-#import "ZXingObjC/ZXImage.h"
-#import "ZXingObjC/ZXEncodeHints.h"
-#import "ZXingObjC/ZXMultiFormatWriter.h"
 #import "ImageHelper.h"
 
 @implementation baseView
@@ -41,11 +37,19 @@
 
 //创建图片
 -(UIImage*) createZXingImage:(int)format withContent:(NSString*)data
+                withEncoding:(NSInteger)encode withErrorLevel:(ZXQRCodeErrorCorrectionLevel*)errorCorrectionLevelL
 {
     NSError *error = nil;
     ZXEncodeHints *hints=[[ZXEncodeHints alloc] init];
     hints.margin=0;
-    hints.encoding=NSUTF8StringEncoding;
+    if(encode>=0)
+    {
+        hints.encoding=encode;
+    }
+    if(errorCorrectionLevelL!=nil)
+    {
+        hints.errorCorrectionLevel=errorCorrectionLevelL;
+    }
     ZXMultiFormatWriter *writer = [ZXMultiFormatWriter writer];
     ZXBitMatrix* result = [writer encode:data
                                   format:format
@@ -85,7 +89,6 @@
         UIFont *font=[UIFont fontWithName:@"STHeitiSC-Light" size:fontsize];
         self.b1dlb.font=font;
         self.b1dlb.text=content;
-        self.content=content;
         self.b1dlb.numberOfLines=1;
         self.b1dlb.lineBreakMode=NSLineBreakByCharWrapping;
         CGRect rect=[self.b1dlb textRectForBounds:CGRectMake(0, 0, frame.size.width, 1000) limitedToNumberOfLines:1];
@@ -124,7 +127,7 @@
 
 -(void) resetViewWH:(CGSize)size
 {
-    
+    self.scale=self.parentController.CURRENT_LABEL_INFO.scale;
 }
 
 -(void) showScaleView
@@ -170,6 +173,7 @@
 
 -(void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
+    [self refreshMsg];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -234,17 +238,13 @@
 -(void) refreshMsg
 {
     //刷新位置
-    NewLabelViewController *nlc=(NewLabelViewController*)self.parentController;
-    float scale=nlc.LabelSacle;
-    self.scale=scale;
-    
-    float x=[NSString stringWithFormat:@"%.1f",self.frame.origin.x/scale/8].floatValue;
-    float y=[NSString stringWithFormat:@"%.1f",self.frame.origin.y/scale/8].floatValue;
-    float w=[NSString stringWithFormat:@"%.1f",self.frame.size.width/scale/8].floatValue;
-    float h=[NSString stringWithFormat:@"%.1f",self.frame.size.height/scale/8].floatValue;
+    float x=[NSString stringWithFormat:@"%.1f",self.frame.origin.x/self.scale/8].floatValue;
+    float y=[NSString stringWithFormat:@"%.1f",self.frame.origin.y/self.scale/8].floatValue;
+    float w=[NSString stringWithFormat:@"%.1f",self.frame.size.width/self.scale/8].floatValue;
+    float h=[NSString stringWithFormat:@"%.1f",self.frame.size.height/self.scale/8].floatValue;
     
     NSString *msg=[NSString stringWithFormat:@"X:%.2fmm  Y:%.2fmm  宽:%.2fmm  高:%.2fmm",x,y,w,h];
-    [nlc updateTip:msg];
+    [self.parentController updateTip:msg];
 }
 
 -(float) getXMM

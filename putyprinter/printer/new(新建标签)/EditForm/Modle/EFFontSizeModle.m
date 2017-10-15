@@ -70,16 +70,7 @@
             seq=seq<=-1?16:seq;
             bview.fontSizeIndex=seq;
             
-            if(bview.elementType==8)
-            {
-                //lbView *lb=(lbView*)bview;
-                //[lb setLineSpace:lb.rowSpaceHeight withMode:lb.rowSpaceMode];
-                [bview initView:bview.frame withImage:nil withNString:bview.content];
-            }
-            else if(bview.elementType==0)
-            {
-                [bview resetViewWH:bview.frame.size];
-            }
+            [bview resetViewWH:bview.frame.size];
         }
         
         _result = result;

@@ -30,7 +30,11 @@
 #import "EFPositionModel.h"
 #import "EFButtonCellModle.h"
 #import "b1dView.h"
-
+#import "qrView.h"
+#import "imgView.h"
+#import "tableView.h"
+#import "lineView.h"
+#import "rectView.h"
 
 
 #define kheightBlue    [UIColor colorWithRed:0 green:124/255.0 blue:224/255.0 alpha:1.0]
@@ -261,11 +265,19 @@
                 break;
             case BaseEdictFormTypeQRCode:
             {
+                qrView *qr=(qrView*)self.currentSelectView;
+                
                 self.codeAttribuModle.title = @"二维码类型";
                 self.codeAttribuModle.itemStrs = @[@"QRCode",@"Data Matrix",@"PDF417",@"Code one",@"Code 49",@"Code 16k",@"Maxicode"];
+                self.codeAttribuModle.currentindex=qr.codeType;
+                
                 self.textPositionModle.title = @"纠错级别";
                 self.textPositionModle.itemStrs = @[@"低",@"中",@"高",@"强"];
+                self.textPositionModle.currentindex=qr.errorLevel;
+                
                 EFMuiltiBtnModle *codeType = [self muitlModleWithItems:@[@"Auto",@"UTF-8",@"GBK",@"ISO-8"]tile:@"编码方式"];
+                codeType.currentindex=qr.encodeMode;
+                
                 NSArray *firArr = @[self.codeAttribuModle,self.textPositionModle,codeType];
                 
                 self.dataTyepModle.itemStrs = @[@"手工录入",@"递变数据",@"Excel数据"];
@@ -276,11 +288,14 @@
             case BaseEdictFormTypeImage:
             {
                
+                imgView *iv=(imgView*)self.currentSelectView;
+                
                 EFSliderModel *slider = [EFSliderModel modleWithType:(EFCellTypeSlider)];
                 slider.title = @"灰度阀门";
                 
                 EFSwitchModel *switch1 = [EFSwitchModel modleWithType:(EFCellTypeSwitch)];
                 switch1.title = @"黑白显示";
+                switch1.on=iv.isBlack;
                 
                 PickViewModle *path = [PickViewModle modleWithType:(EFCellTypePickView)];
                 path.title = @"图片路径";
@@ -292,9 +307,9 @@
                 
                 EFSwitchModel *switch2 = [EFSwitchModel modleWithType:(EFCellTypeSwitch)];
                 switch2.title = @"图片缩放";
-                switch2.on=true;
+                switch2.on=iv.isScale;
                 
-                NSArray *firArr = @[slider,switch1,path,switch2];
+                NSArray *firArr = @[slider,switch1,switch2];
                 _modles = @[firArr,@[self.positionModle],@[self.angleModle],@[self.switchModle]];
             }
                 break;
@@ -534,7 +549,14 @@
         _codeAttribuModle.itemStrs = @[@"自动",@"TIF25",@"39",@"128",@"酷德巴码",@"EAN-8",@"EAN-13",@"UPC",@"MSI",@"ISBN"];
         _codeAttribuModle.title = @"编码属性";
         _codeAttribuModle.rowHeight = 118;
-        _codeAttribuModle.currentindex=((b1dView*)self.currentSelectView).encodeMode;
+        if(self.currentSelectView.elementType==0)
+        {
+            _codeAttribuModle.currentindex=((b1dView*)self.currentSelectView).encodeMode;
+        }
+        else if(self.currentSelectView.elementType==1)
+        {
+            _codeAttribuModle.currentindex=((qrView*)self.currentSelectView).codeType;
+        }
         _codeAttribuModle.selectedAction = ^(NSInteger result) {
         };
     }
@@ -593,7 +615,12 @@
         _textPositionModle = [[EFMuiltiBtnModle alloc] init];
         _textPositionModle.itemStrs = @[@"无文字",@"条码上方",@"条码下方"];
         _textPositionModle.title = @"文字位置";
+        if(self.currentSelectView.elementType==0){
         _textPositionModle.currentindex=((b1dView*)self.currentSelectView).showTextMode;
+        }else if(self.currentSelectView.elementType==1)
+        {
+            _textPositionModle.currentindex=((qrView*)self.currentSelectView).errorLevel;
+        }
         _textPositionModle.rowHeight = 44;
         _textPositionModle.selectedAction = ^(NSInteger result) {
             

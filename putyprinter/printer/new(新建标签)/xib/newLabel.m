@@ -229,7 +229,7 @@
     CGRect frame=self.parent.drawAreaView.frame;
     frame=CGRectMake((rw-w*sc)/2, (rh-h*sc)/2, w*sc, h*sc);
     self.parent.drawAreaView.frame=frame;
-    self.parent.LabelSacle=sc;
+    self.parent.CURRENT_LABEL_INFO.scale=sc;
 }
 
 @end

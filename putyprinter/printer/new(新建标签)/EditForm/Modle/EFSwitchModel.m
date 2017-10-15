@@ -9,6 +9,8 @@
 #import "EFSwitchModel.h"
 #import "EFSwitchCell.h"
 #import "lbView.h"
+#import "imgView.h"
+#import "EFSliderCell.h"
 
 @implementation EFSwitchModel
 
@@ -36,6 +38,22 @@
         {
             lbView *lv=(lbView*)bview;
             [lv setWarp:value==YES?1:0];
+        }
+        else if([self.title isEqualToString:@"黑白显示"])
+        {
+            EFSliderCell *cell2=[tb cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+            cell2.slider.enabled=value;
+
+            imgView *iv=(imgView*)bview;
+            iv.grayValue=cell2.slider.value=0.5;
+            iv.isBlack=value;
+            [iv resetViewWH:bview.frame.size];
+        }
+        else if([self.title isEqualToString:@"图片缩放"])
+        {
+            imgView *iv=(imgView*)bview;
+            iv.isScale=value;
+            [iv resetViewWH:bview.frame.size];
         }
         
         self.on = value;

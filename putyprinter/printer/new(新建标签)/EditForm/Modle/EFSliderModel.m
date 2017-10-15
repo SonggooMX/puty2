@@ -8,6 +8,8 @@
 
 #import "EFSliderModel.h"
 #import "EFSliderCell.h"
+#import "imgView.h"
+
 @implementation EFSliderModel
 
 + (NSString *)cellId
@@ -18,10 +20,23 @@
 
 - (void)setupWithCell:(EFBaseCell *)cell withBaseView:(baseView*)bview withNewLabel:(newLabel *)linfo withTB:(UITableView *)tb
 {
-     EFSliderCell *rcell = (EFSliderCell*)cell;
+    imgView *iv=(imgView*)bview;
+    
+    EFSliderCell *rcell = (EFSliderCell*)cell;
+    rcell.valueBlock = ^(CGFloat value) {
+        if(iv.isBlack)
+        {
+            iv.grayValue=value;
+            [iv resetViewWH:iv.frame.size];
+        }
+    };
     rcell.title.text = self.title;
-    
-    
+    if(iv!=nil)
+    {
+        rcell.slider.enabled=iv.isBlack;
+        rcell.slider.value=iv.grayValue;
+        [iv resetViewWH:iv.frame.size];
+    }
 }
 
 

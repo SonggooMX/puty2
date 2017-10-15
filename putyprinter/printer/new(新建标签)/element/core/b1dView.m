@@ -8,6 +8,10 @@
 
 #import "b1dView.h"
 #import "BottomScaleView.h"
+#import "ZXingObjC/ZXWriter.h"
+#import "ZXingObjC/ZXImage.h"
+#import "ZXingObjC/ZXEncodeHints.h"
+#import "ZXingObjC/ZXMultiFormatWriter.h"
 
 @implementation b1dView
 
@@ -26,7 +30,7 @@
     self.showTextMode=2;//文字显示条码下发
     self.alignMode=1;
     
-    UIImage *img=[self createZXingImage:kBarcodeFormatCode128 withContent:content];
+    UIImage *img=[self createZXingImage:kBarcodeFormatCode128 withContent:content withEncoding:NSUTF8StringEncoding withErrorLevel:nil];
     
     /*
     Util *utl=[Util new];
@@ -90,13 +94,15 @@
         default:
             break;
     }
-    UIImage *img=[self createZXingImage:formt withContent:self.content];
+     UIImage *img=[self createZXingImage:formt withContent:self.content withEncoding:NSUTF8StringEncoding withErrorLevel:nil];
     [super resetContainerViewImage:img];
 }
 
 //重新设置宽高
 -(void) resetViewWH:(CGSize)size
 {
+    [super resetViewWH:size];
+    
     self.b1dlb.hidden=false;
     self.b1dlb.textAlignment=self.alignMode;
     int len=(int)self.b1dlb.text.length;
@@ -105,7 +111,7 @@
     
     if(self.fontBlod==1)
     {
-        self.b1dlb.font=[UIFont fontWithName:@"STHeitiSC" size:fontsize];
+        self.b1dlb.font=[UIFont fontWithName:@"STHeitiSC-Light" size:fontsize];
     }
     else
     {

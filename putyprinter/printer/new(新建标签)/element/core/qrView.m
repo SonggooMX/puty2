@@ -10,6 +10,10 @@
 #import "qrView.h"
 #import "scaleView.h"
 #import "bottomRightScaleView.h"
+#import "ZXingObjC/ZXWriter.h"
+#import "ZXingObjC/ZXImage.h"
+#import "ZXingObjC/ZXEncodeHints.h"
+#import "ZXingObjC/ZXMultiFormatWriter.h"
 
 
 @implementation qrView
@@ -25,14 +29,76 @@
 -(void) initView:(CGRect)frame withImage:(UIImage *)image withNString:(NSString*)content
 {
     self.elementType=1;
-    UIImage *img=[self createZXingImage:kBarcodeFormatQRCode withContent:content];
+    self.errorLevel=1;
+    
+    UIImage *img=[self createZXingImage:kBarcodeFormatQRCode withContent:content withEncoding:NSUTF8StringEncoding withErrorLevel:ZXQRCodeErrorCorrectionLevel.errorCorrectionLevelM];
     [super initView:frame withImage:img withNString:content];
     [self showScaleView];
+    [self resetViewWH:self.frame.size];
     [self refresh];
+}
+
+//重设置图片
+-(void) resetContainerViewImage:(UIImage*)bitmap
+{
+    int formt=kBarcodeFormatQRCode;
+    switch (self.codeType) {
+        case 1:
+            formt=kBarcodeFormatMaxiCode;
+            break;
+        case 2:
+            formt=kBarcodeFormatPDF417;
+            break;
+        case 3:
+            formt=kBarcodeFormatQRCode;
+            break;
+        case 4:
+            formt=kBarcodeFormatQRCode;
+            break;
+        case 5:
+            formt=kBarcodeFormatQRCode;
+            break;
+        case 6:
+            formt=kBarcodeFormatDataMatrix;
+            //不支持中文
+            return;
+        default:
+            break;
+    }
+    
+    ZXQRCodeErrorCorrectionLevel *level=ZXQRCodeErrorCorrectionLevel.errorCorrectionLevelL;
+    switch (self.errorLevel) {
+        case 1:
+            level=ZXQRCodeErrorCorrectionLevel.errorCorrectionLevelM;
+            break;
+        case 2:
+            level=ZXQRCodeErrorCorrectionLevel.errorCorrectionLevelQ;
+            break;
+        case 3:
+            level=ZXQRCodeErrorCorrectionLevel.errorCorrectionLevelH;
+            break;
+        default:
+            break;
+    }
+    
+    int encode=NSUTF8StringEncoding;
+    switch (self.encodeMode) {
+        case 1:
+            break;
+        case 2:
+            break;
+        default:
+            break;
+    }
+    
+    UIImage *img=[self createZXingImage:formt withContent:self.content withEncoding:encode withErrorLevel:level];
+    [super resetContainerViewImage:img];
 }
 
 -(void) resetViewWH:(CGSize)size
 {
+    [super resetViewWH:size];
+    
     self.frame=CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
     self.containerView.frame=CGRectMake(self.containerView.frame.origin.x, self.containerView.frame.origin.y, size.width, size.height);
     

@@ -34,6 +34,8 @@
 //重新设置宽高
 -(void) resetViewWH:(CGSize)size
 {
+
+    
     self.frame=CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
 
     if(self.direction==0||self.direction==2){

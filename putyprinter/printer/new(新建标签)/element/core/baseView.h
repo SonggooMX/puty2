@@ -12,6 +12,10 @@
 #import "bottomRightScaleView.h"
 #import "lbScaleView.h"
 #import "NewLabelViewController.h"
+#import "ZXingObjC/ZXWriter.h"
+#import "ZXingObjC/ZXImage.h"
+#import "ZXingObjC/ZXEncodeHints.h"
+#import "ZXingObjC/ZXMultiFormatWriter.h"
 
 @interface baseView : UIView
 
@@ -85,6 +89,7 @@
 
 -(void) resetViewWH:(CGSize)size;
 
--(UIImage*) createZXingImage:(int)format withContent:(NSString*)data;
+-(UIImage*) createZXingImage:(int)format withContent:(NSString*)data
+                withEncoding:(NSInteger)encode withErrorLevel:(ZXQRCodeErrorCorrectionLevel*)errorCorrectionLevelL;
 
 @end

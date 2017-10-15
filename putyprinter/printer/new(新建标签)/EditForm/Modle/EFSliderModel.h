@@ -10,4 +10,7 @@
 #import "EFBaseModle.h"
 @interface EFSliderModel : EFBaseModle
 
+//灰度阀值
+@property float grayH;
+
 @end

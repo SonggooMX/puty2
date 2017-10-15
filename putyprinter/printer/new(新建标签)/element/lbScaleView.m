@@ -253,6 +253,8 @@
         cframe.origin.x+=directX;
     }
     cv.frame=cframe;
+    
+    [sp refreshMsg];
 }
 
 

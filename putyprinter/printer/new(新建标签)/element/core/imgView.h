@@ -23,4 +23,7 @@
 //图片缩放
 @property BOOL isScale;
 
+//原始图片
+@property UIImage *sourceImage;
+
 @end
