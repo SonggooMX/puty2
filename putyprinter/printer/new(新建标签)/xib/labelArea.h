@@ -13,6 +13,10 @@
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *mulImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *lockImageView;
+
+
 @property NewLabelViewController *parent;
 
 @end

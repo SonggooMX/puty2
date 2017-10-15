@@ -179,12 +179,15 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //取消所有元素选中
-    int len=(int)self.parent.subviews.count;
-    for(int i=1;i<len;i++)
+    if(self.parentController.munSelectMode==0)
     {
-        baseView *bs=(baseView*)self.parent.subviews[i];
-        bs.isslected=0;
-        [bs refresh];
+        int len=(int)self.parent.subviews.count;
+        for(int i=1;i<len;i++)
+        {
+            baseView *bs=(baseView*)self.parent.subviews[i];
+            bs.isslected=0;
+            [bs refresh];
+        }
     }
     
     //将当期元素置于顶端
@@ -207,32 +210,41 @@
     
     UITouch *touch = [touches anyObject];
     CGPoint currentLocation = [touch locationInView:self.parent];
-    CGRect frame = self.frame;
+    
 
     int directX=currentLocation.x-self.beginpoint.x;
     int directY=currentLocation.y - self.beginpoint.y;
     
-   frame.origin.x+=directX;
-    
-    frame.origin.y+=directY;
-    
-    //检查是否超出边界
-    frame.origin.x=frame.origin.x<=5?5:frame.origin.x;
-    frame.origin.y=frame.origin.y<=5?5:frame.origin.y;
-    if(frame.origin.x+frame.size.width+5>=self.parent.frame.size.width)
+    int len=(int)self.parent.subviews.count;
+    for(int i=1;i<len;i++)
     {
-        frame.origin.x=self.parent.frame.size.width-frame.size.width-5;
+        baseView *bs=(baseView*)self.parent.subviews[i];
+        if(bs.isslected==0) continue;
+        
+        CGRect frame = bs.frame;
+        frame.origin.x+=directX;
+        
+        frame.origin.y+=directY;
+        
+        //检查是否超出边界
+        frame.origin.x=frame.origin.x<=5?5:frame.origin.x;
+        frame.origin.y=frame.origin.y<=5?5:frame.origin.y;
+        
+        if(frame.origin.x+frame.size.width+5>=self.parent.frame.size.width)
+        {
+            frame.origin.x=self.parent.frame.size.width-frame.size.width-5;
+        }
+        if(frame.origin.y+frame.size.height+5>=self.parent.frame.size.height)
+        {
+            frame.origin.y=self.parent.frame.size.height-frame.size.height-5;
+        }
+        
+        self.beginpoint=currentLocation;
+        
+        bs.frame = frame;
+        
+        [self refreshMsg];
     }
-    if(frame.origin.y+frame.size.height+5>=self.parent.frame.size.height)
-    {
-        frame.origin.y=self.parent.frame.size.height-frame.size.height-5;
-    }
-    
-    self.beginpoint=currentLocation;
-    
-    self.frame = frame;
-    
-    [self refreshMsg];
 }
 
 -(void) refreshMsg

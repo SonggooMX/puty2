@@ -101,7 +101,12 @@
     v1.parent=self.parent.drawAreaView;
     v1.elementType=8;
     v1.parentController=self.parent;
-    [v1 initView:CGRectMake(50, 50, 100, 100) withContent:@"文本"];
+    
+    CGSize size=self.parent.drawAreaView.frame.size;
+    float left=(size.width-100)/2;
+    float top=(size.height-100)/2;
+    
+    [v1 initView:CGRectMake(left, top, 100, 100) withContent:@"文本"];
     [self.parent.drawAreaView addSubview:v1];
 }
 
@@ -110,7 +115,12 @@
     rectView *v1=[[rectView alloc] init];
     v1.rectType=1;
     v1.elementType=5;
-    [v1 initView:CGRectMake(50, 50, 100, 100) withImage:NULL withNString:@""];
+    
+    CGSize size=self.parent.drawAreaView.frame.size;
+    float left=(size.width-100)/2;
+    float top=(size.height-100)/2;
+    
+    [v1 initView:CGRectMake(left, top, 100, 100) withImage:NULL withNString:@""];
     v1.parent=self.parent.drawAreaView;
     v1.parentController=self.parent;
     [self.parent.drawAreaView addSubview:v1];
@@ -129,7 +139,12 @@
     lineView *v1=[[lineView alloc] init];
     v1.lineType=1;
     v1.elementType=4;
-    [v1 initView:CGRectMake(50, 50, 100, 20) withImage:NULL withNString:@""];
+    
+    CGSize size=self.parent.drawAreaView.frame.size;
+    float left=(size.width-100)/2;
+    float top=(size.height-100)/2;
+    
+    [v1 initView:CGRectMake(left, top, 100, 20) withImage:NULL withNString:@""];
     v1.parent=self.parent.drawAreaView;
     v1.parentController=self.parent;
     [self.parent.drawAreaView addSubview:v1];
@@ -139,7 +154,12 @@
 - (IBAction)btnInsertTabel:(id)sender {
     tableView *v1=[[tableView alloc] init];
     v1.elementType=3;
-    [v1 initView:CGRectMake(50, 50, 100, 100) withImage:NULL withNString:@""];
+    
+    CGSize size=self.parent.drawAreaView.frame.size;
+    float left=(size.width-100)/2;
+    float top=(size.height-100)/2;
+    
+    [v1 initView:CGRectMake(left, top, 100, 100) withImage:NULL withNString:@""];
     v1.parent=self.parent.drawAreaView;
     v1.parentController=self.parent;
     [self.parent.drawAreaView addSubview:v1];

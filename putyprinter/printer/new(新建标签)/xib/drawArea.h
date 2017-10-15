@@ -20,5 +20,13 @@
 -(void) deleteElement;
 #pragma mark -锁定元素
 -(void) lockElement;
+-(void) alignmentLeftH;
+-(void) alignmentCenterH;
+-(void) alignmentRightH;
+-(void) alignmentTopV;
+-(void) alignmentCenterV;
+-(void) alignmentBottomV;
+#pragma mark - 复制
+-(void) copySelectView;
 
 @end

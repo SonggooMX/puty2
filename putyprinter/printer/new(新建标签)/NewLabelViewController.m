@@ -13,6 +13,13 @@
 #import "newLabel.h"
 #import "TextAttributeTableViewController.h"
 #import "BaseEdictFormViewController.h"
+#import "MessageHelper.h"
+#import "UIView+Toast.h"
+
+extern LabelInfo *TEMP_LABEL_INFO;
+extern drawArea *TEMP_DRAW_AREA;
+extern UIImage *TEMP_BITMAP;
+extern NSString *TEMP_LABEL_MESSAGE;
 
 @interface NewLabelViewController ()
 
@@ -51,6 +58,8 @@
 @property UIBarButtonItem *rebackButton;
 @property BaseEdictFormViewController *vc;
 
+@property MessageHelper *mhelper;
+
 @end
 
 
@@ -69,10 +78,16 @@
     self.CURRENT_LABEL_INFO.pagetType=2;//间隙纸
     self.CURRENT_LABEL_INFO.printDes=6;//打印浓度
     self.CURRENT_LABEL_INFO.printSpeed=3;//打印速度
+    self.CURRENT_LABEL_INFO.labelWidth=70;
+    self.CURRENT_LABEL_INFO.labelHeight=50;
+    TEMP_LABEL_INFO=self.CURRENT_LABEL_INFO;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //消息提示帮助
+    self.mhelper=[MessageHelper new];
     
     //初始化标签信息
     [self createLabelInfo];
@@ -93,11 +108,13 @@
     [self.drawAreaView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.left.right.equalTo(self.drawViewContent);
     }];
+    TEMP_DRAW_AREA=self.drawAreaView;
     
     //新增界面
     self.nLabelView=[[newLabel alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, 284)];
     self.nLabelView.parent=self;
     [self.bottomview addSubview:self.nLabelView]; //添加
+    [self.nLabelView setLabelInfowithFrom:0 withVC:self];
     
     //元素属性
     [self setElementPropety:BaseEdictFormTypeLable withSelect:false withElement:nil];
@@ -136,8 +153,37 @@
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 26)];
     line.backgroundColor = [UIColor whiteColor];
     UIBarButtonItem *lineItem = [[UIBarButtonItem alloc] initWithCustomView:line];
+    
+    NSString *multi=@"Radio_button";
+    if(self.munSelectMode==1)
+    {
+        multi=@"multiselect_button";
+    }
 
-     self.navigationItem.rightBarButtonItems = @[[self itemWithImage:@"print_button_n" withIndex:0],lineItem,[self itemWithImage:@"lock-object_button_n" withIndex:1],[self itemWithImage:@"delete_button_n" withIndex:2],[self itemWithImage:@"redo_buton_n" withIndex:3],[self itemWithImage:@"revoke_button_n" withIndex:4],[self itemWithImage:@"multiselect_button" withIndex:5]];
+     self.navigationItem.rightBarButtonItems = @[[self itemWithImage:@"print_button_n" withIndex:0],lineItem,[self itemWithImage:@"lock-object_button_n" withIndex:1],[self itemWithImage:@"delete_button_n" withIndex:2],[self itemWithImage:@"redo_buton_n" withIndex:3],[self itemWithImage:@"revoke_button_n" withIndex:4],[self itemWithImage:multi withIndex:5]];
+}
+-(void) setTopIconButton:(BOOL)islock
+{
+    self.navigationItem.title = @"";
+    self.rebackButton.title=@" ";
+    
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 26)];
+    line.backgroundColor = [UIColor whiteColor];
+    UIBarButtonItem *lineItem = [[UIBarButtonItem alloc] initWithCustomView:line];
+    
+    NSString *multi=@"Radio_button";
+    if(self.munSelectMode==1)
+    {
+        multi=@"multiselect_button";
+    }
+    
+    NSString *lock=@"lock-object_button_n";
+    if(islock)
+    {
+        lock=@"multiselect_button";
+    }
+    
+    self.navigationItem.rightBarButtonItems = @[[self itemWithImage:@"print_button_n" withIndex:0],lineItem,[self itemWithImage:lock withIndex:1],[self itemWithImage:@"delete_button_n" withIndex:2],[self itemWithImage:@"redo_buton_n" withIndex:3],[self itemWithImage:@"revoke_button_n" withIndex:4],[self itemWithImage:multi withIndex:5]];
 }
 
 #pragma mark -隐藏顶部按钮
@@ -164,7 +210,7 @@
     int tag=(int)sender.tag;
     switch (tag) {
         case 5://多选
-            
+            [self openMunSelect];
             break;
         case 4://撤销
             break;
@@ -200,6 +246,46 @@
     }
 }
 
+-(void) viewWillDisappear:(BOOL)animated
+{
+    //取消所有选中
+    [self.drawAreaView cancelAllSelected];
+    self.drawAreaView.contentView.layer.cornerRadius=0;//取消圆角
+    TEMP_BITMAP=[self convertViewToImage:self.drawAreaView];
+    self.drawAreaView.contentView.layer.cornerRadius=5;//打开圆角
+    TEMP_LABEL_MESSAGE=[NSString stringWithFormat:@"X:00mm  Y:00mm  宽:%.2fmm  高:%.2fmm",_CURRENT_LABEL_INFO.labelWidth,_CURRENT_LABEL_INFO.labelHeight];
+    //self.parent.tempDrawArea=self.drawAreaView;
+    //self.parent.tempLabelInfo=self.CURRENT_LABEL_INFO;
+
+}
+
+#pragma mark - 开启多选模式
+-(void) openMunSelect
+{
+    NSString *message=@"";
+    self.munSelectMode=self.munSelectMode==1?0:1;
+    if(self.munSelectMode==1)
+    {
+        message=@"多选模式已开启";
+        self.editView.mulImageView.image=[UIImage imageNamed:@"multiselect_blue_button-n"];
+    }
+    else
+    {
+        message=@"多选模式已关闭";
+        self.editView.mulImageView.image=[UIImage imageNamed:@"radio_blue_button_n"];
+    }
+    
+    //重置顶部操作按钮
+    [self setTopIconButton];
+    //显示提示信息
+    //[self.mhelper Toask:self.view showMessage:message delay:2.0];
+    [self showMessage:message];
+}
+
+-(void) showMessage:(NSString*)message
+{
+    [self.view makeToast:message];
+}
 
 #pragma mark -获取打印的图片
 -(UIImage*) getPrintImageView
@@ -224,6 +310,15 @@
     [self.propertyView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.left.right.equalTo(self.bottomFuncArea);
     }];
+    
+    if(self.vc.currentSelectView!=nil&&self.vc.currentSelectView.isLock)
+    {
+        [self setTopIconButton:YES];
+    }
+    else
+    {
+        [self setTopIconButton:NO];
+    }
     
     if(isselected)
     {
@@ -287,6 +382,33 @@
 -(void) reback
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+#pragma mark - 设置对齐
+- (IBAction)btnAlignment:(UIButton*)sender {
+    switch (sender.tag) {
+        case 0://水平左对齐
+            [self.drawAreaView alignmentLeftH];
+            break;
+        case 1://垂直顶对齐
+            [self.drawAreaView alignmentTopV];
+            break;
+        case 4://水平中对齐
+            [self.drawAreaView alignmentCenterH];
+            break;
+        case 5://垂直中对齐
+            [self.drawAreaView alignmentCenterV];
+            break;
+        case 8://水平右对齐
+            [self.drawAreaView alignmentRightH];
+            break;
+        case 9://垂直底对齐
+            [self.drawAreaView alignmentBottomV];
+            break;
+        default:
+            break;
+    }
 }
 
 

@@ -26,7 +26,6 @@
         self.contentView=[views objectAtIndex:0];
         self.contentView.frame=frame;
         [self addSubview:self.contentView];
-        
     }
     return self;
 }

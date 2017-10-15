@@ -75,6 +75,36 @@
     [((NewLabelViewController*)self.parent) setElementPropety:type withSelect:true withElement:sview];
 }
 
+#pragma mark - 复制
+-(void) copySelectView
+{
+    /*
+    NSMutableArray *arrs=[[NSMutableArray alloc] init];
+    int len=(int)self.subviews.count;
+    for(int i=1;i<len;i++)
+    {
+        baseView *bs=(baseView*)self.subviews[i];
+        if(bs.isslected==1)
+        {
+            baseView *newBV=(baseView*)[self copyView:bs];
+            [arrs addObject:newBV];
+        }
+    }
+    len=(int)arrs.count;
+    for(int k=0;k<len;k++)
+    {
+        baseView *view=[arrs objectAtIndex:k];
+        [self addSubview:view];
+    }
+    */
+}
+
+//复制
+- (UIView *)copyView:(UIView *)view{
+    NSData * tempArchive = [NSKeyedArchiver archivedDataWithRootObject:view];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:tempArchive];
+}
+
 #pragma mark -锁定元素
 -(void) lockElement
 {
@@ -99,6 +129,82 @@
         baseView *bs=(baseView*)self.subviews[i];
         bs.isslected=0;
         [bs refresh];
+    }
+}
+
+#pragma mark - 水平左对齐
+-(void) alignmentLeftH
+{
+    int len=(int)self.subviews.count;
+    for(int i=1;i<len;i++)
+    {
+        baseView *bs=(baseView*)self.subviews[i];
+        CGRect rect=bs.frame;
+        bs.frame=CGRectMake(0, rect.origin.y, rect.size.width, rect.size.height);
+    }
+}
+
+#pragma mark - 水平中对齐
+-(void) alignmentCenterH
+{
+    int len=(int)self.subviews.count;
+    for(int i=1;i<len;i++)
+    {
+        baseView *bs=(baseView*)self.subviews[i];
+        CGRect rect=bs.frame;
+        double left=(self.frame.size.width-rect.size.width)/2;
+        bs.frame=CGRectMake(left, rect.origin.y, rect.size.width, rect.size.height);
+    }
+}
+
+#pragma mark - 水平右对齐
+-(void) alignmentRightH
+{
+    int len=(int)self.subviews.count;
+    for(int i=1;i<len;i++)
+    {
+        baseView *bs=(baseView*)self.subviews[i];
+        CGRect rect=bs.frame;
+        double left=self.frame.size.width-rect.size.width;
+        bs.frame=CGRectMake(left, rect.origin.y, rect.size.width, rect.size.height);
+    }
+}
+
+#pragma mark - 垂直顶对齐
+-(void) alignmentTopV
+{
+    int len=(int)self.subviews.count;
+    for(int i=1;i<len;i++)
+    {
+        baseView *bs=(baseView*)self.subviews[i];
+        CGRect rect=bs.frame;
+        bs.frame=CGRectMake(rect.origin.x, 0, rect.size.width, rect.size.height);
+    }
+}
+
+#pragma mark - 垂直中对齐
+-(void) alignmentCenterV
+{
+    int len=(int)self.subviews.count;
+    for(int i=1;i<len;i++)
+    {
+        baseView *bs=(baseView*)self.subviews[i];
+        CGRect rect=bs.frame;
+        double top=(self.frame.size.height-rect.size.height)/2;
+        bs.frame=CGRectMake(rect.origin.x, top, rect.size.width, rect.size.height);
+    }
+}
+
+#pragma mark - 垂直顶对齐
+-(void) alignmentBottomV
+{
+    int len=(int)self.subviews.count;
+    for(int i=1;i<len;i++)
+    {
+        baseView *bs=(baseView*)self.subviews[i];
+        CGRect rect=bs.frame;
+        double top=self.frame.size.height-rect.size.height;
+        bs.frame=CGRectMake(rect.origin.x, top, rect.size.width, rect.size.height);
     }
 }
 

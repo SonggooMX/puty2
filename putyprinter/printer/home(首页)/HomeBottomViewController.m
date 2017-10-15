@@ -15,6 +15,11 @@
 #import "setViewController.h"
 #import "TagTemplateController.h"
 
+LabelInfo *TEMP_LABEL_INFO;
+drawArea *TEMP_DRAW_AREA;
+UIImage *TEMP_BITMAP;
+NSString *TEMP_LABEL_MESSAGE;
+
 @interface HomeBottomViewController() <CBCentralManagerDelegate,CBPeripheralDelegate>
 
 
@@ -31,9 +36,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    TEMP_LABEL_MESSAGE=@"X:00mm  Y:00mm  宽:100mm  高:50mm";
+    TEMP_BITMAP=nil;
+    TEMP_DRAW_AREA=nil;
+    TEMP_LABEL_INFO=nil;
+    
+    
     //初始化后会调用代理CBCentralManagerDelegate 的 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
     self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
 }
+
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    
+}
+
 
 -(void) viewWillAppear:(BOOL)animated
 {

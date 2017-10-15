@@ -15,6 +15,7 @@
 
 @interface NewLabelViewController : UIViewController
 
+
 @property HomeBottomViewController *parent;
 //标签信息
 @property LabelInfo *CURRENT_LABEL_INFO;
@@ -22,6 +23,10 @@
 @property float LabelSacle;
 
 @property drawArea *drawAreaView;
+
+//开启多选模式
+@property int munSelectMode;
+
 @property (weak, nonatomic) IBOutlet UIView *drawViewContent;
 // 整个底部功能区
 @property (weak, nonatomic) IBOutlet UIView *bottomview;
@@ -42,5 +47,8 @@
 
 #pragma mark -获取打印的图片
 -(UIImage*) getPrintImageView;
+#pragma mark - 开启多选模式
+-(void) openMunSelect;
+-(void) showMessage:(NSString*)message;
 
 @end

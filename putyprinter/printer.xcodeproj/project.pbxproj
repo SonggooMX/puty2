@@ -81,6 +81,8 @@
 		1BD590AB1F74FAC800564277 /* LeftTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD590A31F74FAC800564277 /* LeftTableCell.m */; };
 		1BD590AC1F74FAC800564277 /* RightTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD590A51F74FAC800564277 /* RightTableCell.m */; };
 		1BD590AD1F74FAC800564277 /* TagTemplateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD590A71F74FAC800564277 /* TagTemplateController.m */; };
+		1BF91FEC1F93700000246D3B /* MessageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF91FEB1F93700000246D3B /* MessageHelper.m */; };
+		1BF91FF61F93770200246D3B /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BF91FF51F93770200246D3B /* UIView+Toast.m */; };
 		1BFEA4C61F7894C100C2B4B2 /* Print.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFEA4C51F7894C100C2B4B2 /* Print.m */; };
 		1BFEA4CF1F7894EB00C2B4B2 /* RepeatCount.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFEA4CE1F7894EB00C2B4B2 /* RepeatCount.m */; };
 		1BFEA4D11F78FCFD00C2B4B2 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1BFEA4D01F78FCFD00C2B4B2 /* 1.jpg */; };
@@ -439,6 +441,10 @@
 		1BD590A51F74FAC800564277 /* RightTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightTableCell.m; sourceTree = "<group>"; };
 		1BD590A61F74FAC800564277 /* TagTemplateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagTemplateController.h; sourceTree = "<group>"; };
 		1BD590A71F74FAC800564277 /* TagTemplateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagTemplateController.m; sourceTree = "<group>"; };
+		1BF91FEA1F93700000246D3B /* MessageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageHelper.h; sourceTree = "<group>"; };
+		1BF91FEB1F93700000246D3B /* MessageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageHelper.m; sourceTree = "<group>"; };
+		1BF91FF41F93770200246D3B /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Toast.h"; path = "Masonry/UIView+Toast.h"; sourceTree = "<group>"; };
+		1BF91FF51F93770200246D3B /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Toast.m"; path = "Masonry/UIView+Toast.m"; sourceTree = "<group>"; };
 		1BFEA4C41F7894C100C2B4B2 /* Print.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Print.h; sourceTree = "<group>"; };
 		1BFEA4C51F7894C100C2B4B2 /* Print.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Print.m; sourceTree = "<group>"; };
 		1BFEA4CD1F7894EB00C2B4B2 /* RepeatCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepeatCount.h; sourceTree = "<group>"; };
@@ -1534,8 +1540,12 @@
 				90EE9FAA1F2A4971001E3371 /* YYModel */,
 				B988E3201F1EF0A7003EE56B /* Additions */,
 				B92A7ACC1F1C15B6000CC07A /* Masonry */,
+				1BF91FF41F93770200246D3B /* UIView+Toast.h */,
+				1BF91FF51F93770200246D3B /* UIView+Toast.m */,
 				1B67D6C61F8C9D2900EAF585 /* Util.h */,
 				1B67D6C71F8C9D2900EAF585 /* Util.m */,
+				1BF91FEA1F93700000246D3B /* MessageHelper.h */,
+				1BF91FEB1F93700000246D3B /* MessageHelper.m */,
 			);
 			path = "Tools(工具类)";
 			sourceTree = "<group>";
@@ -1935,6 +1945,7 @@
 				90EE9FA51F2A4931001E3371 /* TextSectionModel.m in Sources */,
 				1B85F9CB1F2B02C800179C6D /* drawArea.m in Sources */,
 				B987737E1F20A97C0057404D /* defaultTextViewController.m in Sources */,
+				1BF91FF61F93770200246D3B /* UIView+Toast.m in Sources */,
 				1B081B761F75452900308DAF /* JSONKeyMapper.m in Sources */,
 				A00E396C1F66DF220081C5AF /* EFFontSizeCell.m in Sources */,
 				1B359BDF1F77EEF30082B645 /* bluetoothscell.m in Sources */,
@@ -1945,6 +1956,7 @@
 				1B85FA471F2B049D00179C6D /* scaleView.m in Sources */,
 				B988E33C1F1EF0A8003EE56B /* UIButton+CZAddition.m in Sources */,
 				A00E39861F66DF220081C5AF /* EFPositionModel.m in Sources */,
+				1BF91FEC1F93700000246D3B /* MessageHelper.m in Sources */,
 				1B081BB81F7546E000308DAF /* HandwritingCell.m in Sources */,
 				B988E3421F1EF0A8003EE56B /* UIViewController+CZAddition.m in Sources */,
 				B988E3391F1EF0A8003EE56B /* NSArray+Log.m in Sources */,

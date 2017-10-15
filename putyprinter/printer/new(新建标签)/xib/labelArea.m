@@ -39,12 +39,15 @@
             break;
         case 15:
             NSLog(@"拷贝");
+            [self.parent.drawAreaView copySelectView];
             break;
         case 16:
             NSLog(@"多选");
+            [self.parent openMunSelect];
             break;
         case 17:
             NSLog(@"锁定");
+            [self lockLabel];
             break;
         case 18:
             NSLog(@"扫一扫");
@@ -53,6 +56,26 @@
         default:
             break;
     }
+}
+
+//锁定标签
+-(void) lockLabel
+{
+    self.parent.CURRENT_LABEL_INFO.isLock=self.parent.CURRENT_LABEL_INFO.isLock?NO:YES;
+
+    NSString *message=@"";
+    if(self.parent.CURRENT_LABEL_INFO.isLock)
+    {
+        message=@"标签已锁定";
+        self.lockImageView.image=[UIImage imageNamed:@"locking_button_n"];
+    }
+    else
+    {
+        message=@"标签已解锁";
+        self.lockImageView.image=[UIImage imageNamed:@"not_locking_button_n"];
+    }
+    
+    [self.parent showMessage:message];
 }
 
 //打开云端模板
@@ -82,6 +105,15 @@
         self.contentView=[views objectAtIndex:0];
         self.contentView.frame=frame;
         [self addSubview:self.contentView];
+        
+        if(self.parent.CURRENT_LABEL_INFO.isLock)
+        {
+            self.lockImageView.image=[UIImage imageNamed:@"locking_button_n"];
+        }
+        else
+        {
+            self.lockImageView.image=[UIImage imageNamed:@"not_locking_button_n"];
+        }
     }
     return self;
 }

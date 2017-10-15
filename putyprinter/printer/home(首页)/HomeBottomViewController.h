@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <CoreBluetooth/CBService.h>
+#import "LabelInfo.h"
+#import "drawArea.h"
 
 
 static NSString *const kWriteCharacteristicUUID = @"49535343-8841-43F4-A8D4-ECBE34729BB3";
@@ -24,6 +26,7 @@ static NSString *const kServiceUUID = @"49535343-FE7D-4AE5-8FA9-9FAFD205E455";
 
 @property NSMutableArray *deviceList;
 @property UITableView *deviceListTableView;
+
 
 //当前选择的打印机
 @property (weak, nonatomic) IBOutlet UILabel *currentSelectPrinter;

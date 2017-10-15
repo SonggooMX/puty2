@@ -22,14 +22,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X:00mm  Y:00mm  宽:100mm  高:50mm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAW-uI-Opm">
-                                <rect key="frame" x="34" y="12" width="307" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="51.5" y="12" width="274" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6UD-11-YYt">
-                                <rect key="frame" x="10" y="37.5" width="355" height="271.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6UD-11-YYt">
+                                <rect key="frame" x="10" y="35" width="355" height="274"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="5"/>
@@ -61,7 +60,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="普贴科技" id="egt-4v-RRM"/>
                     <connections>
+                        <outlet property="contentView" destination="yXc-hP-zRe" id="PGd-f4-5OM"/>
+                        <outlet property="drawImageView" destination="6UD-11-YYt" id="eGU-c1-4L3"/>
                         <outlet property="homeLBTopTip" destination="WAW-uI-Opm" id="hhN-zN-7k2"/>
+                        <outlet property="labelViewInfo" destination="WAW-uI-Opm" id="gek-Sz-oyl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOi-jw-80C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -262,9 +264,6 @@
                                             </view>
                                             <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0Q-EM-tdL">
                                                 <rect key="frame" x="0.0" y="0.0" width="123" height="120"/>
-                                                <connections>
-                                                    <action selector="btnNewLabel:" destination="rQh-Jk-zMd" eventType="touchUpInside" id="rGg-16-mkR"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
