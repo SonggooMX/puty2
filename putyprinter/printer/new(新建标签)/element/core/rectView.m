@@ -24,8 +24,10 @@
 
 -(void) initView:(CGRect)frame withImage:(UIImage *)image withNString:(NSString*)content
 {
+    self.lineWidth=1;
     UIImage *bmp=[self createImage:frame.size.width with:frame.size.height];
     [super initView:frame withImage:bmp withNString:content];
+    [self resetViewWH:frame.size];
     
     //右小角放一个缩放图标
     [self showScaleView];
@@ -35,9 +37,17 @@
 //重新设置宽高
 -(void) resetViewWH:(CGSize)size
 {
-    UIImage *bmp=[self createImage:size.width with:size.height];
-    self.bmp=bmp;
-    ((UIImageView*)self.containerView).image=bmp;
+    [super resetViewWH:size];
+    
+    if(self.direction==1||self.direction==3)
+    {
+        ((UIImageView*)self.containerView).image=[self createImage:size.height with:size.width];
+    }
+    else
+    {
+        ((UIImageView*)self.containerView).image=[self createImage:size.width with:size.height];
+    }
+
     
     self.frame=CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
     
@@ -99,17 +109,20 @@
     CGContextSetAllowsAntialiasing(context, true); //抗锯齿设置
     
     CGContextSetRGBStrokeColor(context,0,0,0,1.0);//画笔线的颜色
-    CGContextSetLineWidth(context, 1.0);//线的宽度
+    CGContextSetLineWidth(context, self.lineWidth);//线的宽度
     
     // 先画矩形框
     if (self.rectType == 3) {
+        
+        float lw=w>h?h:w;
+        
         if(self.fillRect==0)
         {
             /*画圆*/
             //边框圆
             CGContextSetLineWidth(context, self.lineWidth);//线的宽度
             // x,y为圆点坐标，radius半径，startAngle为开始的弧度，endAngle为 结束的弧度，clockwise 0为顺时针，1为逆时针。
-            CGContextAddArc(context, w/2, h/2, w/2, 0, 2*180, 0); //添加一个圆
+            CGContextAddArc(context, w/2, h/2, lw/2-self.lineWidth, 0, 2*180, 0); //添加一个圆
             CGContextDrawPath(context, kCGPathStroke);
         }
         else
@@ -117,21 +130,21 @@
             /*画圆*/
             //边框圆
             //填充圆，无边框
-            CGContextAddArc(context, w/2, h/2, w/2, 0, 2*180, 0); //添加一个圆
+            CGContextAddArc(context, w/2, h/2, lw/2-self.lineWidth, 0, 2*180, 0); //添加一个圆
             CGContextDrawPath(context, kCGPathFill);//绘制填充
         }
     } else if (self.rectType == 2) {
         if(self.fillRect==0)
         {
             // 画椭圆
-            CGContextAddEllipseInRect(context, CGRectMake(0, 0, w, h));
+            CGContextAddEllipseInRect(context, CGRectMake(self.lineWidth, self.lineWidth, w-self.lineWidth*2, h-self.lineWidth*2));
             //椭圆
             CGContextDrawPath(context, kCGPathStroke);
         }
         else
         {
             // 画椭圆
-            CGContextAddEllipseInRect(context, CGRectMake(0, 0, w, h));
+            CGContextAddEllipseInRect(context, CGRectMake(self.lineWidth, self.lineWidth, w-self.lineWidth*2, h-self.lineWidth*2));
             //椭圆
             CGContextDrawPath(context, kCGPathFill);
         }
@@ -139,11 +152,12 @@
         // 圆角矩形
         /*画圆角矩形*/
         
-        CGContextMoveToPoint(context, w, h-10);  // 开始坐标右边开始
-        CGContextAddArcToPoint(context, w, h, w-20, h, 10);  // 右下角角度
-        CGContextAddArcToPoint(context, 0, h, 0, h-20, 10); // 左下角角度
-        CGContextAddArcToPoint(context, 0, 0, w-20, 0, 10); // 左上角
-        CGContextAddArcToPoint(context, w, 0, w, h-10, 10); // 右上角
+        CGContextMoveToPoint(context, w-self.lineWidth, h-10-self.lineWidth);  // 开始坐标右边开始
+        CGContextAddArcToPoint(context, w-self.lineWidth, h-self.lineWidth,
+                               w-20-self.lineWidth, h-self.lineWidth, 10);  // 右下角角度
+        CGContextAddArcToPoint(context, self.lineWidth, h-self.lineWidth, self.lineWidth, h-20-self.lineWidth, 10); // 左下角角度
+        CGContextAddArcToPoint(context, self.lineWidth, self.lineWidth,w-20-self.lineWidth, self.lineWidth, 10); // 左上角
+        CGContextAddArcToPoint(context, w-self.lineWidth, self.lineWidth,w-self.lineWidth, h-10-self.lineWidth, 10); // 右上角
         CGContextClosePath(context);
         
         if(self.fillRect==0)
@@ -157,10 +171,10 @@
     } else {
         /*画矩形*/
         if(self.fillRect==0){
-            CGContextStrokeRect(context,CGRectMake(0, 0, w, h));//画方框
+            CGContextStrokeRect(context,CGRectMake(self.lineWidth, self.lineWidth, w-self.lineWidth*2, h-self.lineWidth*2));//画方框
         }
         else{
-            CGContextFillRect(context,CGRectMake(0, 0, w, h));//填充框
+            CGContextFillRect(context,CGRectMake(self.lineWidth, self.lineWidth, w-self.lineWidth*2, h-self.lineWidth*2));//填充框
         }
         
     }

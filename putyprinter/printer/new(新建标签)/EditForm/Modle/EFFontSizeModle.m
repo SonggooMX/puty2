@@ -8,6 +8,8 @@
 
 #import "EFFontSizeModle.h"
 #import "EFFontSizeCell.h"
+#import "lineView.h"
+
 @implementation EFFontSizeModle
 
 + (NSString *)cellId
@@ -72,7 +74,12 @@
             
             [bview resetViewWH:bview.frame.size];
         }
-        
+        else if([self.title isEqualToString:@"虚线间隔"])
+        {
+            lineView *lv=(lineView*)bview;
+            lv.lineSpace=(int)index;
+            [lv resetViewWH:lv.frame.size];
+        }
         _result = result;
         self.curentIndex = index;
         if (self.changeActin) {

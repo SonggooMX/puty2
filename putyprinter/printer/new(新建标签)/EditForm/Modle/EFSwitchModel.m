@@ -11,6 +11,7 @@
 #import "lbView.h"
 #import "imgView.h"
 #import "EFSliderCell.h"
+#import "rectView.h"
 
 @implementation EFSwitchModel
 
@@ -54,6 +55,12 @@
             imgView *iv=(imgView*)bview;
             iv.isScale=value;
             [iv resetViewWH:bview.frame.size];
+        }
+        else if([self.title isEqualToString:@"内部填充"])
+        {
+            rectView *rv=(rectView*)bview;
+            rv.fillRect=value?1:0;
+            [rv resetViewWH:rv.frame.size];
         }
         
         self.on = value;

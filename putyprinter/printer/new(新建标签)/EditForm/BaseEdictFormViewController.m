@@ -355,28 +355,44 @@
                 break;
             case BaseEdictFormTypeLine:
             {
-                EFMuiltiBtnModle *bm = [self muitlModleWithItems:@[@"实线",@"虚线；"] tile:@"线条样式"];
-//                EFFontSizeModle *lineWidth = [self fontsizeModleWithTitle:@"线条样式"];
-                EFFontSizeModle *lineWidth2 = [self fontsizeModleWithTitle:@"线条长度"];
-                EFFontSizeModle *lineWidth3 = [self fontsizeModleWithTitle:@"线条宽度"];
-                EFFontSizeModle *lineWidth4 = [self fontsizeModleWithTitle:@"虚线间隔"];
-               
+                lineView *lv=(lineView*)self.currentSelectView;
                 
-                NSArray *firArr = @[bm,lineWidth2,lineWidth3,lineWidth4];
-//                NSArray *firArr = @[self.codeAttribuModle,self.textPositionModle];
-//                NSArray *secArr = @[self.dataTyepModle,self.currentContentModle,self.datanameModle,self.pageModle];
-//                NSArray *thir = @[self.fontNameModle,self.fontsizeModle,self.aligModle,self.attributeModle];
+                EFMuiltiBtnModle *bm = [self muitlModleWithItems:@[@"虚线",@"实线"] tile:@"线条样式"];
+                bm.currentindex=lv.lineType;
+
+                NSMutableArray *arr = [NSMutableArray new];
+                for (int i = 1;i < 50;i+=1) {
+                    [arr addObject:[NSString stringWithFormat:@"%d",i]];
+                }
+                
+                EFFontSizeModle *lineWidth4 = [self fontsizeModleWithTitle:@"虚线间隔"];
+                lineWidth4.curentIndex=lv.lineSpace;
+                lineWidth4.itemTitles=arr;
+                
+                NSArray *firArr = @[bm,lineWidth4];
+
                 _modles = @[firArr,@[self.positionModle],@[self.angleModle],@[self.switchModle]];
             }
                 break;
             case BaseEdictFormTypeRectangle:
             {
+                rectView *rv=(rectView*)self.currentSelectView;
+                
                 EFMuiltiBtnModle *bm = [self muitlModleWithItems:@[@"直角",@"圆角",@"椭圆",@"圆"] tile:@"矩形形状"];
+                bm.currentindex=rv.rectType;
+                
+                
                 EFSwitchModel *switch1 = [EFSwitchModel modleWithType:(EFCellTypeSwitch)];
                 switch1.title = @"内部填充";
+                switch1.on=rv.fillRect==1;
                 
                 EFFontSizeModle *lineWidth = [self fontsizeModleWithTitle:@"线条宽度"];
-                
+                NSMutableArray *arr = [NSMutableArray new];
+                for (double i = 0.1;i < 50.0;i+=0.1) {
+                    [arr addObject:[NSString stringWithFormat:@"%.2f",i]];
+                }
+                lineWidth.itemTitles=arr;
+                [lineWidth setCurentIndex:rv.lineWidth*10-1];
                 
                 NSArray *firArr = @[bm,switch1,lineWidth];
                 _modles = @[firArr,@[self.positionModle],@[self.angleModle],@[self.switchModle]];

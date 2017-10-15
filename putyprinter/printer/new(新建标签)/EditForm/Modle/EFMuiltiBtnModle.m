@@ -11,6 +11,8 @@
 #import "lbView.h"
 #import "b1dView.h"
 #import "qrView.h"
+#import "lineView.h"
+#import "rectView.h"
 
 @implementation EFMuiltiBtnModle
 
@@ -101,7 +103,18 @@
         {
             [self setTextPlace:bview withIndex:(int)result];
         }
-        
+        else if([self.title isEqualToString:@"线条样式"])
+        {
+            lineView *lv=(lineView*)bview;
+            lv.lineType=(int)result;
+            [lv resetViewWH:lv.frame.size];
+        }
+        else if([self.title isEqualToString:@"矩形形状"])
+        {
+            rectView *rv=(rectView*)bview;
+            rv.rectType=(int)result;
+            [rv resetViewWH:rv.frame.size];
+        }
     };
     rcell.itemStrs = self.itemStrs;
     rcell.titleLable.text = self.title;

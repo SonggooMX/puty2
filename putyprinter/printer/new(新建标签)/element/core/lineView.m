@@ -24,9 +24,10 @@
 
 -(void) initView:(CGRect)frame withImage:(UIImage *)image withNString:(NSString *)content
 {
+    self.lineSpace=1;
     UIImage *bmp=[self createImage:frame.size.width with:frame.size.height];
     [super initView:frame withImage:bmp withNString:content];
-    
+    [self resetViewWH:frame.size];
     [self showScaleView];
     
 }
@@ -34,6 +35,16 @@
 //重新设置宽高
 -(void) resetViewWH:(CGSize)size
 {
+    [super resetViewWH:size];
+    
+    if(self.direction==1||self.direction==3)
+    {
+        ((UIImageView*)self.containerView).image=[self createImage:size.height with:size.width];
+    }
+    else
+    {
+        ((UIImageView*)self.containerView).image=[self createImage:size.width with:size.height];
+    }
 
     
     self.frame=CGRectMake(self.frame.origin.x, self.frame.origin.y, size.width, size.height);
@@ -96,10 +107,10 @@
     CGContextSetAllowsAntialiasing(context, true); //抗锯齿设置
     
     CGContextSetRGBStrokeColor(context,0,0,0,1.0);//画笔线的颜色
-    CGContextSetLineWidth(context, 2.0);//线的宽度
+    CGContextSetLineWidth(context, h/4);//线的宽度
     
     // 先画矩形框
-    if (self.lineType == 0)
+    if (self.lineType == 1)
     {
         CGContextBeginPath(context);
         CGContextMoveToPoint(context, 0, (h)/2);  //起点坐标
@@ -113,7 +124,7 @@
         //设置虚线绘制终点
         CGContextAddLineToPoint(context, w, (h)/2);
         //设置虚线排列的宽度间隔:下面的arr中的数字表示先绘制3个点再绘制1个点
-        CGFloat arr[] = {3,3};
+        CGFloat arr[] = {self.lineSpace,self.lineSpace};
         //下面最后一个参数“2”代表排列的个数。
         CGContextSetLineDash(context, 0, arr, 1);
         CGContextDrawPath(context, kCGPathStroke);

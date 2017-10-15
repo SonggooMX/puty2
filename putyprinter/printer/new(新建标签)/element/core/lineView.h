@@ -14,7 +14,7 @@
 @property float lineWidth;
 
 //虚线间隔
-@property float lineSpace;
+@property int lineSpace;
 
 //0 实线 1 虚线
 @property int lineType;
